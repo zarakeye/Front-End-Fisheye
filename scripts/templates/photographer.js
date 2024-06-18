@@ -11,6 +11,13 @@ function photographerTemplate(data) {
         h2.textContent = name;
         article.appendChild(img);
         article.appendChild(h2);
+        // const article = `
+        //   <article>
+        //     <img src='${picture}'>
+        //     <h2>${name}</h2>
+        //   </article>
+        // `;
+
         return (article);
     }
     return { name, picture, getUserCardDOM }
