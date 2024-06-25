@@ -6,7 +6,7 @@ async function displayPhotographersDatas(photographers) {
 
   photographers.forEach(photographer => {
     const photographerModel = photographerTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
+    const userCardDOM = photographerModel.displayUserCardDOM();
     photographersSection.innerHTML += userCardDOM;
   });
 }
