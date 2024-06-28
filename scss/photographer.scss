@@ -4,11 +4,48 @@
   display: none;
 }
 
-.photograph-header {
+.photographer_header {
   display: flex;
   background-color: $quaternary-color;
+  justify-content: space-around;
+  align-items: center;
   height: 300px;
   margin: 0 100px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  // column-gap: 70px;
+  grid-auto-columns: (50px, auto);
+  justify-content: space-between;
+  padding: 100px;
+}
+
+.media {
+  // width: 350px;
+  height: 300px;
+  object-fit: cover;
+
+  
+
+  &_card {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 350px;
+  }
+
+  &_description {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  &_title, &_likes {
+    color: $secondary-color;
+    font-size: 24px;
+  }
 }
 
 .contact_me {

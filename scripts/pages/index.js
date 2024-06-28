@@ -1,19 +1,10 @@
-import { photographerTemplate } from "../templates/photographer.js";
-import { getPhotographers } from "../helpers.js";
-
-async function displayPhotographersDatas(photographers) {
-  const photographersSection = document.querySelector(".photographer_section");
-
-  photographers.forEach(photographer => {
-    const photographerModel = photographerTemplate(photographer);
-    const userCardDOM = photographerModel.displayUserCardDOM();
-    photographersSection.innerHTML += userCardDOM;
-  });
-}
+import { getPhotographers } from "../services/photographer_services.js";
+import { displayPhotographersDatas } from "../factory/photographer_factory.js";
 
 async function init() {
   // Récupère les datas des photographes
   const { photographers } = await getPhotographers();
+  console.log('photographers: ', photographers);
   displayPhotographersDatas(photographers);
 }
 
