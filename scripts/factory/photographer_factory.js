@@ -34,3 +34,4 @@ export async function displayPhotograherHeader(idParam) {
   const closeModalBtn = document.getElementById('closeModal');
   closeModalBtn.addEventListener('click', closeModal);
 }
+

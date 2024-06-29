@@ -12,7 +12,7 @@
  * @return {Object} An object containing the generated DOM and helper functions.
  */
 export function photographerTemplate(data) {
-  const { name, id, city, country, tagline, price } = data;
+  const { name, id, portrait, city, country, tagline, price } = data;
 
   /**
    * Generates the DOM for a user card.
@@ -20,11 +20,12 @@ export function photographerTemplate(data) {
    * @return {string} The HTML string representing the user card.
    */
   function photographerCardTemplate() {
-    // const { name, id, city, country, tagline, price } = data;
     const photographerCard = `
       <a class='photographer_link' href='photographer.html?id=${id}'>
         <article class='photographer_card'>
-          <img class='photographer_portrait' src='../../assets/images/photographers/${id}/portrait.jpg' alt='portrait of the artist'>
+          <div class='photographer_portrait_wrapper'>
+            <img class='photographer_portrait' src='assets/images/photographers/${id}/${portrait}' alt='portrait of ${name}'>
+          </div>
           <h2 class='photographer_name'>${name}</h2>
           <p class='photographer_location'>${country}, ${city}</p>
           <p class='photographer_tagline'>${tagline}</p>
@@ -42,7 +43,6 @@ export function photographerTemplate(data) {
    * @return {string} The HTML string representing the user page header.
    */
   function photographerPageHeaderTemplate(data) {
-    // const { name, id, city, country, tagline } = data;
     const photographHeader = `
       <div class='photographer_header'>
         <div class='photographer_card'>
@@ -51,7 +51,9 @@ export function photographerTemplate(data) {
           <p class='photographer_tagline'>${tagline}</p>
         </div>
         <button class="contact_me">Contactez-moi</button>
-        <img class='photographer_portrait' src='assets/images/photographers/${id}/portrait.jpg' alt="Portrait of the artist">
+        <div class='photographer_portrait_wrapper'>
+          <img class='photographer_portrait' src='assets/images/photographers/${id}/${portrait}' alt='portrait of ${name}'>
+        </div>
       </div>
     `;
 
