@@ -15,5 +15,5 @@ async function init() {
   displayMediasByPhotographerId(idParam);
 }
 
-init();
+// init();
 

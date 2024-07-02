@@ -8,5 +8,5 @@ async function init() {
   displayPhotographersDatas(photographers);
 }
 
-init();
+// init();
 
