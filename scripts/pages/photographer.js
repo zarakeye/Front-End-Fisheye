@@ -4,6 +4,7 @@ import { displayMediasByPhotographerId } from "../factory/media_factory.js";
 import { photographerTemplate } from "../templates/photographer_templates.js";
 import { mediaTemplate } from "../templates/media_templates.js";
 import { getPhotographerById } from "../services/photographer_services.js";
+import { getMediasByPhotographerId } from "../services/media_services.js";
 import { displayModal, closeModal } from '../factory/contactForm.js';
 
 async function init() {
@@ -12,6 +13,8 @@ async function init() {
   const idParam = parseInt(searchParams.get('id'), 10);
 
   displayPhotograherHeader(idParam);
+  const medias = await getMediasByPhotographerId(idParam);
+  console.log('medias: ', medias);
   displayMediasByPhotographerId(idParam);
 }
 

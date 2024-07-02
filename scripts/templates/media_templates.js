@@ -12,10 +12,10 @@
  * @return {string} The HTML string representing the media card.
  */
 export function mediaTemplate(media) {
-  const { id, photographerId, title, image, likes, date, price } = media;
+  const { id, photographerId, title, image, likes, video, date, price } = media;
 
-  function mediaCardTemplate() {
-    const mediaCard = `
+  function imageCardTemplate() {
+    const imageCard = `
       <article class='media_card'>
         <img class='media' src='assets/images/photographers/${photographerId}/media/${image}' alt='${title}'>
         <div class='media_description'>
@@ -25,7 +25,21 @@ export function mediaTemplate(media) {
       </article>
     `;
 
-    return mediaCard;
+    return imageCard;
+  }
+
+  function videoCardTemplate() {
+    const videoCard = `
+      <article class='media_card'>
+        <video class='media' src='assets/images/photographers/${photographerId}/media/${video}' alt='${title}'></video>
+        <div class='media_description'>
+          <p class='media_title'>${title}</p>
+          <p class='media_likes'>${likes} <i class="fa-solid fa-heart"></i></p>
+        </div>
+      </article>
+    `;
+
+    return videoCard;
   }
 
   function lightboxTemplate(media) {
@@ -35,7 +49,7 @@ export function mediaTemplate(media) {
           <i class="fa-solid fa-chevron-left"></i>
         </div>
         <div class='lightbox_media'>
-          <img src='assets/images/photographers/${photographerId}/media/${media.image}' alt='${media.title}'>
+          <img src='assets/images/photographers/${photographerId}/media/${video}' alt='${title}'>
         </div>
         <div class='go_to_next_media'>
           <i class="fa-solid fa-chevron-right"></i>
@@ -46,5 +60,5 @@ export function mediaTemplate(media) {
     return lightbox;
   }
 
-  return { mediaCardTemplate }
+  return { imageCardTemplate, videoCardTemplate, lightboxTemplate };
 }

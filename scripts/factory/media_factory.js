@@ -3,11 +3,17 @@ import { mediaTemplate } from "../templates/media_templates.js";
 
 export async function displayMediasByPhotographerId(idParam) {
   const medias = await getMediasByPhotographerId(idParam);
-  const mediasGrid = document.createElement("section");
-  mediasGrid.classList.add("gallery");
+  console.log('medias: ', medias);
+  const gallery = document.createElement("section");
+  gallery.classList.add("gallery");
   medias.forEach(media => {
-    const mediaCardDOM = mediaTemplate(media).mediaCardTemplate();
-    mediasGrid.innerHTML += mediaCardDOM;
+    if (media.hasOwnProperty("video")) {
+      const mediaCardDOM = mediaTemplate(media).videoCardTemplate();
+      gallery.innerHTML += mediaCardDOM;
+    } else if(media.hasOwnProperty("image")) {
+      const mediaCardDOM = mediaTemplate(media).imageCardTemplate();
+      gallery.innerHTML += mediaCardDOM;
+    }
   });
-  document.querySelector('.photographer_page').appendChild(mediasGrid);
+  document.querySelector('.photographer_page').appendChild(gallery);
 }

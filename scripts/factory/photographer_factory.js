@@ -14,6 +14,7 @@ export async function displayPhotographersDatas(photographers) {
   photographers.forEach(photographer => {
     console.log('photographer: ', photographer);
     const photographerCardDOM = photographerTemplate(photographer).photographerCardTemplate();
+    
     photographersWrapper.innerHTML += photographerCardDOM;
   });
 }
