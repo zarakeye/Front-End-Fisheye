@@ -1,5 +1,5 @@
 // import { Photographer } from "./models/Photographer.js";
-// import { Media } from "./models/Media.js";
+import { Media } from "./models/Media.js";
 import { PhotographerApi } from "./api/Api.js";
 import { MediaApi } from "./api/Api.js";
 import { PhotographerCard } from './templates/PhotographerCard.js';
@@ -51,10 +51,10 @@ class App {
     const photographer = await allPhotographers.find(photographer => photographer.id === idParam);
     const allMedias = await this._mediaApi.getMedias();
     const photographerMedias = await allMedias.filter(media => media.photographerId === idParam);
-    console.log('photographer: ', photographer);
-    console.log('photographerMedias: ', photographerMedias);
+    const photographerMediasObjects = photographerMedias.map(media => new Media(media));
+    console.log('photographerMediasObjects: ', photographerMediasObjects);
     const main = document.querySelector(".photographer_page");
-    const photographerPageFactory = new PhotographerPageFactory(photographer, photographerMedias, main);
+    const photographerPageFactory = new PhotographerPageFactory(photographer, photographerMediasObjects, main);
     
     const photographerHeader = photographerPageFactory.createPhotographerHeader();
     main.innerHTML += photographerHeader;

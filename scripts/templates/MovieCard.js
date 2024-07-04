@@ -4,17 +4,17 @@ export class MovieCard {
   }
 
   createMovieCard() {
-    const { photographerId, video, title, likes } = this._media;
-    console.log('_media: ', this._media);
+    // const { photographerId, video, title, likes } = this._media;
+    console.log('MovieCard._media: ', this._media);
 
     const movieCard = `
       <article class='media_card'>
         <div class='media_wrapper'>
-          <video class='media' src="assets/images/photographers/${photographerId}/media/${video}"></video>
+          <video class='media' src="assets/images/photographers/${this._media.photographerId}/media/${this._media.media}"></video>
         </div>
         <div class='media_description'>
-          <p class='media_title'>${title}</p>
-          <p class='media_likes'>${likes} <i class="fa-solid fa-heart"></i></p>
+          <p class='media_title'>${this._media.title}</p>
+          <p class='media_likes'>${this._media.likes} <i class="fa-solid fa-heart"></i></p>
         </div>
       </article>
     `;
