@@ -16,19 +16,15 @@ class App {
   generatePageFromUrl() {
     const url = new URL(window.location.href);
     const idParam = parseInt(url.searchParams.get('id'), 10);
-    // const idParam = url.searchParams;
-
-
-    // console.log('idParam: ', idParam);
 
     console.log('url: ', url);
 
     if(url.pathname === '/index.html') {
-      console.log('index page');
       this.createIndexPage();
     } else if(url.pathname === '/photographer.html') {
-      console.log('photographer page');
       this.createPhotographerPage(idParam);
+    } else {
+      console.error('La page demandée n\'existe pas');
     }
   }
 
@@ -41,8 +37,6 @@ class App {
       const photographerCard = new PhotographerCard(photographer);
       console.log('photographer: ', photographer);
       photographersWrapper.innerHTML += photographerCard.createPhotographerCard();
-      // const photographerPortaitWrapper = document.querySelector('.photographer_p:ortrait_wrapper');
-      // photographerPortaitWrapper.style.backgroundImage = `url('assets/images/photographers/${photographer.id}/${photographer.name}')`;
     });
   }
 
