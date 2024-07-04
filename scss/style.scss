@@ -47,22 +47,18 @@ h1 {
   
   &_portrait {
     &_wrapper {
-      position: relative;
+      // position: relative;
       height: 200px;
       width: 200px;
       border-radius: 50%;
-      overflow: hidden;
-    }
-    position: absolute;
-    // z-index: -2;
-    height: 100%;
-    // top: 50%;
-    // left: 50%;
-    transform-origin: center;
-    // transform: translate(-50%, -50%);
-    transform: scale(1.8);
-    object-fit: cover;
-    
+      overflow:hidden;
+      background-position: center;
+      background-size: 150%;
+      border-bottom: 4px solid rgba(255, 255, 255, .5);
+      -webkit-background-clip: padding-box; /* for Safari */
+      background-clip: padding-box;
+
+    }    
   }
 
   &_name {

@@ -23,11 +23,15 @@
 }
 
 .media {
-  // width: 350px;
+  width: 350px;
   height: 300px;
-  object-fit: cover;
+  // object-fit: cover;
 
-  
+  &_wrapper {
+    height: 300px;
+    width: 350px;
+    overflow: hidden;
+  }
 
   &_card {
     display:flex;

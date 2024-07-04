@@ -143,20 +143,16 @@ h1 {
   align-items: center;
   flex-direction: column;
 }
-.photographer_portrait {
-  position: absolute;
-  height: 100%;
-  transform-origin: center;
-  transform: scale(1.8);
-  -o-object-fit: cover;
-     object-fit: cover;
-}
 .photographer_portrait_wrapper {
-  position: relative;
   height: 200px;
   width: 200px;
   border-radius: 50%;
   overflow: hidden;
+  background-position: center;
+  background-size: 150%;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box;
 }
 .photographer_name {
   color: #D3573C;

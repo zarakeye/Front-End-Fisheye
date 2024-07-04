@@ -4,6 +4,9 @@ export class Api {
   }
 
   async getDatas() {
+    // const response = await fetch(this._url);
+    // const datas = await response.json();
+    // return datas;
     try {
       const response = await fetch(this._url);
       const datas = await response.json();
@@ -37,6 +40,8 @@ export class MediaApi extends Api {
   }
 
   async getMedias() {
+    // const datas = await this.getDatas();
+    // return datas.media;
     try {
       const datas = await this.getDatas();
       return datas.media;

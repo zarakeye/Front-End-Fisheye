@@ -1,5 +1,3 @@
-// import { extractFileNameWithoutExtension } from "../helpers.js";
-
 export class Media {
   constructor(data) {
     this._id = data.id;
@@ -10,7 +8,6 @@ export class Media {
     } else if (data.hasOwnProperty('image')) {
       this._media = data.image;
     }
-    // this._media = data.media;
     this._likes = data.likes;
     this.$liked = false;
     this._date = data.date;

@@ -4,7 +4,7 @@ export class PhotographerHeader {
   }
 
   photographerPageHeaderTemplate() {
-    const { name, id, portrait, city, country, tagline, price } = this._photographer;
+    const { name, id, portrait, city, country, tagline } = this._photographer;
     const photographerPageHeader = `
       <div class='photographer_header'>
         <div class='photographer_card'>
@@ -13,12 +13,7 @@ export class PhotographerHeader {
           <p class='photographer_tagline'>${tagline}</p>
         </div>
         <button class="contact_me">Contactez-moi</button>
-        <div class='photographer_portrait_wrapper'>
-          <img
-            class='photographer_portrait'
-            src='assets/images/photographers/${id}/${portrait}'
-            alt='portrait of ${name}'
-          >
+        <div class='photographer_portrait_wrapper' style='background-image: url("assets/images/photographers/${id}/${portrait}");'>
         </div>
       </div>
     `;
