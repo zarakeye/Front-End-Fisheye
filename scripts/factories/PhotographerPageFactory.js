@@ -1,4 +1,4 @@
-import { PhotographerHeader } from '../templates/PhotographerHeader.js';
+import { PhotographerBanner } from '../templates/PhotographerBanner.js';
 import { Media } from '../models/Media.js';
 import { ImageCard } from '../templates/ImageCard.js';
 import { MovieCard } from '../templates/MovieCard.js';
@@ -10,19 +10,14 @@ export class PhotographerPageFactory {
     this._main = main;
   }
 
-  createPhotographerHeader() {
-    return new PhotographerHeader(this._photographer).photographerPageHeaderTemplate();
+  createBanner() {
+    return new PhotographerBanner(this._photographer).create();
 
     // this._main.innerHTML += photographerHeader;
   }
 
   createMediasTemplates() { 
     console.log('PhotographerPageFactory._photographerMediasObjects: ', this._photographerMediasObjects);
-    // this._main.appendChild(gallery);
-
-    // const photographerMediasObjects = this._photographerMedias.map(media => new Media(media));
-
-    // console.log('photographerMediasObjects: ', photographerMediasObjects);
     
     let mediasTemplatesArray = [];
     for(const media of this._photographerMediasObjects) {

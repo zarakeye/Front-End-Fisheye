@@ -1,11 +1,11 @@
-export class PhotographerHeader {
+export class PhotographerBanner {
   constructor(photographer) {
     this._photographer = photographer;
   }
 
-  photographerPageHeaderTemplate() {
+  create() {
     const { name, id, portrait, city, country, tagline } = this._photographer;
-    const photographerPageHeader = `
+    const banner = `
       <div class='photographer_header'>
         <div class='photographer_card'>
           <h1 class='photographer_name'><span class='sr-only'>Page de </span>${name}</h1>
@@ -17,6 +17,6 @@ export class PhotographerHeader {
         </div>
       </div>
     `;
-    return photographerPageHeader;
+    return banner;
   }
 }

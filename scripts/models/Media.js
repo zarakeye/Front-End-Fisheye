@@ -73,10 +73,4 @@ export class Media {
     this._likes -= 1;
     this.$liked = false;
   }
-
-  createThumbnail() {
-    if (this.isVideo()) {
-      
-    }
-  }
 } 

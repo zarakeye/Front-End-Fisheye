@@ -1,7 +1,7 @@
 // import { Photographer } from "./models/Photographer.js";
 import { Media } from "./models/Media.js";
-import { PhotographerApi } from "./api/Api.js";
-import { MediaApi } from "./api/Api.js";
+import { PhotographerApi } from "./api/photographer.js";
+import { MediaApi } from "./api/media.js";
 import { PhotographerCard } from './templates/PhotographerCard.js';
 // import { PhotographerHeader } from './templates/PhotographerHeader.js';
 // import { ImageCard } from './templates/ImageCard.js';
@@ -11,6 +11,8 @@ class App {
   constructor() {
     this._photographerApi = new PhotographerApi('../data/photographers.json');
     this._mediaApi = new MediaApi('../data/photographers.json');
+
+    this.generatePageFromUrl();
   }
 
   generatePageFromUrl() {
@@ -41,17 +43,15 @@ class App {
   }
 
   async createPhotographerPage(idParam) {
-    const allPhotographers = await this._photographerApi.getPhotographers();
-    const photographer = await allPhotographers.find(photographer => photographer.id === idParam);
-    const allMedias = await this._mediaApi.getMedias();
-    const photographerMedias = await allMedias.filter(media => media.photographerId === idParam);
+    const photographer = await this._photographerApi.getPhotographerById(idParam); // On récupère le photographe par son id();
+    const photographerMedias = await this._mediaApi.getPhotographerMedias(idParam); // On récupère les medias du photographe();
     const photographerMediasObjects = photographerMedias.map(media => new Media(media));
     console.log('photographerMediasObjects: ', photographerMediasObjects);
     const main = document.querySelector(".photographer_page");
     const photographerPageFactory = new PhotographerPageFactory(photographer, photographerMediasObjects, main);
     
-    const photographerHeader = photographerPageFactory.createPhotographerHeader();
-    main.innerHTML += photographerHeader;
+    const banner = photographerPageFactory.createBanner();
+    main.innerHTML += banner;
 
     const gallerySection = document.createElement('section');
     gallerySection.classList.add('gallery');
@@ -62,10 +62,8 @@ class App {
     }
 
     main.appendChild(gallerySection);
-
   }
-
 }
 
 const app = new App();
-app.generatePageFromUrl();
+// app.generatePageFromUrl();
