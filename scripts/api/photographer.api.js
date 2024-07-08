@@ -1,6 +1,6 @@
-import { Api } from './api.js';
+import { DatasApi } from './datas.api.js';
 
-export class PhotographerApi extends Api {
+export class PhotographerApi extends DatasApi {
   constructor(url) {
     super(url);
   }

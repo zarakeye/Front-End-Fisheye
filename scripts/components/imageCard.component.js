@@ -1,4 +1,4 @@
-import { Media } from "../models/Media.js";
+import { Media } from "../models/media.model.js";
 
 export class ImageCard {
   constructor(media) {

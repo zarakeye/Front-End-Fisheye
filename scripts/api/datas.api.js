@@ -1,4 +1,4 @@
-export class Api {
+export class DatasApi {
   constructor(url) {
     this._url = url;
   }

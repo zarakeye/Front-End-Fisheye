@@ -1,7 +1,7 @@
-import { PhotographerBanner } from '../templates/PhotographerBanner.js';
-import { Media } from '../models/Media.js';
-import { ImageCard } from '../templates/ImageCard.js';
-import { MovieCard } from '../templates/MovieCard.js';
+import { PhotographerBanner } from '../components/photographerBanner.component.js';
+import { Media } from '../models/media.model.js';
+import { ImageCard } from '../components/imageCard.component.js';
+import { MovieCard } from '../components/movieCard.component.js';
 
 export class PhotographerPageFactory {
   constructor(photographer, photographerMediasObjects, main) {

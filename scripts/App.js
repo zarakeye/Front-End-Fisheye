@@ -1,8 +1,8 @@
 // import { Photographer } from "./models/Photographer.js";
-import { Media } from "./models/Media.js";
-import { PhotographerApi } from "./api/photographer.js";
-import { MediaApi } from "./api/media.js";
-import { PhotographerCard } from './templates/PhotographerCard.js';
+import { Media } from "./models/media.model.js";
+import { PhotographerApi } from "./api/photographer.api.js";
+import { MediaApi } from "./api/media.api.js";
+import { PhotographerCard } from './components/photographerCard.component.js';
 // import { PhotographerHeader } from './templates/PhotographerHeader.js';
 // import { ImageCard } from './templates/ImageCard.js';
 import { PhotographerPageFactory } from './factories/PhotographerPageFactory.js';
