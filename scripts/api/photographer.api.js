@@ -19,7 +19,6 @@ export class PhotographerApi extends DatasApi {
     try {
       const photographers = await this.getPhotographers();
       const photographer = await photographers.find(photographer => photographer.id === id);
-      console.log('photographer: ', photographer);
       return photographer;
     } catch(error) {
       console.error('an error occured when fetching photographer');

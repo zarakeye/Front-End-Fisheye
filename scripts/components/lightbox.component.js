@@ -3,7 +3,7 @@ class lightbox {
     this._media = media;
   }
 
-  lightboxTemplate() {
+  lightboxComponent() {
     const { photographerId, image, title } = this._media;
     const lightbox = `
       <div class='lightbox modal'>
