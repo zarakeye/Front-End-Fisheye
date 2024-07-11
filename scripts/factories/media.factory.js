@@ -27,7 +27,7 @@ export class MediaFactory {
 
     console.log('mediasCards', mediasCards);
 
-    return mediasCards;
+    return { mediasCards, mediaObjects };
   }
 }
 

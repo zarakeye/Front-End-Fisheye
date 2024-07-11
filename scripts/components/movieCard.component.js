@@ -18,7 +18,7 @@ export class MovieCardComponent {
           </div>
           <div class='media_description'>
             <p class='media_title'>${this._media._title}</p>
-            <p class='media_likes'><span id='nbLikes_${this._media._id}'> ${this._media._likes}</span> <i id="like_${this._media._id}" class="fa-solid fa-heart" data-likes="${this._media._likes}"></i></p>
+            <p class='media_likes'><span id='nbLikes_${this._media._id}'> ${this._media._likes}</span> <i id="like_${this._media._id}" class="fa-solid fa-heart" data-id="${this._media._id}" data-likes="${this._media._likes}"></i></p>
           </div>
         </article>
       </a>
