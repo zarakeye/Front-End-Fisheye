@@ -1,5 +1,5 @@
-import { ImageCardComponent } from '../components/imageCard.component.js';
-import { MovieCardComponent } from '../components/movieCard.component.js';
+import { ImageCardComponent } from '../components/ImageCard.js';
+import { MovieCardComponent } from '../components/MovieCard.js';
 import { Media } from '../models/media.model.js';
 
 export class MediaFactory {

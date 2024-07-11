@@ -1,11 +1,11 @@
-import { PhotographerApi } from '../api/photographer.api.js';
-import { HeaderComponent } from '../components/header.component.js';
+import { HeaderComponent } from '../components/Header.js';
 import { PhotographerFactory } from '../factories/photographer.factory.js';
 import { MediaFactory } from '../factories/media.factory.js';
-import { MediaApi } from '../api/media.api.js';
+import { Api } from '../api/index.js';
 import { Photographer } from '../models/photographer.model.js';
-import { SortComponent } from '../components/sort.component.js';
-import { FooterComponent } from '../components/footer.component.js';
+import { SortComponent } from '../components/Sort.js';
+import { FootNoteComponent } from '../components/FootNote.js';
+import { displayModal } from '../factories/contactForm.js';
 export class PhotographerPage {
   constructor(id) {
   this._photographerId = id;
@@ -20,10 +20,9 @@ export class PhotographerPage {
     const h1 = document.createElement('h1');
     h1.classList.add('sr-only');
     headerElement.appendChild(h1);
-    const photographerApi = new PhotographerApi('../data/photographers.json');
-    const photographer = await photographerApi.getPhotographerById(this._photographerId);
-    const mediaApi = new MediaApi('../data/photographers.json');
-    const medias = await mediaApi.getPhotographerMedias(this._photographerId);
+    const api = new Api('../data/photographers.json');
+    const photographer = await api.getPhotographerById(this._photographerId);
+    const medias = await api.getMediasByPhotographerId(this._photographerId);
     h1.textContent = `Page de ${photographer.name}`;
 
     /** Main **/
@@ -31,11 +30,13 @@ export class PhotographerPage {
     /* Banner */
     const banner = await new PhotographerFactory(this._photographerId).createBanner();
     main.appendChild(banner);
+    banner.addEventListener('click', displayModal);
 
     // const mediaFactory = new MediaFactory(this._photographerId);
     /* Sort Options */
     const sortComponent = new SortComponent(this._photographerId);
-    const sort = await sortComponent.create();
+    const sort = sortComponent.create();
+    console.log('sort', sort);
     const gallery = document.createElement('section');
     gallery.classList.add('gallery');
     console.log('sortComponent', sort);
@@ -44,23 +45,16 @@ export class PhotographerPage {
     root.appendChild(main);
     const mediaFactory = new MediaFactory(medias);
     let { mediaObjects, mediasCards } = await mediaFactory.createCards();
-    console.log('mediasCards', mediasCards);
-    console.log('mediaObjects', mediaObjects);
 
     const likesList = mediaObjects.map(media => media.likes);
     
-    console.log('photographer', photographer);
     const photographerObject = new Photographer(photographer);
     photographerObject.likes(likesList);
-
-    console.log('photographerObject', photographerObject);
-
 
     for (const mediaCard of mediasCards) {
       gallery.appendChild(mediaCard);
     }
-    const select = sort.children[1];
-    console.log('select', select);
+    const select = document.getElementById('medias_sort');
 
     select.addEventListener('change', (e) => {
       const selectedValue = select.value;
@@ -97,38 +91,35 @@ export class PhotographerPage {
     const likes = document.querySelectorAll('.fa-heart.fa-solid');
     console.log('likes', likes);
 
-    const footerComponent = new FooterComponent(photographerObject);
-    const footer = await footerComponent.create();
-    console.log('footer', footer);
-    const nbLikesFooter = footer.children[0].children[0];
-    console.log('nbLikesFooter', nbLikesFooter);
+    const footNote = new FootNoteComponent(photographerObject).create();
+    const nbLikesFootNote = footNote.querySelector('#nbLikes_footNote');
 
-    for (const objet of mediaObjects) {
-      const likebtn = document.getElementById(`like_mediaId_${objet.id}`);
+    for (const object of mediaObjects) {
+      const likebtn = document.getElementById(`like_mediaId_${object.id}`);
       likebtn.addEventListener('click', (e) => {
         e.preventDefault();
-        if (likebtn.classList.contains('fa-regular')) {
-          objet.like();
+        if (object.alreadyLiked === false) {
+          object.like();
           photographerObject.like();
           console.log('photographerObject likes', photographerObject._likes);
-          document.getElementById(`nbLikes_${objet.id}`).textContent = objet.likes;
+          document.getElementById(`nbLikes_${object.id}`).textContent = object.likes;
           likebtn.classList.remove('fa-regular')
           likebtn.classList.add('fa-solid');
-          nbLikesFooter.textContent = `${photographerObject._likes}`;
+          nbLikesFootNote.textContent = `${photographerObject._likes}`;
         } else {
-          objet.unlike();
+          object.unlike();
           photographerObject.unlike();
           console.log('photographerObject likes', photographerObject._likes);
-          document.getElementById(`nbLikes_${objet.id}`).textContent = objet.likes;
+          document.getElementById(`nbLikes_${object.id}`).textContent = object.likes;
           likebtn.classList.remove('fa-solid')
           likebtn.classList.add('fa-regular');
-          nbLikesFooter.textContent = `${photographerObject._likes}`;
+          nbLikesFootNote.textContent = `${photographerObject._likes}`;
         }
       });
     }
 
     console.log('photographerObject likes', photographerObject._likes);
     
-    root.appendChild(footer);
+    root.appendChild(footNote);
   }
 }

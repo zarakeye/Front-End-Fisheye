@@ -1,17 +1,18 @@
-import { MediaApi } from '../api/media.api.js';
+import { Api } from '../api/index.js';
 import { MediaFactory } from '../factories/media.factory.js';
 
 export class SortComponent {
   constructor(id) {
     this._photographerId = id;
-    this._mediaApi = new MediaApi('../data/photographers.json');
+    // this._mediaApi = new MediaApi('../data/photographers.json');
+    this._api = new Api('../data/photographers.json');
   }
-  async create() {
+  create() {
     const sort = document.createElement('div');
     sort.classList.add('sort');
     sort.innerHTML = `
       <p>Trier par</p>
-      <select name="medias_sort">
+      <select id="medias_sort" name="medias_sort">
         <option value="popularity">Popularite</option>
         <option value="date">Date</option>
         <option value="title">Titre</option>

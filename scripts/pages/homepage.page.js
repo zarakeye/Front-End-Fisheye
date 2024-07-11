@@ -1,4 +1,4 @@
-import { HeaderComponent } from '../components/header.component.js';
+import { HeaderComponent } from '../components/Header.js';
 import { PhotographerFactory } from '../factories/photographer.factory.js';
 
 export class HomePage {

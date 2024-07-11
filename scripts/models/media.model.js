@@ -51,6 +51,10 @@ export class Media {
     return !!this._image;
   }
 
+  get alreadyLiked() {
+    return this.$alreadyLiked;
+  }
+
   // Setters
   set media(media) {
     this._media = media;
@@ -64,19 +68,5 @@ export class Media {
     if (filename.test(/\.mp4$/i)) {
       return true;
     }
-  }
-
-  like() {
-    this._likes += 1;
-    this.$liked = true;
-  }
-
-  toggleLike() {
-    (this.$liked) ? unlike() : like();
-  }
-
-  unlike() {
-    this._likes -= 1;
-    this.$liked = false;
   }
 } 
