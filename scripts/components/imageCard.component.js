@@ -7,9 +7,13 @@ export class ImageCardComponent {
 
   create() {
     const card = document.createElement('a');
-    card.classList.add('media_card');
+    card.classList.add('media_link');
     card.href = `#/photographer/${this._media._photographerId}/media/${this._media._media}`;
-    const cardContent = `
+    card.setAttribute('data-likes', `${this._media._likes}`);
+    card.setAttribute('data-title', `${this._media._title}`);
+    card.setAttribute('data-date', `${this._media._date}`);
+    
+    card.innerHTML = `
       <article class='media_card'>
         <div
           class='media_wrapper'
@@ -22,7 +26,6 @@ export class ImageCardComponent {
       </article>
     `;
 
-    card.innerHTML = cardContent;
     return card;
   }
 }
