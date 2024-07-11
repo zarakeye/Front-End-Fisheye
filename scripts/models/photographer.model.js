@@ -1,4 +1,4 @@
-class Photographer {
+export class Photographer {
   constructor(data) {
     this._id = data.id;
     this._name = data.name;
@@ -7,6 +7,7 @@ class Photographer {
     this._tagline = data.tagline;
     this._price = data.price;
     this._portrait = data.portrait;
+    this._likes = 0;
   }
 
   get id() {
@@ -31,5 +32,23 @@ class Photographer {
 
   get price() {
     return this._price;
+  }
+
+  get likes() {
+    return this._likes;
+  }
+
+  likes(likes) {
+    for (const like of likes) {
+      this._likes += like;
+    }
+  }
+
+  like() {
+    this._likes += 1;
+  }
+
+  unlike() {
+    this._likes -= 1;
   }
 }

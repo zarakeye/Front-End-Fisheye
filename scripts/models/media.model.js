@@ -9,7 +9,7 @@ export class Media {
       this._media = data.image;
     }
     this._likes = data.likes;
-    this.$liked = false;
+    this.$alreadyLiked = false;
     this._date = data.date;
   }
 
@@ -33,8 +33,14 @@ export class Media {
     return this._likes;
   }
 
-  get liked() {
-    return this.$liked;
+  like() {
+    this.$alreadyLiked = true;
+    this._likes += 1;
+  }
+
+  unlike() {
+    this.$alreadyLiked = false;
+    this._likes -= 1;
   }
 
   get date() {

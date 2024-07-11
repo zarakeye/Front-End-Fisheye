@@ -25,6 +25,9 @@ export class MediaFactory {
       }
     }
 
+    // Medieas sorted by likes (popularity)
+    mediaObjects.sort((a, b) => a.likes - b.likes);
+    mediasCards.sort((a, b) => a.dataset.likes - b.dataset.likes);
     console.log('mediasCards', mediasCards);
 
     return { mediasCards, mediaObjects };
