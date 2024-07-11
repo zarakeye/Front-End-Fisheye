@@ -5,8 +5,7 @@ import { MediaFactory } from '../factories/media.factory.js';
 import { MediaApi } from '../api/media.api.js';
 import { Photographer } from '../models/photographer.model.js';
 import { SortComponent } from '../components/sort.component.js';
-// import { SortFactory } from '../factories/sort.factory.js';
-
+import { FooterComponent } from '../components/footer.component.js';
 export class PhotographerPage {
   constructor(id) {
   this._photographerId = id;
@@ -98,6 +97,12 @@ export class PhotographerPage {
     const likes = document.querySelectorAll('.fa-heart.fa-solid');
     console.log('likes', likes);
 
+    const footerComponent = new FooterComponent(photographerObject);
+    const footer = await footerComponent.create();
+    console.log('footer', footer);
+    const nbLikesFooter = footer.children[0].children[0];
+    console.log('nbLikesFooter', nbLikesFooter);
+
     for (const objet of mediaObjects) {
       const likebtn = document.getElementById(`like_mediaId_${objet.id}`);
       likebtn.addEventListener('click', (e) => {
@@ -109,7 +114,7 @@ export class PhotographerPage {
           document.getElementById(`nbLikes_${objet.id}`).textContent = objet.likes;
           likebtn.classList.remove('fa-regular')
           likebtn.classList.add('fa-solid');
-          photographerObject
+          nbLikesFooter.textContent = `${photographerObject._likes}`;
         } else {
           objet.unlike();
           photographerObject.unlike();
@@ -117,10 +122,13 @@ export class PhotographerPage {
           document.getElementById(`nbLikes_${objet.id}`).textContent = objet.likes;
           likebtn.classList.remove('fa-solid')
           likebtn.classList.add('fa-regular');
+          nbLikesFooter.textContent = `${photographerObject._likes}`;
         }
       });
     }
 
     console.log('photographerObject likes', photographerObject._likes);
+    
+    root.appendChild(footer);
   }
 }
