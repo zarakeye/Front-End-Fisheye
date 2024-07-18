@@ -11,9 +11,9 @@ class App {
     const idParam = parseInt(url.searchParams.get('id'), 10);
 
     if(url.pathname === '/index.html') {
-      new HomePage().create();
+      new HomePage();
     } else if(url.pathname === '/photographer.html') {
-      new PhotographerPage(idParam).create();
+      new PhotographerPage(idParam);
     } else {
       console.error('La page demandée n\'existe pas');
     }

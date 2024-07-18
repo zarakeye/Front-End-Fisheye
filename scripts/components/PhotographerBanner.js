@@ -1,24 +1,33 @@
 export class PhotographerBannerComponent {
-  constructor(photographer) {
-    this._photographer = photographer;
+  constructor(args) {
+    this.create(args);
   }
 
-  create() {
-    const { name, id, portrait, city, country, tagline } = this._photographer;
+  create(args) {
+    const photographer = args[0];
+    const contactModal = args[1];
+    const main = args[2];
+
     const banner = document.createElement('section');
     banner.classList.add('photographer_banner');
-    const bannerContent = `
+    banner.innerHTML = `
       <div class='photographer_card'>
-        <h1 class='photographer_name'><span class='sr-only'>Page de </span>${name}</h1>
-        <p class='photographer_location'>${country}, ${city}</p>
-        <p class='photographer_tagline'>${tagline}</p>
+        <h1 class='photographer_name'><span class='sr-only'>Page de </span>${photographer._name}</h1>
+        <p class='photographer_location'>${photographer._country}, ${photographer._city}</p>
+        <p class='photographer_tagline'>${photographer._tagline}</p>
       </div>
-      <button class="contact_me">Contactez-moi</button>
-      <div class='photographer_portrait_wrapper' style='background-image: url("assets/images/photographers/${id}/${portrait}");'>
+      <button id="contact_me">Contactez-moi</button>
+      <div class='photographer_portrait_wrapper' style='background-image: url("assets/images/photographers/${photographer._id}/${photographer._portrait}");'>
       </div>
     `;
 
-    banner.innerHTML = bannerContent;
+    main.appendChild(banner);
+    const contact = document.getElementById('contact_me');
+
+    contact.addEventListener('click', () => {
+      contactModal.displayContactModal();
+    });
+
     return banner;
   }
 }

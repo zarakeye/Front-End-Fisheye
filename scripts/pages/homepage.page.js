@@ -1,8 +1,21 @@
 import { HeaderComponent } from '../components/Header.js';
 import { PhotographerFactory } from '../factories/photographer.factory.js';
+import { Photographer } from '../models/photographer.model.js';
+import { Api } from '../api/index.js';
 
 export class HomePage {
+  constructor() {
+    this.create();
+  }
+  
   async create() {
+    /** Extraction of photographer and his medias datas from api **/
+    const api = new Api('../data/photographers.json');
+    const photographerDatas = await api.getPhotographers();
+
+    /** Creation of corresponding objects using Photographer model **/
+    const photographers = photographerDatas.map(photographerData => new Photographer(photographerData));
+
     /** Entry point **/
     const root = document.getElementById('root');
 
@@ -14,7 +27,9 @@ export class HomePage {
     h1.textContent = 'Nos photographes';
 
     /** Main **/
-    const main = await new PhotographerFactory().createCards();
+    const main = document.createElement('main');
     root.appendChild(main);
+
+    await new PhotographerFactory().createCards(photographers, main);
   }
 }

@@ -1,28 +1,20 @@
 import { PhotographerBannerComponent } from '../components/PhotographerBanner.js';
 import { PhotographerCardComponent } from '../components/PhotographerCard.js';
-import { Api } from '../api/index.js';
 
 export class PhotographerFactory {
-  constructor(id) {
-    this._photographerId = id;
-    this._api = new Api('../data/photographers.json');
+  createBanner(photographer, contactModal, main) {
+    const args = [photographer, contactModal, main];
+
+    return new PhotographerBannerComponent(args);
+
+    // return banner;
   }
 
-  async createBanner() {
-    const photographer = await this._api.getPhotographerById(this._photographerId);
-    const banner = new PhotographerBannerComponent(photographer).create();
-
-    return banner;
-  }
-
-  async createCards() {
-    const photographers = await this._api.getPhotographers();
-    const main = document.createElement('main');
+  async createCards(photographers, main) {
     for (const photographer of photographers) {
-      const card = new PhotographerCardComponent(photographer).create();
+      const card = new PhotographerCardComponent().create(photographer);
       main.appendChild(card);
     }
-    return main;
   }
 }
 

@@ -2,57 +2,142 @@
 
 #contact_modal {
   display: none;
+  background-color: $tertiary-color;
 }
 
-.photographer_header {
-  display: flex;
-  background-color: $quaternary-color;
-  justify-content: space-around;
-  align-items: center;
-  height: 300px;
-  margin: 0 100px;
+.photographer {
+  &_banner {
+    display: flex;
+    background-color: $quaternary-color;
+    justify-content: space-between;
+    align-items: center;
+    height: 313px;
+    margin: 40px 100px 101px 100px;
+  }
+
+  &_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 300px;
+    margin: 0 0 0 50px;
+  }
+}
+
+#contact_me:hover {
+  background-color: $tertiary-color;
+  color: $sixth-color
+}
+
+#sort {
+
+  & p {
+    position: absolute;
+    top: 333px;
+    padding-right: 20px;
+  }
+  &_button {
+    position: absolute;
+    top: 322px;
+    display: flex;
+    margin-left: 100px;
+    background-color: $primary-color;
+    border-radius: 5px;
+    border: none;
+    & .options {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-left: 0;
+      & i {
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: $quaternary-color-light;
+        &:hover {
+          color: $sixth-color;
+        }
+      }
+      & .option {
+        display: flex;
+        text-align: left;
+        justify-content: flex-start;
+        align-items: center;
+        vertical-align: center;
+        color: $quaternary-color-light;
+        font-size: 18px;
+        font-weight: 700;
+        list-style-type: none;
+        width: 170px;
+        height: 69px;
+        padding-left: 20px;
+        &:hover {
+          background-color: $tertiary-color;
+          color: $sixth-color
+        }
+      }
+
+      & hr {
+        width: 150px;
+        color: $quaternary-color-light;
+      }
+
+    }
+  }
+      
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  // column-gap: 70px;
-  grid-auto-columns: (50px, auto);
-  justify-content: space-between;
-  padding: 100px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  row-gap: 20px;
+  column-gap: 95px;
+  margin: 100px;
 }
 
 .media {
-  width: 350px;
-  height: 300px;
-  // object-fit: cover;
-
-  &_wrapper {
-    height: 300px;
-    width: 350px;
-    overflow: hidden;
-  }
-
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  // object-position: center;
+  border-radius: 5px;
   &_card {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 350px;
+    display: block;
+    & figure {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 300px;
+      margin: 0;
+      overflow: hidden;
+    }
   }
 
   &_description {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    height: 50px;
   }
   
   &_title, &_likes {
-    color: $secondary-color;
+    color: $primary-color;
     font-size: 24px;
+    line-height: 31.25px;
+    margin: 0;
+  }
+
+  &_likes i:hover {
+    cursor: pointer;
+    color: $secondary-color;
   }
 }
 
-.contact_me {
+#contact_me {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -67,7 +152,7 @@
 
 .modal {
   border-radius: 5px;
-  background-color: $tertiary-color;
+  
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -117,4 +202,43 @@ form {
     border: none;
     border-radius: 5px;
   }
+
+  .nav-lightbox-btn {
+    height: 48px;
+  }
+
+  #lightbox .modal {
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #lightbox-container .media {
+    height: 900px;
+    width: 1050px;
+    object-fit: cover;
+  }
+
+  #go-to-previous-media, #go-to-next-media {
+    padding: 0 24px;
+  }
+
+}
+  
+.footnote {
+  position: sticky;
+  bottom: 0;
+  left: calc(100% - 376px - 30px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $tertiary-color;
+  font-weight: 500;
+  width: 376px;
+  height: 68px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding-left: 31px;
+  padding-right: 34px;
 }
