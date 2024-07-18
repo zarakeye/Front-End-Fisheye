@@ -28,6 +28,7 @@ export class HomePage {
 
     /** Main **/
     const main = document.createElement('main');
+    main.classList.add('photographers_grid');
     root.appendChild(main);
 
     await new PhotographerFactory().createCards(photographers, main);
