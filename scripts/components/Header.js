@@ -9,7 +9,7 @@ export function Header(parentDOMElement) {
 
   parentDOMElement.appendChild(header);
 
-  const primaryColor = #901C1C;
+  const primaryColor = `#901C1C`;
   const logo = document.getElementById('logo');
   const svgDatas = logo.addEventListener('load', () => {
     const svg = logo.contentDocument;
