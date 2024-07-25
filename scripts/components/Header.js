@@ -9,9 +9,14 @@ export function Header(parentDOMElement) {
 
   parentDOMElement.appendChild(header);
 
+  const primaryColor = #901C1C;
   const logo = document.getElementById('logo');
-  const svgDatas = logo.contentEditable;
-  console.log('svgDatas: ', svgDatas);
+  const svgDatas = logo.addEventListener('load', () => {
+    const svg = logo.contentDocument;
+
+    const path = svg.querySelector('path');
+    path.style.fill = `${primaryColor}`;
+  })
 
   return document.querySelector('.header');
 }
