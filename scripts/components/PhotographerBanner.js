@@ -10,8 +10,18 @@ export function PhotographerBanner(photographer, parentDOMElement) {
         <p class='photographer_tagline'>${photographer.tagline}</p>
       </div>
       <button id="contact_me" class="cta">Contactez-moi</button>
-      <div class='photographer_portrait_wrapper' style='background-image: url("assets/medias/photographers/${photographer.id}/${photographer.portrait}");'>
-      </div>
+      <figure class='photographer_portrait_wrapper'>
+          <div class='photographer_portrait_background' style='background-image: url(assets/medias/photographers/${photographer.id}/${photographer.portrait});'></div>
+          <div class='photographer_portrait_blurFilter'></div>
+          <div class='photographer_portrait_overlay'>
+            <img
+              class='photographer_portrait'
+              src='assets/medias/photographers/${photographer.id}/${photographer.portrait}'
+              alt='portrait of ${photographer.name}'
+            >
+          </div>
+        </figure>
+    </div>
     `;
 
     parentDOMElement.appendChild(banner);

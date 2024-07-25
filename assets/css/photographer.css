@@ -1,23 +1,4 @@
-@charset "UTF-8";
 /* Colors */
-.photographer_card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  text-align: left;
-  height: 300px;
-  padding-top: 71px;
-  padding-bottom: 42px;
-}
-.photographer_banner {
-  display: flex;
-  background-color: #FAFAFA;
-  justify-content: space-between;
-  align-items: center;
-  height: 313px;
-  margin: 40px 100px 20px 100px;
-  padding: 50px 57px;
-}
 .photographersGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -31,34 +12,43 @@
   text-decoration: none;
   color: unset;
 }
+.photographer_portrait {
+  width: 200px;
+  height: 200px;
+}
 .photographer_portrait_wrapper {
   position: relative;
   height: 200px;
   width: 200px;
-  /* Répétez l'image sur les bords */
-  /* Définissez la largeur de la bordure */
-  /* Floutez la partie qui dépasse */
-  /* Opacifiez la partie floutée */
 }
-.photographer_portrait_wrapper .photographer_portrait_background {
+.photographer_portrait_background {
   background-size: 200px;
-}
-.photographer_portrait_wrapper img {
-  position: absolute;
-  z-index: 1;
-  height: 100%;
   width: 100%;
+  height: 100%;
   border-radius: 50%;
-  -o-object-position: center;
-     object-position: center;
 }
-.photographer_portrait_wrapper .photographer_portrait_blurFilter {
+.photographer_portrait_blurFilter {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgb(255, 255, 255) 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgb(255, 255, 255) 100%);
+}
+.photographer_portrait_overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 185px;
+  width: 185px;
+  border-radius: 50%;
+  overflow: hidden;
+  -o-object-position: center;
+     object-position: center;
+}
+.photographer_description {
+  text-align: center;
 }
 .photographer_name {
   color: #D3573C;
@@ -79,6 +69,21 @@
   line-height: 23.44px;
   margin: 0;
 }
-.photographer_description {
-  text-align: center;
+.photographer_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+  height: 300px;
+  padding-top: 71px;
+  padding-bottom: 42px;
+}
+.photographer_banner {
+  display: flex;
+  background-color: #FAFAFA;
+  justify-content: space-between;
+  align-items: center;
+  height: 313px;
+  margin: 40px 100px 20px 100px;
+  padding: 50px 57px;
 }/*# sourceMappingURL=photographer.css.map */

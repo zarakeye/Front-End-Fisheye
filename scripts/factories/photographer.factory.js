@@ -23,12 +23,11 @@ export const photographerFactory = {
     return header;
   },
   photographersGrid: (photographers, parentDOMElement) => {
-    console.log('photographers: ',photographers);
     const photographersGrid = document.createElement("main");
     photographersGrid.className = "photographersGrid";
     parentDOMElement.appendChild(photographersGrid);
+
     photographers.map((photographer) => {
-      // new PhotographerCard(photographer, photographersGrid);
       PhotographerCard(photographer, photographersGrid);
     })
 

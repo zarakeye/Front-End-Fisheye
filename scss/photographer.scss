@@ -1,25 +1,6 @@
 @import 'variables';
 
 .photographer {
-  &_card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: left;
-    height: 300px;
-    padding-top: 71px;
-    padding-bottom: 42px;
-  }
-
-  &_banner {
-    display: flex;
-    background-color: $quaternary-color;
-    justify-content: space-between;
-    align-items: center;
-    height: 313px;
-    margin: 40px 100px 20px 100px;
-    padding: 50px 57px;
-  }
   &sGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -33,71 +14,49 @@
     text-decoration: none;
     color: unset;
   }
-  
   &_portrait {
+    width: 200px;
+    height: 200px;
     &_wrapper {
       position: relative;
       height: 200px;
       width: 200px;
-      // border-radius: 50%;
-      // background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1));
-      // background-image: linear-gradient(to bottom, transparent, #ffffff);
-      // background-color: #ffffff;
-
-      // overflow: hidden;
-      // background-position: center;
-      // background-size: 150%;
-      // border-bottom: 4px rgba(0, 0, 0, .5);
-      // -webkit-background-clip: padding-box; /* for Safari */
-      // background-clip: padding-box;
-      // overflow:clip;
-      // overflow-clip-margin: -100px;
-      // box-shadow: 0 0 8px 8px white inset;
-      // border-image-slice: 0 0 20px 0;
-      /* Répétez l'image sur les bords */
-      // border-image-repeat: repeat;
-      /* Définissez la largeur de la bordure */
-      // border-image-width: 20px;
-      /* Floutez la partie qui dépasse */
-
-      // filter: blur(5px);
-      /* Opacifiez la partie floutée */
-      // opacity: 0.7;
-
-      .photographer_portrait_background {
-        background-size: 200px;
-
-      }
-      img {
-        position: absolute;
-        // position: relative;
-        z-index: 1;
-        // top: -20px;
-        height: 100%;
-        width: 100%;
-        border-radius: 50%;
-        // object-fit: cover;
-        object-position:center;
-        // transform-origin: (50% 0%);
-        // transform: scale(1.5);
-      }
-
-      .photographer_portrait_blurFilter {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 1) 100%);
-        // height: 100%;
-        // width: 100%;
-        // bottom: -200px;
-        // background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1) );
-        // z-index: 1;
-        // border-top-left-radius: -50%;
-        // border-top-right-radius: -50%;
-      }
     }
+    
+    &_background {
+      background-size: 200px;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    
+    &_blurFilter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgba(255, 255, 255, 1) 100%);
+    }
+    
+    &_overlay {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+
+      // transform: translate(-50%, 0);
+      height: 185px;
+      width: 185px;
+      border-radius: 50%;
+      overflow: hidden;
+      object-position:center;
+      
+    }
+  }
+  
+  &_description {
+    text-align: center;
   }
 
   &_name {
@@ -122,7 +81,25 @@
     margin: 0;
   }
 
-  &_description {
-    text-align: center;
+  &_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+    height: 300px;
+    padding-top: 71px;
+    padding-bottom: 42px;
   }
+
+  &_banner {
+    display: flex;
+    background-color: $quaternary-color;
+    justify-content: space-between;
+    align-items: center;
+    height: 313px;
+    margin: 40px 100px 20px 100px;
+    padding: 50px 57px;
+  }
+  
+
 }

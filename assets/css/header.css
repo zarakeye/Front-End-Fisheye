@@ -1,5 +1,4 @@
-@import 'variables';
-
+/* Colors */
 header {
   display: flex;
   flex-direction: row;
@@ -9,7 +8,7 @@ header {
 }
 
 h1 {
-  color: $secondary-color;
+  color: #D3573C;
   margin-right: 100px;
 }
 
@@ -17,4 +16,4 @@ h1 {
   height: 50px;
   margin-left: 100px;
   margin-top: 43px;
-}
+}/*# sourceMappingURL=header.css.map */
