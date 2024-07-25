@@ -1,0 +1,17 @@
+/* Colors */
+#footNote {
+  position: sticky;
+  bottom: 0;
+  left: calc(100% - 376px - 30px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #DB8876;
+  font-weight: 500;
+  width: 376px;
+  height: 68px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding-left: 31px;
+  padding-right: 34px;
+}/*# sourceMappingURL=footNote.css.map */

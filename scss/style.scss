@@ -1,81 +1,13 @@
 @import 'variables';
+@import 'shared';
+@import 'header';
 @import 'photographer';
+@import 'modal';
+@import 'contactModal';
+@import 'lightbox';
+@import 'sort';
+@import 'media';
+@import 'footNote';
 
-body {
-  font-family: "DM Sans", sans-serif;
-  margin: 0;
-}
 
-
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 90px;
-}
-
-h1 {
-  color: $secondary-color;
-  margin-right: 100px;
-}
-
-.logo {
-  height: 50px;
-  margin-left: 100px;
-}
-
-.photographer {
-  &s_wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
-  }
-  &_link {
-    text-decoration: none;
-    color: unset;
-  }
-  
-  &_card {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  &_portrait {
-    &_wrapper {
-      position: relative;
-      height: 200px;
-      width: 200px;
-      border-radius: 50%;
-      // overflow: hidden;
-    }
-    position: absolute;
-    // z-index: -2;
-    height: 100%;
-    // top: 50%;
-    // left: 50%;
-    transform-origin: center;
-    // transform: translate(-50%, -50%);
-    transform: scale(1.8);
-    object-fit: cover;
-    
-  }
-
-  &_name {
-    color: $secondary-color;
-    font-size: 36px;
-  }
-  
-  &_location {
-    color: $primary-color;
-  }
-    
-  &_price {
-    color: $quinary-color;
-  }
-}
 

@@ -1,0 +1,53 @@
+@import "variables";
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  row-gap: 20px;
+  column-gap: 95px;
+  margin: 50px 100px;
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  // object-position: center;
+  border-radius: 5px;
+  &_card {
+    display: block;
+    & figure {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 300px;
+      margin: 0;
+      overflow: hidden;
+    }
+  }
+
+  &_description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+  }
+  
+  &_title, &_likes {
+    color: $primary-color;
+    font-size: 18px;
+    line-height: 31.25px;
+    margin: 0;
+  }
+
+  &_likes i {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    &:hover {
+      cursor: pointer;
+      color: $secondary-color;
+    }
+  }
+}

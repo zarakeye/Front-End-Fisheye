@@ -1,0 +1,60 @@
+/* Colors */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#lightbox .modal {
+  display: flex;
+  flex-direction: row;
+  background-color: #FFFFFF;
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+#lightbox .modal figure {
+  display: flex;
+  flex-direction: column;
+}
+#lightbox .modal figure figcaption {
+  margin-top: 10px;
+  color: #901C1C;
+  font-size: 24px;
+}
+#lightbox .modal .media {
+  height: 700px;
+}
+
+.nav-lightbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+}
+.nav-lightbox[id=go_to_next_media] {
+  position: relative;
+}
+.nav-lightbox[id=go_to_next_media] .fa.fa-times {
+  display: inline-block;
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  color: #901C1C;
+  top: 45px;
+  left: 45px;
+  transform: translate(-50%, -50%);
+}
+.nav-lightbox i {
+  display: inline-block;
+  cursor: pointer;
+  color: #901C1C;
+  font-size: 24px;
+}
+.nav-lightbox i:hover {
+  color: #D3573C;
+}/*# sourceMappingURL=lightbox.css.map */

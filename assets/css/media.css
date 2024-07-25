@@ -1,0 +1,50 @@
+/* Colors */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  row-gap: 20px;
+  -moz-column-gap: 95px;
+       column-gap: 95px;
+  margin: 50px 100px;
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+.media_card {
+  display: block;
+}
+.media_card figure {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px;
+  margin: 0;
+  overflow: hidden;
+}
+.media_description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+.media_title, .media_likes {
+  color: #901C1C;
+  font-size: 18px;
+  line-height: 31.25px;
+  margin: 0;
+}
+.media_likes i {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+.media_likes i:hover {
+  cursor: pointer;
+  color: #D3573C;
+}/*# sourceMappingURL=media.css.map */

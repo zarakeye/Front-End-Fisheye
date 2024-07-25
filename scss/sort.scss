@@ -1,0 +1,59 @@
+@import 'variables';
+
+#sort {
+  position: relative;
+  margin-left: 100px;
+  & p {
+    padding-right: 20px;
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  & .sort_button {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    margin-left: 100px;
+    border-radius: 5px;
+    border: none;
+    width: 170px;
+    text-align: left;
+    & .options {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-left: 0;
+      margin: 0;
+      & i {
+        cursor: pointer;
+        position: absolute;
+        top: 2px;
+        right: -5px;
+        color: $quaternary-color-light;
+        &:hover {
+          color: $sixth-color;
+        }
+      }
+      & .option {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: $quaternary-color-light;
+        font-size: 18px;
+        font-weight: 700;
+        list-style-type: none;
+        &:hover {
+          color: $sixth-color
+        }
+      }
+
+      & hr {
+        width: 130px;
+        color: $quaternary-color-light;
+      }
+
+    }
+  }      
+}

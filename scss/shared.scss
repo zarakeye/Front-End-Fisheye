@@ -1,0 +1,27 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+  
+body {
+  position: relative;
+  font-family: "DM Sans", sans-serif;
+}
+
+.cta {
+  cursor: pointer;
+  text-decoration: none;
+  color: $quaternary-color-light;
+  background-color: $primary-color;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 500;
+  &:hover {
+    background-color: $secondary-color;
+    color: $sixth-color;
+  }
+}

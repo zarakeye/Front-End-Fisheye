@@ -1,0 +1,47 @@
+import { Api } from "../api/index.js";
+import { Photographer } from "../models/photographer.model.js";
+import { PhotographerCard } from "../components/PhotographerCard.js";
+import { Header } from "../components/Header.js";
+import { mediaFactory } from "./media.factory.js";
+
+
+export const photographerFactory = {
+  photographer: async (id) => {
+    const photographersDatas = await Api.photographers.getPhotographers();
+    const photographerDatas = photographersDatas.find((photographer) => photographer.id === id);
+    return new Photographer(photographerDatas);
+  },
+  
+  homepageHeader: (parentDOMElement) => {
+    Header(parentDOMElement);
+    const h1 = document.createElement("h1");
+    h1.textContent = "Nos photographes";
+
+    const header = document.querySelector(".header");
+    header.appendChild(h1);
+
+    return header;
+  },
+  photographersGrid: (photographers, parentDOMElement) => {
+    console.log('photographers: ',photographers);
+    const photographersGrid = document.createElement("main");
+    photographersGrid.className = "photographersGrid";
+    parentDOMElement.appendChild(photographersGrid);
+    photographers.map((photographer) => {
+      // new PhotographerCard(photographer, photographersGrid);
+      PhotographerCard(photographer, photographersGrid);
+    })
+
+    return photographersGrid;
+  },
+
+  totalLikes: async (photographer) => {
+    const medias = await mediaFactory.photographerMedias(photographer.id);
+    let totalLikes = 0;
+
+    medias.forEach((media) => {
+      totalLikes += media.likes;
+    });
+    return totalLikes;
+  }
+}

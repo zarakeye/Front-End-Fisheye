@@ -1,0 +1,26 @@
+/* Colors */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: "DM Sans", sans-serif;
+}
+
+.cta {
+  cursor: pointer;
+  text-decoration: none;
+  color: #FFFFFF;
+  background-color: #901C1C;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.cta:hover {
+  background-color: #D3573C;
+  color: #000000;
+}/*# sourceMappingURL=shared.css.map */
