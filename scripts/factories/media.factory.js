@@ -30,6 +30,7 @@ export const mediaFactory =  {
       return `
         <img
           id='media_${media.id}'
+          data-id="${media.id}"
           class='media'
           src="assets/medias/photographers/${media.photographerId}/media/${media.media}"
           alt="${media.title}"
@@ -39,6 +40,7 @@ export const mediaFactory =  {
       return `
         <video
           id='media_${media.id}'
+          data-id="${media.id}"
           class='media'
           src="assets/medias/photographers/${media.photographerId}/media/${media.media}"
           alt="${media.title}"

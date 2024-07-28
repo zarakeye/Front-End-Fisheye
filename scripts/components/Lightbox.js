@@ -12,14 +12,31 @@ export async function Lightbox(currentMedia) {
   const modal = Modal();
   lightbox.appendChild(modal);
   const modalSelector = lightbox.querySelector('.modal');
+
+  // Retrieve the list of medias from the same photographer than the current one
+  // const sortOptions = document.querySelectorAll('#sort .option');
+  // console.log('sortOptions', sortOptions);
+  const selectedSort = document.querySelector('#sort .option[aria-selected="true"]').getAttribute('value');
+
+  const medias = await mediaFactory.photographerMedias(currentMedia.photographerId);
+  const sortedMedias = mediaFactory.sortBy(medias, selectedSort);
+  console.log('sortedMedias', sortedMedias);
+
+  let thumbnails = '';
+  sortedMedias.forEach((media) => {
+    thumbnails += `${mediaFactory.thumbnail(media)}`;
+  });
+  console.log('thumbnails', thumbnails);
+
   const thumbnail = mediaFactory.thumbnail(currentMedia);
+
   modalSelector.innerHTML = `
     <div id='go_to_previous_media' class='nav-lightbox'>
       <i id='previous_media' class="fa fa-chevron-left nav-lightbox-btn" aria-label="Bouton Precedent"></i>
     </div>
     <figure>
       <div class='media_wrapper'>
-        ${thumbnail}
+        ${thumbnails}
       </div>
       <figcaption>
         <p class='media_title'>${ currentMedia.title }</p>
@@ -31,10 +48,21 @@ export async function Lightbox(currentMedia) {
     </div>
   `;
 
-  const thumbnailSelector = lightbox.querySelector('.media');
+
+  const thumbnailsList = lightbox.querySelectorAll('.media');
+
+  let thumbnailSelector;
+  for (const item of thumbnailsList) {
+    if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(currentMedia.id, 10)) {
+      item.style.display = 'none';
+    } else {
+      thumbnailSelector = item;
+    }
+  }
   // const thumbnailSrc = thumbnailSelector
-  const wrapper = thumbnailSelector.querySelector('.media_wrapper');
+  const wrapper = modalSelector.querySelector('.media_wrapper');
   
+
   const thumbnailObject = new Image();
   thumbnailObject.src = thumbnailSelector.getAttribute('src');
   thumbnailObject.onload = () => {
@@ -55,14 +83,7 @@ export async function Lightbox(currentMedia) {
   const figureSelector = lightbox.querySelector('figure');
   const previousMediaBtn = lightbox.querySelector('#previous_media');
 
-  // Retrieve the list of medias from the same photographer than the current one
-  // const sortOptions = document.querySelectorAll('#sort .option');
-  // console.log('sortOptions', sortOptions);
-  const selectedSort = document.querySelector('#sort .option[aria-selected="true"]').getAttribute('value');
-
-  const medias = await mediaFactory.photographerMedias(currentMedia.photographerId);
-  const sortedMedias = mediaFactory.sortBy(medias, selectedSort);
-  console.log('sortedMedias', sortedMedias);
+  
   let currentMediaIndex = sortedMedias.findIndex((media) => media.id === currentMedia.id);
 
   const mediasLength = sortedMedias.length;
@@ -74,15 +95,25 @@ export async function Lightbox(currentMedia) {
       currentMediaIndex = mediasLength - 1;
     }
 
-    let updatedThumbnail = mediaFactory.thumbnail(sortedMedias[currentMediaIndex]);
+    thumbnailsList.forEach((item) => {
+      if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(sortedMedias[currentMediaIndex].id, 10)) {
+        item.style.display = 'none';
+      } else {
+        item.style.display = 'block';
+      }
+    });
 
-    // Update the display with the new current media
-    figureSelector.innerHTML = `
-      <div class='media_wrapper'>
-        ${updatedThumbnail}
-      </div>
-      <figcaption>${ medias[currentMediaIndex].title }</figcaption>
-    `;
+    // let updatedThumbnail = mediaFactory.thumbnail(sortedMedias[currentMediaIndex]);
+
+    // // Update the display with the new current media
+    // figureSelector.innerHTML = `
+    //   <div class='media_wrapper'>
+    //     ${updatedThumbnail}
+    //   </div>
+    //   <figcaption>${ medias[currentMediaIndex].title }</figcaption>
+    // `;
+
+    
   });
 
   const nextMediaBtn = lightbox.querySelector('#next_media');
@@ -93,15 +124,23 @@ export async function Lightbox(currentMedia) {
       currentMediaIndex = 0;
     }
     
-    let updatedThumbnail = mediaFactory.thumbnail(sortedMedias[currentMediaIndex]);
+    // let updatedThumbnail = mediaFactory.thumbnail(sortedMedias[currentMediaIndex]);
 
-    // Update the display with the new current media
-    figureSelector.innerHTML = `
-      <div class='media_wrapper'>
-        ${updatedThumbnail}
-      </div>
-      <figcaption>${ medias[currentMediaIndex].title }</figcaption>
-    `;
+    // // Update the display with the new current media
+    // figureSelector.innerHTML = `
+    //   <div class='media_wrapper'>
+    //     ${updatedThumbnail}
+    //   </div>
+    //   <figcaption>${ medias[currentMediaIndex].title }</figcaption>
+    // `;
+
+    thumbnailsList.forEach((item) => {
+      if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(sortedMedias[currentMediaIndex].id, 10)) {
+        item.style.display = 'none';
+      } else {
+        item.style.display = 'block';
+      }
+    });
   });
 
   return lightbox;

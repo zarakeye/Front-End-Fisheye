@@ -251,8 +251,9 @@ h1 {
 #lightbox .modal {
   display: flex;
   flex-direction: row;
+  justify-content: fl;
   background-color: #FFFFFF;
-  padding-top: 22px;
+  border-radius: 5px;
 }
 #lightbox .modal figure {
   display: flex;
@@ -272,7 +273,6 @@ h1 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 10px;
   color: #901C1C;
   font-size: 24px;
 }
