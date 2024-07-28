@@ -1,16 +1,13 @@
 import { Lightbox } from "../components/Lightbox.js";
 import { mediaFactory } from "../factories/media.factory.js";
-import { photographerFactory } from "../factories/photographer.factory.js";
 
-export function MediaCard (media, parentDOMElement) {
-  console.log('Entry in MediaCard, media: ', media);
+export function MediaCard (media) {
   const card = document.createElement('article');
   card.className = 'media_card';
   card.id = `media_${media.id}`
-  parentDOMElement.appendChild(card);
   card.innerHTML = `
       <figure class='media_portrait_wrapper'>
-        ${ mediaFactory.rightThumbnail(media) }
+        ${ mediaFactory.thumbnail(media) }
       </figure>
       <figcaption class='media_description'>
         <p class='media_title'>${media.title}</p>
@@ -20,13 +17,8 @@ export function MediaCard (media, parentDOMElement) {
       </figcaption>
   `;
 
-  const cardSelector = document.querySelector(`#media_${media.id}`);
-  const pageRoot = document.querySelector('#root');
-  cardSelector.addEventListener('click', () => {
-    const lightbox = Lightbox(media, pageRoot);
-
-    console.log('parentDOMElement: ', parentDOMElement);
-    console.log('lightbox: ', lightbox);
+  card.addEventListener('click', () => {  
+    Lightbox(media);
   });
 
   const likeButton = card.querySelector(`#like_mediaId_${media.id}`);
@@ -62,18 +54,14 @@ export function MediaCard (media, parentDOMElement) {
       likeButton.classList.remove('fa-regular');
       likeButton.classList.add('fa-solid');
       const photographerLikesDisplay = document.querySelector('#nbLikes_footNote');
-      console.log('photographerLikesDisplay: ', photographerLikesDisplay);
       photographerLikesDisplay.textContent = `${parseInt(photographerLikesDisplay.textContent, 10) + 1}`;
-      console.log('photographerLikesDisplay: ', photographerLikesDisplay.textContent);
     } else {
       media.unlike();
       document.querySelector(`#nbLikes_${media.id}`).textContent = media.likes;
       likeButton.classList.remove('fa-heart');
       likeButton.classList.add('fa-heart-o');
       const photographerLikesDisplay = document.querySelector('#nbLikes_footNote');
-      console.log('photographerLikesDisplay: ', photographerLikesDisplay);
       photographerLikesDisplay.textContent = `${parseInt(photographerLikesDisplay.textContent, 10) - 1}`;
-      console.log('photographerLikesDisplay: ', photographerLikesDisplay.textContent);
     }
   });
 

@@ -1,45 +1,71 @@
 import { Modal } from './Modal.js';
 import { mediaFactory } from '../factories/media.factory.js';
 
-export async function Lightbox(currentMedia, parentDOMElement) {
+export async function Lightbox(currentMedia) {
   // Creation of the DOM element which contains the lightbox
   const lightbox = document.createElement('aside');
   lightbox.id = 'lightbox';
-  parentDOMElement.appendChild(lightbox);
+  lightbox.setAttribute('aria-label', 'lightbox');
+  document.body.appendChild(lightbox);
 
   // Creattion of a modal appended to the lightbox and filling it with the code of the lightbox
   const modal = Modal();
   lightbox.appendChild(modal);
   const modalSelector = lightbox.querySelector('.modal');
+  const thumbnail = mediaFactory.thumbnail(currentMedia);
   modalSelector.innerHTML = `
     <div id='go_to_previous_media' class='nav-lightbox'>
-      <i id='previous_media' class="fa fa-chevron-left nav-lightbox-btn"></i>
+      <i id='previous_media' class="fa fa-chevron-left nav-lightbox-btn" aria-label="Bouton Precedent"></i>
     </div>
     <figure>
-      ${mediaFactory.rightThumbnail(currentMedia)}
-      <figcaption>${ currentMedia.title }</figcaption>
+      <div class='media_wrapper'>
+        ${thumbnail}
+      </div>
+      <figcaption>
+        <p class='media_title'>${ currentMedia.title }</p>
+      </figcaption>
     </figure>
     <div id='go_to_next_media' class='nav-lightbox'>
       <i id='close-lightbox_btn' class='fa fa-times'></i>
-      <i id='next_media' class="fa fa-chevron-right nav-lightbox-btn"></i>
+      <i id='next_media' class="fa fa-chevron-right nav-lightbox-btn" aria-label="Bouton Suivant"></i>
     </div>
   `;
 
+  const thumbnailSelector = lightbox.querySelector('.media');
+  // const thumbnailSrc = thumbnailSelector
+  const wrapper = thumbnailSelector.querySelector('.media_wrapper');
+  
+  const thumbnailObject = new Image();
+  thumbnailObject.src = thumbnailSelector.getAttribute('src');
+  thumbnailObject.onload = () => {
+    const { naturalWidth, naturalHeight } = thumbnailObject;
+
+    if (naturalWidth > naturalHeight) {
+      thumbnailSelector.style.width = wrapper.style.width;
+    } else if (naturalWidth <= naturalHeight) {
+      thumbnailSelector.style.height = wrapper.style.height;
+    }
+  }
+
   const closeBtn = modalSelector.querySelector('#close-lightbox_btn');
   closeBtn.addEventListener('click', () => {
-    parentDOMElement.querySelector('#lightbox').remove();
+    document.querySelector('#lightbox').remove();
   });
 
   const figureSelector = lightbox.querySelector('figure');
   const previousMediaBtn = lightbox.querySelector('#previous_media');
-  console.log('previousMediaBtn: ', previousMediaBtn);
 
-  // Retrieve the list of medias from the same photographer than the current one 
+  // Retrieve the list of medias from the same photographer than the current one
+  // const sortOptions = document.querySelectorAll('#sort .option');
+  // console.log('sortOptions', sortOptions);
+  const selectedSort = document.querySelector('#sort .option[aria-selected="true"]').getAttribute('value');
+
   const medias = await mediaFactory.photographerMedias(currentMedia.photographerId);
-  let currentMediaIndex = medias.findIndex((media) => media.id === currentMedia.id);
+  const sortedMedias = mediaFactory.sortBy(medias, selectedSort);
+  console.log('sortedMedias', sortedMedias);
+  let currentMediaIndex = sortedMedias.findIndex((media) => media.id === currentMedia.id);
 
-  console.log('currentMediaIndex: ', currentMediaIndex);
-  const mediasLength = medias.length;
+  const mediasLength = sortedMedias.length;
 
   previousMediaBtn.addEventListener('click', () => {
     // Compute the index of the previous media (which becomes the new displayed media)
@@ -48,9 +74,13 @@ export async function Lightbox(currentMedia, parentDOMElement) {
       currentMediaIndex = mediasLength - 1;
     }
 
+    let updatedThumbnail = mediaFactory.thumbnail(sortedMedias[currentMediaIndex]);
+
     // Update the display with the new current media
     figureSelector.innerHTML = `
-      ${mediaFactory.rightThumbnail(medias[currentMediaIndex])}
+      <div class='media_wrapper'>
+        ${updatedThumbnail}
+      </div>
       <figcaption>${ medias[currentMediaIndex].title }</figcaption>
     `;
   });
@@ -62,10 +92,14 @@ export async function Lightbox(currentMedia, parentDOMElement) {
     if (currentMediaIndex >= medias.length) {
       currentMediaIndex = 0;
     }
+    
+    let updatedThumbnail = mediaFactory.thumbnail(sortedMedias[currentMediaIndex]);
 
     // Update the display with the new current media
     figureSelector.innerHTML = `
-      ${mediaFactory.rightThumbnail(medias[currentMediaIndex])}
+      <div class='media_wrapper'>
+        ${updatedThumbnail}
+      </div>
       <figcaption>${ medias[currentMediaIndex].title }</figcaption>
     `;
   });

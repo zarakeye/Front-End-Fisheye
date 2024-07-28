@@ -35,9 +35,6 @@
   right: -5px;
   color: #FFFFFF;
 }
-#sort .sort_button .options i:hover {
-  color: #000000;
-}
 #sort .sort_button .options .option {
   display: flex;
   justify-content: flex-start;
@@ -46,9 +43,6 @@
   font-size: 18px;
   font-weight: 700;
   list-style-type: none;
-}
-#sort .sort_button .options .option:hover {
-  color: #000000;
 }
 #sort .sort_button .options hr {
   width: 130px;

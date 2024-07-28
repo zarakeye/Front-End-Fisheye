@@ -11,22 +11,21 @@ export const mediaFactory =  {
       media.isAlreadyLiked = false;
       mediasObjects.push(new Media(media));
     });
-    console.log('medias: ', mediasObjects);
     
     return mediasObjects;
   },
 
-  createCard: (media, parentDOMElement) => {
+  createCard: (media) => {
     const mediasGrid = document.createElement("main");
     mediasGrid.className = "mediasGrid";
     if (! mediaFactory.isMediaExist(media)) {
       console.log(`Le fichier medias/photographers/${media.photographerId}/media/${media.media} n\'existe pas`);
     } else {
-      return MediaCard(media, parentDOMElement);
+      return MediaCard(media);
     }
   },
 
-  rightThumbnail: (media) => {
+  thumbnail: (media) => {
     if (media.media.endsWith('.jpg')) {
       return `
         <img
@@ -60,48 +59,23 @@ export const mediaFactory =  {
     }
   },
 
-  sortByPopularity: (medias, parentDOMElement) => {
-    medias.sort((a, b) => b.likes - a.likes);
-    console.log('medias sorted by popularity: ', medias);
-    const cards = [];
-    medias.forEach((media) => {
-      cards.push(mediaFactory.createCard(media, parentDOMElement));
-    });
-    console.log('cards by popularity: ', cards);
-    mediaFactory.displayMediasCardsGrid(cards, parentDOMElement);
-    return medias;
-  },
+  sortBy: (medias, sorType) => {
+    let sortedMedias = [];
+    
+    switch (sorType) {
+      case 'popularity':
+        sortedMedias.push(...medias.sort((a, b) => b.likes - a.likes));
+        break;
 
-  sortByDate: (medias, parentDOMElement) => {
-    console.log('medias before sort: ', medias);
-    medias.sort((a, b) => new Date(b.date) - new Date(a.date));
-    console.log('medias sorted by date: ', medias);
-    const cards = [];
-    medias.forEach((media) => {
-      cards.push(mediaFactory.createCard(media, parentDOMElement));
-    });
-    console.log('cards by date: ', cards);
-    mediaFactory.displayMediasCardsGrid(cards, parentDOMElement);
-    return medias;
-  },
+      case 'date':
+        sortedMedias.push(...medias.sort((a, b) => new Date(b.date) - new Date(a.date)));
+        break;
 
-  sortByTitle: (medias, parentDOMElement) => {
-    medias.sort((a, b) => a.title.localeCompare(b.title));
-    console.log('cards sorted by title: ', medias);
-    const cards = [];
-    medias.forEach((media) => {
-      cards.push(mediaFactory.createCard(media, parentDOMElement));
-    });
-    console.log('cards by title: ', cards);
-    mediaFactory.displayMediasCardsGrid(cards, parentDOMElement);
-    return medias;
-  },
+      case 'title':
+        sortedMedias.push(...medias.sort((a, b) => a.title.localeCompare(b.title)));
+        break;
+    }
 
-  displayMediasCardsGrid: (cards, parentDOMElement) => {
-    console.log('cards to display: ', cards);
-    parentDOMElement.innerHTML = '';
-    cards.forEach((card) => {
-      parentDOMElement.appendChild(card);
-    })
+    return sortedMedias;
   }
 }

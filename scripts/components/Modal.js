@@ -7,5 +7,11 @@ export function Modal() {
     </div>
   `;
 
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      modal.parentElement.remove();
+    }
+  });
+
   return modal;
 }

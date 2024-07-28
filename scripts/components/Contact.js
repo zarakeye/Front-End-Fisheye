@@ -1,10 +1,10 @@
 import { Modal } from "../components/Modal.js";
 
-export function Contact(photographer, parentDOMElement) {
+export function Contact(photographer) {
   // Creation of the DOM element which contains the contact form
   const contact = document.createElement('aside');
   contact.id = 'contact';
-  parentDOMElement.appendChild(contact);
+  document.body.appendChild(contact);
   
   // Creattion of a modal appended to the contact and filling it with the code of the contact form
   const modal = Modal();
@@ -18,31 +18,33 @@ export function Contact(photographer, parentDOMElement) {
         </div>
         <i id='closeContactModal' class='fa fa-times'></i>
     </header>
-    <form class="form_contact">
+    <form class="form_contact" action="#" aria-label="Formulaire de contact">
       <div>
         <label for="firstname">Prénom</label>
-        <input type="text" id="firstName">
+        <input type="text" id="firstName" aria-label="champ Prénom">
       </div>
       <div>
         <label for="firstname">Nom</label>
-        <input type="text" id="lastName">
+        <input type="text" id="lastName" aria-label="champ Nom">
       </div>
       <div>
         <label for="email">Email</label>
-        <input type="email" id="email">
+        <input type="email" id="email" aria-label="champ Email">
       </div>
       <div>
         <label for="message">Message</label>
-        <textarea id="message"></textarea>
+        <textarea id="message" aria-label="champ Message"></textarea>
       </div>
-      <button class="contact_button cta">Envoyer</button>
+      <button class="contact_button cta" type="submit" aria-label="Bouton Envoyer">Envoyer</button>
     </form>
   `;
+
+  document.body.appendChild(contact);
 
   const closeContactModal = modalSelector.querySelector('#closeContactModal');
   
   closeContactModal.addEventListener('click', () => {
-    parentDOMElement.querySelector('#contact').remove();
+    document.querySelector('#contact').remove();
   });
 
   return contact;

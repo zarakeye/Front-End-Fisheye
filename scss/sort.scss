@@ -32,9 +32,6 @@
         top: 2px;
         right: -5px;
         color: $quaternary-color-light;
-        &:hover {
-          color: $sixth-color;
-        }
       }
       & .option {
         display: flex;
@@ -44,9 +41,6 @@
         font-size: 18px;
         font-weight: 700;
         list-style-type: none;
-        &:hover {
-          color: $sixth-color
-        }
       }
 
       & hr {

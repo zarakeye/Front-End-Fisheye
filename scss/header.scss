@@ -17,4 +17,8 @@ h1 {
   height: 50px;
   margin-left: 100px;
   margin-top: 43px;
+
+  & g {
+    fill: $primary-color;
+  }
 }

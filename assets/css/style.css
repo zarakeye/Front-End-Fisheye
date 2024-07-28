@@ -23,7 +23,6 @@ body {
 }
 .cta:hover {
   background-color: #D3573C;
-  color: #000000;
 }
 
 /* Colors */
@@ -44,6 +43,9 @@ h1 {
   height: 50px;
   margin-left: 100px;
   margin-top: 43px;
+}
+#logo g {
+  fill: #901C1C;
 }
 
 /* Colors */
@@ -81,7 +83,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgb(255, 255, 255) 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(250, 250, 250, 0.97) 65%, rgb(250, 250, 250) 100%);
 }
 .photographer_portrait_overlay {
   position: absolute;
@@ -158,6 +160,7 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -237,6 +240,7 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -249,19 +253,28 @@ h1 {
   flex-direction: row;
   background-color: #FFFFFF;
   padding-top: 22px;
-  padding-bottom: 22px;
 }
 #lightbox .modal figure {
   display: flex;
   flex-direction: column;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+#lightbox .modal figure .media_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33vw;
+  height: 33vh;
 }
 #lightbox .modal figure figcaption {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   margin-top: 10px;
   color: #901C1C;
   font-size: 24px;
-}
-#lightbox .modal .media {
-  height: 700px;
 }
 
 .nav-lightbox {
@@ -330,9 +343,6 @@ h1 {
   right: -5px;
   color: #FFFFFF;
 }
-#sort .sort_button .options i:hover {
-  color: #000000;
-}
 #sort .sort_button .options .option {
   display: flex;
   justify-content: flex-start;
@@ -342,16 +352,13 @@ h1 {
   font-weight: 700;
   list-style-type: none;
 }
-#sort .sort_button .options .option:hover {
-  color: #000000;
-}
 #sort .sort_button .options hr {
   width: 130px;
   color: #FFFFFF;
 }
 
 /* Colors */
-.gallery {
+#gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   row-gap: 20px;
@@ -366,6 +373,7 @@ h1 {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
+  border: none;
 }
 .media_card {
   display: block;

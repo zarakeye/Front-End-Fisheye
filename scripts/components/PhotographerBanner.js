@@ -1,6 +1,6 @@
 import { Contact } from "./Contact.js";
 
-export function PhotographerBanner(photographer, parentDOMElement) {
+export function PhotographerBanner(photographer) {
     const banner = document.createElement('section');
     banner.className = 'photographer_banner';
     banner.innerHTML = `
@@ -24,11 +24,11 @@ export function PhotographerBanner(photographer, parentDOMElement) {
     </div>
     `;
 
-    parentDOMElement.appendChild(banner);
+    document.body.appendChild(banner);
     const contact = document.getElementById('contact_me');
 
     contact.addEventListener('click', () => {
-      Contact(photographer, parentDOMElement);
+      Contact(photographer);
     });
 
     return banner;

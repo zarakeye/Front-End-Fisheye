@@ -2,23 +2,15 @@ import { HomePage } from "./pages/home.page.js";
 import { PhotographerPage } from "./pages/photographer.page.js";
 
 async function App() {
-    // this.init = function() {
-        const url = new URL(window.location.href);
-        console.log('url.pathname: ', url.pathname);
+  const url = new URL(window.location.href);
 
-        if (url.pathname === '/' || url.pathname === '/index.html') {
-            await HomePage();
-        } else if (url.pathname === '/photographer.html') {
-            console.log('url.pathname: ', url.pathname);
-            const id = parseInt(url.searchParams.get('id'), 10);
+  if (url.pathname === '/' || url.pathname === '/index.html') {
+      await HomePage();
+  } else if (url.pathname === '/photographer.html') {
+      const id = parseInt(url.searchParams.get('id'), 10);
 
-            await PhotographerPage(id);
-        }
-    // }
-
-    // this.init();
+      await PhotographerPage(id);
+  }
 }
-
-// const app = new App();
 
 App();
