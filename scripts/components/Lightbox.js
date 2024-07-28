@@ -88,7 +88,7 @@ export async function Lightbox(currentMedia) {
 
   const mediasLength = sortedMedias.length;
 
-  previousMediaBtn.addEventListener('click', () => {
+  function displayPreviousMedia() {
     // Compute the index of the previous media (which becomes the new displayed media)
     --currentMediaIndex;
     if (currentMediaIndex < 0) {
@@ -101,38 +101,15 @@ export async function Lightbox(currentMedia) {
       } else {
         item.style.display = 'block';
       }
-    });
+    });  
+  }
 
-    // let updatedThumbnail = mediaFactory.thumbnail(sortedMedias[currentMediaIndex]);
-
-    // // Update the display with the new current media
-    // figureSelector.innerHTML = `
-    //   <div class='media_wrapper'>
-    //     ${updatedThumbnail}
-    //   </div>
-    //   <figcaption>${ medias[currentMediaIndex].title }</figcaption>
-    // `;
-
-    
-  });
-
-  const nextMediaBtn = lightbox.querySelector('#next_media');
-  // Compute the index of the next media (which becomes the new displayed media)
-  nextMediaBtn.addEventListener('click', async () => {
+  function displayNextMedia() {
+    // Compute the index of the next media (which becomes the new displayed media)
     ++currentMediaIndex;
     if (currentMediaIndex >= medias.length) {
       currentMediaIndex = 0;
     }
-    
-    // let updatedThumbnail = mediaFactory.thumbnail(sortedMedias[currentMediaIndex]);
-
-    // // Update the display with the new current media
-    // figureSelector.innerHTML = `
-    //   <div class='media_wrapper'>
-    //     ${updatedThumbnail}
-    //   </div>
-    //   <figcaption>${ medias[currentMediaIndex].title }</figcaption>
-    // `;
 
     thumbnailsList.forEach((item) => {
       if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(sortedMedias[currentMediaIndex].id, 10)) {
@@ -141,6 +118,25 @@ export async function Lightbox(currentMedia) {
         item.style.display = 'block';
       }
     });
+  }
+
+  previousMediaBtn.addEventListener('click', () => {
+    displayPreviousMedia();    
+  });
+
+  const nextMediaBtn = lightbox.querySelector('#next_media');
+  nextMediaBtn.addEventListener('click', async () => {
+    displayNextMedia();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      displayPreviousMedia();
+    } else if (e.key === 'ArrowRight') {
+      displayNextMedia();
+    }/* else if (e.key === 'Escape') {
+      document.querySelector('#lightbox').remove();
+    }*/
   });
 
   return lightbox;
