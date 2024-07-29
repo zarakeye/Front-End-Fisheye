@@ -7,6 +7,16 @@
 body {
   position: relative;
   font-family: "DM Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body h1, body h2, body h3, body h4, body h5, body h6, body p, body ul, body ol, body li, body form, body label, body button, body input,
+body textarea, body select, body option, body hr, body figure, body figcaption, body blockquote, body pre,
+body code, body table, body td, body th, body tr, body div, body span, body a, body img, body video, body svg, body path, body i, body b,
+body strong, body em, body small, body time, body mark, body section, body article, body aside, body header, body nav,
+body footer, body main, body address, body video, body audio, body canvas, body details, body summary, body input {
+  margin: 0;
+  padding: 0;
 }
 
 .cta {

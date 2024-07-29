@@ -134,9 +134,7 @@ export async function Lightbox(currentMedia) {
       displayPreviousMedia();
     } else if (e.key === 'ArrowRight') {
       displayNextMedia();
-    }/* else if (e.key === 'Escape') {
-      document.querySelector('#lightbox').remove();
-    }*/
+    }
   });
 
   return lightbox;

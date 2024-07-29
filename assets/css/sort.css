@@ -19,23 +19,28 @@
   border: none;
   width: 170px;
   text-align: left;
+  padding: 0;
 }
-#sort .sort_button .options {
+#sort .sort_button:hover {
+  background-color: #901C1C;
+}
+#sort .sort_button #sortBy {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding-left: 0;
   margin: 0;
+  overflow: hidden;
 }
-#sort .sort_button .options i {
+#sort .sort_button #sortBy i {
   cursor: pointer;
   position: absolute;
-  top: 2px;
-  right: -5px;
+  top: 23px;
+  right: 15px;
   color: #FFFFFF;
 }
-#sort .sort_button .options .option {
+#sort .sort_button #sortBy .option {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -43,8 +48,29 @@
   font-size: 18px;
   font-weight: 700;
   list-style-type: none;
+  padding-left: 20px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  overflow: hidden;
 }
-#sort .sort_button .options hr {
-  width: 130px;
+#sort .sort_button #sortBy .option:first-of-type {
+  padding-top: 23px;
+}
+#sort .sort_button #sortBy .option:first-of-type:hover {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+#sort .sort_button #sortBy .option:last-of-type:hover {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#sort .sort_button #sortBy .option:hover, #sort .sort_button #sortBy .option:focus {
+  background-color: #DB8876;
+}
+#sort .sort_button #sortBy hr {
+  display: inline-block;
+  width: 150px;
+  margin: 0;
+  margin-left: 10px;
   color: #FFFFFF;
 }/*# sourceMappingURL=sort.css.map */

@@ -9,6 +9,7 @@
     font-size: 18px;
     font-weight: 700;
   }
+
   & .sort_button {
     position: absolute;
     top: 0;
@@ -19,18 +20,25 @@
     border: none;
     width: 170px;
     text-align: left;
-    & .options {
+    padding: 0;
+
+    &:hover {
+      background-color: $primary-color;
+    }
+
+    & #sortBy {
       position: relative;
       display: flex;
       flex-direction: column;
       width: 100%;
       padding-left: 0;
       margin: 0;
+      overflow: hidden;
       & i {
         cursor: pointer;
         position: absolute;
-        top: 2px;
-        right: -5px;
+        top: 23px;
+        right: 15px;
         color: $quaternary-color-light;
       }
       & .option {
@@ -41,10 +49,35 @@
         font-size: 18px;
         font-weight: 700;
         list-style-type: none;
+        padding-left: 20px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        overflow: hidden;
+
+        &:first-of-type {
+          padding-top: 23px;
+          &:hover {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+          }
+        }
+
+        &:last-of-type:hover {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+
+        &:hover, &:focus {
+          background-color: $tertiary-color;
+        }
       }
 
       & hr {
-        width: 130px;
+        display: inline-block;
+        width: 150px;
+        margin: 0;
+        margin-left: 10px;
+        // padding-right: 10px;
         color: $quaternary-color-light;
       }
 

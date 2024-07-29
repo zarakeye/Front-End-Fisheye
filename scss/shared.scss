@@ -8,6 +8,16 @@
 body {
   position: relative;
   font-family: "DM Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, label, button, input,
+  textarea, select, option, hr, figure, figcaption, blockquote, pre,
+  code, table, td, th, tr, div, span, a, img, video, svg, path, i, b,
+   strong, em, small, time, mark, section, article, aside, header, nav,
+   footer, main, address, video, audio, canvas, details, summary, input {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .cta {

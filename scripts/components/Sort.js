@@ -5,10 +5,12 @@ export function Sort(medias) {
   sort.id = "sort";
 
   sort.innerHTML = `
-    <p>Trier par</p>
+    <!-- <p>Trier par</p> -->
+
+    <label aria-label="Trier par" for="sortBy">Trier par</label>
 
     <button class="sort_button cta" aria-label="Trier par">
-      <ul class="options" name="sortBy">
+      <ul id="sortBy" name="sortBy">
         <i id="arrow" class="fa fa-chevron-down" data-collapsed="true" aria-label="dérouler ou réduire les options de tri"></i>
         <li class="option" value="popularity" aria-selected="true" aria-label="Trier par popularité">Popularité</li>
         <hr>
@@ -148,8 +150,21 @@ export function Sort(medias) {
     }
   });
 
+  let selectedOption = sortButtonSelector.querySelector('.option[aria-selected="true"]');
+
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
+    if (e.key === 'Enter') {
+      expandSortMenu();
+      // optionsList[0].focus();
+      selectedOption.focus();
+    }
+    else if (e.key === 'ArrowDown' && arrow.dataset.collapsed === 'false') {
+      e.preventDefault();
+      selectedOption = selectedOption.nextElementSibling;
+      selectedOption.focus();
+    }
+    else if (e.key === 'Escape') {
       collapseSortMenu();
     }
   });
