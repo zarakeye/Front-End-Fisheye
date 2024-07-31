@@ -1,11 +1,13 @@
 @import 'variables';
 
-header {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 90px;
+  margin-top : 43px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 h1 {
@@ -14,11 +16,5 @@ h1 {
 }
 
 #logo {
-  height: 50px;
-  margin-left: 100px;
-  margin-top: 43px;
-
-  & g {
-    fill: $primary-color;
-  }
+  width: 200px;
 }

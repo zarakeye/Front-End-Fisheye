@@ -1,8 +1,4 @@
-import { Api } from "../api/index.js";
-import { Photographer } from "../models/photographer.model.js";
-import { Media } from "../models/media.model.js";
 import { PhotographerBanner } from "../components/PhotographerBanner.js";
-import { Modal } from "../components/Modal.js";
 import { Header } from "../components/Header.js";
 import { photographerFactory } from "../factories/photographer.factory.js";
 import { mediaFactory } from "../factories/media.factory.js";

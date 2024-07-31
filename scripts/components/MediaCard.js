@@ -5,6 +5,7 @@ export function MediaCard (media) {
   const card = document.createElement('article');
   card.className = 'media_card';
   card.id = `media_${media.id}`
+  card.setAttribute('tabindex', '0');
   card.innerHTML = `
       <figure class='media_portrait_wrapper'>
         ${ mediaFactory.thumbnail(media) }
@@ -12,13 +13,19 @@ export function MediaCard (media) {
       <figcaption class='media_description'>
         <p class='media_title'>${media.title}</p>
         <p class='media_likes'>
-          <span id='nbLikes_${media.id}'> ${media.likes}</span> <i id="like_mediaId_${media.id}" class="fa fa-heart-o fa-2x" data-id="${media.id}" data-likes="${media.likes}"></i>
+          <span id='nbLikes_${media.id}'> ${media.likes}</span> <i id="like_mediaId_${media.id}" class="fa fa-heart-o fa-2x" data-id="${media.id}" data-likes="${media.likes}" aria-label="Like" tabindex="0"></i>
         </p>
       </figcaption>
   `;
 
   card.addEventListener('click', () => {  
     Lightbox(media);
+  });
+
+  card.addEventListener('keydown', (e) => {
+    if (e.target !== card.querySelector(`#like_mediaId_${media.id}`) && e.key === 'Enter') {
+      Lightbox(media);
+    }
   });
 
   const likeButton = card.querySelector(`#like_mediaId_${media.id}`);
@@ -55,6 +62,7 @@ export function MediaCard (media) {
       likeButton.classList.add('fa-solid');
       const photographerLikesDisplay = document.querySelector('#nbLikes_footNote');
       photographerLikesDisplay.textContent = `${parseInt(photographerLikesDisplay.textContent, 10) + 1}`;
+      likeButton.focus();
     } else {
       media.unlike();
       document.querySelector(`#nbLikes_${media.id}`).textContent = media.likes;
@@ -62,6 +70,20 @@ export function MediaCard (media) {
       likeButton.classList.add('fa-heart-o');
       const photographerLikesDisplay = document.querySelector('#nbLikes_footNote');
       photographerLikesDisplay.textContent = `${parseInt(photographerLikesDisplay.textContent, 10) - 1}`;
+      likeButton.focus();
+    }
+  });
+
+  likeButton.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      likeButton.click();
+      if (media.alreadyLiked) {
+        likeButton.classList.remove('fa-heart-o');
+        likeButton.classList.add('fa-heart');
+      } else {
+        likeButton.classList.remove('fa-heart');
+        likeButton.classList.add('fa-heart-o');
+      }
     }
   });
 

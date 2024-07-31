@@ -9,65 +9,58 @@
   font-size: 18px;
   font-weight: 700;
 }
-#sort .sort_button {
+#sort #sortList {
   position: absolute;
-  top: 0;
   z-index: 2;
-  display: flex;
-  margin-left: 100px;
-  border-radius: 5px;
-  border: none;
-  width: 170px;
-  text-align: left;
-  padding: 0;
-}
-#sort .sort_button:hover {
-  background-color: #901C1C;
-}
-#sort .sort_button #sortBy {
-  position: relative;
+  top: 0;
+  left: 80px;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding-left: 0;
-  margin: 0;
   overflow: hidden;
+  cursor: pointer;
+  background-color: #901C1C;
+  border-radius: 5px;
 }
-#sort .sort_button #sortBy i {
+#sort #sortList #arrow {
   cursor: pointer;
   position: absolute;
   top: 23px;
   right: 15px;
   color: #FFFFFF;
 }
-#sort .sort_button #sortBy .option {
-  display: flex;
+#sort #sortList div[role=tab] {
+  display: none;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   color: #FFFFFF;
   font-size: 18px;
   font-weight: 700;
+  width: 170px;
   list-style-type: none;
   padding-left: 20px;
   padding-top: 14px;
   padding-bottom: 14px;
   overflow: hidden;
 }
-#sort .sort_button #sortBy .option:first-of-type {
+#sort #sortList div[role=tab].active {
+  display: block;
+}
+#sort #sortList div[role=tab]:first-of-type {
   padding-top: 23px;
 }
-#sort .sort_button #sortBy .option:first-of-type:hover {
+#sort #sortList div[role=tab]:first-of-type:hover {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-#sort .sort_button #sortBy .option:last-of-type:hover {
+#sort #sortList div[role=tab]:last-of-type:hover {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-#sort .sort_button #sortBy .option:hover, #sort .sort_button #sortBy .option:focus {
+#sort #sortList div[role=tab]:hover, #sort #sortList div[role=tab]:focus {
   background-color: #DB8876;
 }
-#sort .sort_button #sortBy hr {
+#sort #sortList hr {
   display: inline-block;
   width: 150px;
   margin: 0;

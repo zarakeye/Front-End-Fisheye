@@ -86,4 +86,7 @@
   height: 313px;
   margin: 40px 100px 20px 100px;
   padding: 50px 57px;
+}
+.photographer_banner_portrait_blurFilter {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgb(255, 255, 255) 100%);
 }/*# sourceMappingURL=photographer.css.map */

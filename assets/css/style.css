@@ -10,6 +10,8 @@ body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
 }
 body h1, body h2, body h3, body h4, body h5, body h6, body p, body ul, body ol, body li, body form, body label, body button, body input,
 body textarea, body select, body option, body hr, body figure, body figcaption, body blockquote, body pre,
@@ -36,12 +38,14 @@ body footer, body main, body address, body video, body audio, body canvas, body 
 }
 
 /* Colors */
-header {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 90px;
+  margin-top: 43px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 h1 {
@@ -50,12 +54,7 @@ h1 {
 }
 
 #logo {
-  height: 50px;
-  margin-left: 100px;
-  margin-top: 43px;
-}
-#logo g {
-  fill: #901C1C;
+  width: 200px;
 }
 
 /* Colors */
@@ -146,6 +145,9 @@ h1 {
   height: 313px;
   margin: 40px 100px 20px 100px;
   padding: 50px 57px;
+}
+.photographer_banner_portrait_blurFilter {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgb(255, 255, 255) 100%);
 }
 
 /* Colors */
@@ -264,6 +266,7 @@ h1 {
   justify-content: fl;
   background-color: #FFFFFF;
   border-radius: 5px;
+  padding-top: 10px;
 }
 #lightbox .modal figure {
   display: flex;
@@ -276,8 +279,8 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33vw;
-  height: 33vh;
+  width: 80vw;
+  height: 80vh;
 }
 #lightbox .modal figure figcaption {
   display: flex;
@@ -327,65 +330,58 @@ h1 {
   font-size: 18px;
   font-weight: 700;
 }
-#sort .sort_button {
+#sort #sortList {
   position: absolute;
-  top: 0;
   z-index: 2;
-  display: flex;
-  margin-left: 100px;
-  border-radius: 5px;
-  border: none;
-  width: 170px;
-  text-align: left;
-  padding: 0;
-}
-#sort .sort_button:hover {
-  background-color: #901C1C;
-}
-#sort .sort_button #sortBy {
-  position: relative;
+  top: 0;
+  left: 80px;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding-left: 0;
-  margin: 0;
   overflow: hidden;
+  cursor: pointer;
+  background-color: #901C1C;
+  border-radius: 5px;
 }
-#sort .sort_button #sortBy i {
+#sort #sortList #arrow {
   cursor: pointer;
   position: absolute;
   top: 23px;
   right: 15px;
   color: #FFFFFF;
 }
-#sort .sort_button #sortBy .option {
-  display: flex;
+#sort #sortList div[role=tab] {
+  display: none;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   color: #FFFFFF;
   font-size: 18px;
   font-weight: 700;
+  width: 170px;
   list-style-type: none;
   padding-left: 20px;
   padding-top: 14px;
   padding-bottom: 14px;
   overflow: hidden;
 }
-#sort .sort_button #sortBy .option:first-of-type {
+#sort #sortList div[role=tab].active {
+  display: block;
+}
+#sort #sortList div[role=tab]:first-of-type {
   padding-top: 23px;
 }
-#sort .sort_button #sortBy .option:first-of-type:hover {
+#sort #sortList div[role=tab]:first-of-type:hover {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-#sort .sort_button #sortBy .option:last-of-type:hover {
+#sort #sortList div[role=tab]:last-of-type:hover {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-#sort .sort_button #sortBy .option:hover, #sort .sort_button #sortBy .option:focus {
+#sort #sortList div[role=tab]:hover, #sort #sortList div[role=tab]:focus {
   background-color: #DB8876;
 }
-#sort .sort_button #sortBy hr {
+#sort #sortList hr {
   display: inline-block;
   width: 150px;
   margin: 0;

@@ -16,7 +16,7 @@ export async function Lightbox(currentMedia) {
   // Retrieve the list of medias from the same photographer than the current one
   // const sortOptions = document.querySelectorAll('#sort .option');
   // console.log('sortOptions', sortOptions);
-  const selectedSort = document.querySelector('#sort .option[aria-selected="true"]').getAttribute('value');
+  const selectedSort = document.querySelector('#sort div.active').id;
 
   const medias = await mediaFactory.photographerMedias(currentMedia.photographerId);
   const sortedMedias = mediaFactory.sortBy(medias, selectedSort);
@@ -59,7 +59,6 @@ export async function Lightbox(currentMedia) {
       thumbnailSelector = item;
     }
   }
-  // const thumbnailSrc = thumbnailSelector
   const wrapper = modalSelector.querySelector('.media_wrapper');
   
 

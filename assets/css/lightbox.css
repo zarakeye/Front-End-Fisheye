@@ -17,6 +17,7 @@
   justify-content: fl;
   background-color: #FFFFFF;
   border-radius: 5px;
+  padding-top: 10px;
 }
 #lightbox .modal figure {
   display: flex;
@@ -29,8 +30,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33vw;
-  height: 33vh;
+  width: 80vw;
+  height: 80vh;
 }
 #lightbox .modal figure figcaption {
   display: flex;

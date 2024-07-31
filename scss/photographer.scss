@@ -54,6 +54,7 @@
       
     }
   }
+
   
   &_description {
     text-align: center;
@@ -99,6 +100,10 @@
     height: 313px;
     margin: 40px 100px 20px 100px;
     padding: 50px 57px;
+
+    &_portrait_blurFilter {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgba(255, 255, 255, 1) 100%);
+    }
   }
   
 

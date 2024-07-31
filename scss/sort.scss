@@ -10,77 +10,68 @@
     font-weight: 700;
   }
 
-  & .sort_button {
+  & #sortList {
     position: absolute;
-    top: 0;
     z-index: 2;
+    top: 0;
+    left: 80px;
     display: flex;
-    margin-left: 100px;
+    flex-direction: column; 
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #901C1C;
     border-radius: 5px;
-    border: none;
-    width: 170px;
-    text-align: left;
-    padding: 0;
-
-    &:hover {
-      background-color: $primary-color;
+    & #arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 23px;
+      right: 15px;
+      color: $quaternary-color-light;
     }
 
-    & #sortBy {
-      position: relative;
-      display: flex;
+    & div[role="tab"] {
+      display: none;
       flex-direction: column;
-      width: 100%;
-      padding-left: 0;
-      margin: 0;
+      justify-content: flex-start;
+      align-items: flex-start;
+      color: $quaternary-color-light;
+      font-size: 18px;
+      font-weight: 700;
+      width: 170px;
+      list-style-type: none;
+      padding-left: 20px;
+      padding-top: 14px;
+      padding-bottom: 14px;
       overflow: hidden;
-      & i {
-        cursor: pointer;
-        position: absolute;
-        top: 23px;
-        right: 15px;
-        color: $quaternary-color-light;
+      &.active {
+        display: block;
       }
-      & .option {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        color: $quaternary-color-light;
-        font-size: 18px;
-        font-weight: 700;
-        list-style-type: none;
-        padding-left: 20px;
-        padding-top: 14px;
-        padding-bottom: 14px;
-        overflow: hidden;
 
-        &:first-of-type {
-          padding-top: 23px;
-          &:hover {
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-          }
-        }
-
-        &:last-of-type:hover {
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
-        }
-
-        &:hover, &:focus {
-          background-color: $tertiary-color;
+      &:first-of-type {
+        padding-top: 23px;
+        &:hover {
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
         }
       }
 
-      & hr {
-        display: inline-block;
-        width: 150px;
-        margin: 0;
-        margin-left: 10px;
-        // padding-right: 10px;
-        color: $quaternary-color-light;
+      &:last-of-type:hover {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
       }
 
+      &:hover, &:focus {
+        background-color: $tertiary-color;
+      }
     }
-  }      
-}
+
+    & hr {
+      display: inline-block;
+      width: 150px;
+      margin: 0;
+      margin-left: 10px;
+      color: $quaternary-color-light;
+    }
+
+  }
+}      
