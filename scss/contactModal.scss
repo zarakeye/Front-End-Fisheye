@@ -15,14 +15,24 @@
   & .modal {
     background-color: $tertiary-color;
     border-radius: 5px;
+
+     &_title, &_subtitle {
+          font-size: 64px;
+          font-weight: 400;
+          color: $sixth-color;
+          // flex: 1;
+          text-align: left;
+          white-space: nowrap;
+        }
   }
 
   .form_contact {
     &_header {
       display: flex;
       align-items: flex-start;
+      justify-content: space-between;
       margin: 15px 35px;
-      font-size: unset;
+      // font-size: unset;
 
       &_title {
         display: flex;
@@ -31,16 +41,12 @@
         padding-left: 35px;
         padding-top: 15px;
         margin-bottom: 20px;
+        font-size: 64px;
+        font-weight: 400;
+        color: $sixth-color;
         width: 450px;
 
-        h2, p {
-          font-size: 64px;
-          font-weight: 400;
-          color: $sixth-color;
-          // flex: 1;
-          text-align: left;
-          white-space: nowrap;
-        }
+       
       }
     }
     

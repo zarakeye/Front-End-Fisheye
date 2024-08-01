@@ -15,6 +15,13 @@
   background-color: #DB8876;
   border-radius: 5px;
 }
+#contact .modal_title, #contact .modal_subtitle {
+  font-size: 64px;
+  font-weight: 400;
+  color: #000000;
+  text-align: left;
+  white-space: nowrap;
+}
 #contact .form_contact {
   display: flex;
   width: 100%;
@@ -26,8 +33,8 @@
 #contact .form_contact_header {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   margin: 15px 35px;
-  font-size: unset;
 }
 #contact .form_contact_header_title {
   display: flex;
@@ -36,14 +43,10 @@
   padding-left: 35px;
   padding-top: 15px;
   margin-bottom: 20px;
-  width: 450px;
-}
-#contact .form_contact_header_title h2, #contact .form_contact_header_title p {
   font-size: 64px;
   font-weight: 400;
   color: #000000;
-  text-align: left;
-  white-space: nowrap;
+  width: 450px;
 }
 #contact .form_contact label {
   color: #312E2E;

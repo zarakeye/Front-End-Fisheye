@@ -12,7 +12,7 @@ export function PhotographerBanner(photographer) {
       <button id="contact_me" class="cta">Contactez-moi</button>
       <figure class='photographer_portrait_wrapper'>
           <div class='photographer_portrait_background' style='background-image: url(assets/medias/photographers/${photographer.id}/${photographer.portrait});'></div>
-          <div class='photographer_portrait_blurFilter'></div>
+          <div class='photographer_portrait_blurFilter_banner'></div>
           <div class='photographer_portrait_overlay'>
             <img
               class='photographer_portrait'
@@ -27,6 +27,7 @@ export function PhotographerBanner(photographer) {
     document.body.appendChild(banner);
     const contact = document.getElementById('contact_me');
 
+    let contactModal = null;
     contact.addEventListener('click', () => {
       Contact(photographer);
     });

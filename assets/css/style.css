@@ -10,7 +10,6 @@ body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
   padding: 0;
-  width: 100vw;
   height: 100vh;
 }
 body h1, body h2, body h3, body h4, body h5, body h6, body p, body ul, body ol, body li, body form, body label, body button, body input,
@@ -63,6 +62,7 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 100px;
+  margin-bottom: 120px;
 }
 .photographer_link {
   display: flex;
@@ -86,21 +86,29 @@ h1 {
   height: 100%;
   border-radius: 50%;
 }
-.photographer_portrait_blurFilter {
+.photographer_portrait_blurFilter_banner {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(250, 250, 250, 0.97) 65%, rgb(250, 250, 250) 100%);
+  background: radial-gradient(circle, rgba(250, 250, 250, 0) 0.1%, rgba(250, 250, 250, 0.97) 65%, rgb(250, 250, 250) 100%);
+}
+.photographer_portrait_blurFilter_card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgb(250, 250, 250) 100%);
 }
 .photographer_portrait_overlay {
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
-  height: 185px;
-  width: 185px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   overflow: hidden;
   -o-object-position: center;
@@ -184,6 +192,13 @@ h1 {
   background-color: #DB8876;
   border-radius: 5px;
 }
+#contact .modal_title, #contact .modal_subtitle {
+  font-size: 64px;
+  font-weight: 400;
+  color: #000000;
+  text-align: left;
+  white-space: nowrap;
+}
 #contact .form_contact {
   display: flex;
   width: 100%;
@@ -195,8 +210,8 @@ h1 {
 #contact .form_contact_header {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   margin: 15px 35px;
-  font-size: unset;
 }
 #contact .form_contact_header_title {
   display: flex;
@@ -205,14 +220,10 @@ h1 {
   padding-left: 35px;
   padding-top: 15px;
   margin-bottom: 20px;
-  width: 450px;
-}
-#contact .form_contact_header_title h2, #contact .form_contact_header_title p {
   font-size: 64px;
   font-weight: 400;
   color: #000000;
-  text-align: left;
-  white-space: nowrap;
+  width: 450px;
 }
 #contact .form_contact label {
   color: #312E2E;

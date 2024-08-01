@@ -5,7 +5,7 @@ export function PhotographerCard(photographer, parentDOMElement) {
     card.innerHTML = `
         <figure class='photographer_portrait_wrapper'>
           <div class='photographer_portrait_background' style='background-image: url(assets/medias/photographers/${photographer.id}/${photographer.portrait});'></div>
-          <div class='photographer_portrait_blurFilter'></div>
+          <div class='photographer_portrait_blurFilter_card'></div>
           <div class='photographer_portrait_overlay'>
             <img
               class='photographer_portrait'

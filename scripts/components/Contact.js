@@ -13,8 +13,8 @@ export function Contact(photographer) {
   modalSelector.innerHTML = `
     <header class='form_contact_header'>
         <div class='form_contact_title'>
-          <h2>Contactez-moi</h2>
-          <p>${photographer.name}</p>
+          <h2 class="modal_title">Contactez-moi</h2>
+          <p class="modal_subtitle">${photographer.name}</p>
         </div>
         <i id='closeContactModal' class='fa fa-times'></i>
     </header>
@@ -40,6 +40,7 @@ export function Contact(photographer) {
   `;
 
   document.body.appendChild(contact);
+  document.body.querySelector('#contact input').focus();
 
   const closeContactModal = modalSelector.querySelector('#closeContactModal');
   
