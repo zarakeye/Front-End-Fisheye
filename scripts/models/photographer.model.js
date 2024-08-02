@@ -6,6 +6,6 @@ export function Photographer (photographerDatas) {
     this.tagline = photographerDatas.tagline;
     this.price = photographerDatas.price;
     this.portrait = photographerDatas.portrait;
-    
+    this.likes = null;
     return this;
 }

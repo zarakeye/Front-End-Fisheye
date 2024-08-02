@@ -1,0 +1,16 @@
+.likeButton {
+  color: $primary-color;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  line-height: 31.25px;
+  cursor: pointer;
+
+  & i {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+  }
+}

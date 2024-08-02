@@ -22,5 +22,7 @@ export async function PhotographerPage(id) {
   const sortSection = Sort(medias, root);
 
   // FootNote
-  const footNote = FootNote(photographer, root);
+  const footNote = await FootNote(photographer);
+
+  document.body.appendChild(footNote);
 }

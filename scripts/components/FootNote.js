@@ -1,6 +1,6 @@
 import { photographerFactory } from "../factories/photographer.factory.js";
 
-export async function FootNote(photographer, parentDOMElement) {
+export async function FootNote(photographer) {
   const footNote = document.createElement('aside');
   footNote.id = 'footNote';
   let nbLikes = await photographerFactory.totalLikes(photographer);
@@ -9,6 +9,7 @@ export async function FootNote(photographer, parentDOMElement) {
     <p aria-label='prix journalier de ${photographer.name}'>${photographer.price}€ / jour</p>
   `;
 
-  document.body.appendChild(footNote);
+  // document.body.appendChild(footNote);
 
+  return footNote;
 }

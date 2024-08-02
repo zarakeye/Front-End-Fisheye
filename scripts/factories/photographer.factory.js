@@ -36,11 +36,10 @@ export const photographerFactory = {
 
   totalLikes: async (photographer) => {
     const medias = await mediaFactory.photographerMedias(photographer.id);
-    let totalLikes = 0;
 
     medias.forEach((media) => {
-      totalLikes += media.likes;
+      photographer.likes += media.likes;
     });
-    return totalLikes;
+    return photographer.likes;
   }
 }
