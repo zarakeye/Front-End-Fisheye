@@ -12,12 +12,11 @@ export const photographerFactory = {
     return new Photographer(photographerDatas);
   },
   
-  homepageHeader: (parentDOMElement) => {
-    Header(parentDOMElement);
+  homepageHeader: () => {
+    const header = Header();
     const h1 = document.createElement("h1");
     h1.textContent = "Nos photographes";
 
-    const header = document.querySelector(".header");
     header.appendChild(h1);
 
     return header;

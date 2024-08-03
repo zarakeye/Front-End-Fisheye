@@ -47,16 +47,11 @@ export function Sort(medias) {
   gallery.id = 'gallery';
   document.body.appendChild(gallery);
 
-  const mediasByPopularity = mediaFactory.sortBy(medias, 'popularity');
-  const mediasByDate = mediaFactory.sortBy(medias, 'date');
-  const mediasByTitle = mediaFactory.sortBy(medias, 'title');
+  const cards = medias.map((media) => mediaFactory.createCard(media));
 
-  const cardsByPopularity = [...mediasByPopularity.map((media) => mediaFactory.createCard(media))];
-  const cardsByDate = [...mediasByDate.map((media) => mediaFactory.createCard(media))];
-  const cardsByTitle = [...mediasByTitle.map((media) => mediaFactory.createCard(media))];
+  let sortedCards = mediaFactory.sortCardsBy(cards, 'popularity');
 
-
-  gallery.append(...cardsByPopularity);
+  gallery.append(...sortedCards);
 
   const sortList = document.querySelector('#sortList');
   const options = sortList.querySelectorAll('#sortList div[role="tab"]');
@@ -163,17 +158,19 @@ export function Sort(medias) {
           const sortType = e.target.id;
           switch (sortType) {
             case 'popularity':
-              gallery.append(...cardsByPopularity);
+              sortedCards = mediaFactory.sortCardsBy(sortedCards, 'popularity');
+              gallery.append(...sortedCards);
               break;
 
             case 'date':
-              gallery.append(...cardsByDate);
+              sortedCards = mediaFactory.sortCardsBy(sortedCards, 'date');
+              gallery.append(...sortedCards);
               break;
 
             case 'title':
-              gallery.append(...cardsByTitle);
+              sortedCards = mediaFactory.sortCardsBy(sortedCards, 'title');
+              gallery.append(...sortedCards);
               break;
-          
             }
 
           // Focus on the first card
@@ -183,7 +180,6 @@ export function Sort(medias) {
           options.forEach((item) => {
             item.setAttribute('tabindex', '-1 ');
           });
-
         }
       }
     }

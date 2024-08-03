@@ -16,6 +16,7 @@ export function MediaCard (media) {
       </figure>
       <figcaption class='media_description'>
         <p class='media_title'>${media.title}</p>
+        <p class='media_date sr-only'>${media.date}</p>
         <p class='media_likes'>
           <span id='nbLikes_${media.id}'> ${media.likes}</span>
         </p>

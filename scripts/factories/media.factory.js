@@ -79,5 +79,26 @@ export const mediaFactory =  {
     }
 
     return sortedMedias;
+  },
+
+  sortCardsBy: (cards, sorType) => {
+    let sortedCards = [];
+    switch (sorType) {
+      case 'popularity':
+        sortedCards.push(...cards.sort((a, b) => b.querySelector('.media_likes span').textContent - a.querySelector('.media_likes span').textContent));
+        break;
+
+      case 'date':
+        sortedCards.push(...cards.sort((a, b) => new Date(b.querySelector('.media_date').textContent) - new Date(a.querySelector('.media_date').textContent)));
+        break;
+
+      case 'title':
+        sortedCards.push(...cards.sort((a, b) => a.querySelector('.media_title').textContent.localeCompare(b.querySelector('.media_title').textContent)));
+        break;
+    }
+
+    console.log('sortedCards', sortedCards);
+
+    return sortedCards;
   }
 }

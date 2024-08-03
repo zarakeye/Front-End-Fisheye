@@ -2,15 +2,10 @@ export function Header() {
   const header = document.createElement('header');
   header.className = 'header';
   header.innerHTML = `
-      <a href="index.html">
+    <a href="index.html">
       <img src="assets/medias/logo.png" id="logo" alt="fisheye logo">
-      
     </a>
   `;
 
-  
-  document.body.appendChild(header);
-
-
-  // return document.querySelector('.header');
+  return header;
 }

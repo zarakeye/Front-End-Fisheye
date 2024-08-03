@@ -1,6 +1,7 @@
 import { Api } from "../api/index.js";
 import { Photographer } from "../models/photographer.model.js";
 import { photographerFactory } from "../factories/photographer.factory.js";
+import { Header } from "../components/Header.js";
 
 export async function HomePage() {
     // Extraction of datas of photographers, then creation of new Photographer objects
@@ -10,7 +11,8 @@ export async function HomePage() {
     const root = document.getElementById('root');
 
     // Header
-    photographerFactory.homepageHeader(root);
+    const header = photographerFactory.homepageHeader();
+    document.body.appendChild(header);
 
     // Photographers grid
     photographerFactory.photographersGrid(photographers, root);

@@ -13,7 +13,9 @@ export async function PhotographerPage(id) {
   const root = document.getElementById('root');
 
   // Header
-  const header = Header(root);
+  const header = Header();
+  document.body.appendChild(header);
+
 
   // Banner
   const banner = PhotographerBanner(photographer, root);

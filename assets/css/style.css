@@ -43,7 +43,7 @@ body {
 }
 
 h1 {
-  color: #D3573C;
+  color: #901C1C;
   margin-right: 100px;
 }
 
@@ -214,10 +214,12 @@ h1 {
   background-color: transparent;
   color: #FFFFFF;
   border: none;
+  border-radius: 5px;
 }
 #contact .close-modal:hover {
   background-color: #FFFFFF;
   color: #000000;
+  border-radius: 5px;
 }
 #contact .form_contact {
   display: flex;
@@ -256,15 +258,6 @@ h1 {
 }
 #contact .form_contact .contact_button {
   margin-top: 20px;
-}
-
-#closeContactModal {
-  cursor: pointer;
-  font-size: 42px;
-  color: #FFFFFF;
-}
-#closeContactModal:hover {
-  color: #000000;
 }
 
 /* Colors */
