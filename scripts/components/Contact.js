@@ -10,13 +10,12 @@ export function Contact(photographer) {
   const modal = Modal();
   contact.appendChild(modal);
   const modalSelector = contact.querySelector('.modal');
-  modalSelector.innerHTML = `
+  modalSelector.innerHTML += `
     <header class='form_contact_header'>
         <div class='form_contact_title'>
           <h2 class="modal_title">Contactez-moi</h2>
           <p class="modal_subtitle">${photographer.name}</p>
         </div>
-        <i id='closeContactModal' class='fa fa-times'></i>
     </header>
     <form class="form_contact" action="#" aria-label="Formulaire de contact">
       <div>
