@@ -15,21 +15,15 @@
     z-index: 2;
     top: 0;
     left: 80px;
-    display: flex;
-    flex-direction: column; 
+    // display: flex;
+    // flex-direction: column;
+    display: block;
     overflow: hidden;
     cursor: pointer;
     background-color: #901C1C;
     border-radius: 5px;
-    & #arrow {
-      cursor: pointer;
-      position: absolute;
-      top: 23px;
-      right: 15px;
-      color: $quaternary-color-light;
-    }
 
-    & div[role="tab"] {
+    & .sortType {
       display: none;
       flex-direction: column;
       justify-content: flex-start;
@@ -39,7 +33,7 @@
       font-weight: 700;
       width: 170px;
       list-style-type: none;
-      padding-left: 20px;
+      padding-left: 14px;
       padding-top: 14px;
       padding-bottom: 14px;
       overflow: hidden;
@@ -73,5 +67,14 @@
       color: $quaternary-color-light;
     }
 
+  }
+  #expandCollapse {
+    #arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 23px;
+      right: 15px;
+      color: $quaternary-color-light;
+    }
   }
 }      

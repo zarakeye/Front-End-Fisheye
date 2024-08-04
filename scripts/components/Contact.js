@@ -38,13 +38,10 @@ export function Contact(photographer) {
     </form>
   `;
 
-  document.body.appendChild(contact);
-  document.body.querySelector('#contact input').focus();
-
-  const closeContactModal = modalSelector.querySelector('#closeContactModal');
+  const closeModal = modalSelector.querySelector('.close-modal');
   
-  closeContactModal.addEventListener('click', () => {
-    document.querySelector('#contact').remove();
+  closeModal.addEventListener('click', () => {
+    contact.style.display = 'none';
   });
 
   return contact;

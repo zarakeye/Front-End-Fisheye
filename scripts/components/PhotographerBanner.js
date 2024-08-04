@@ -1,6 +1,6 @@
 import { Contact } from "./Contact.js";
 
-export function PhotographerBanner(photographer) {
+export function PhotographerBanner(photographer, contactModal) {
     const banner = document.createElement('section');
     banner.className = 'photographer_banner';
     banner.innerHTML = `
@@ -24,12 +24,11 @@ export function PhotographerBanner(photographer) {
     </div>
     `;
 
-    document.body.appendChild(banner);
-    const contact = document.getElementById('contact_me');
+    const contactButton = banner.querySelector('#contact_me');
 
-    let contactModal = null;
-    contact.addEventListener('click', () => {
-      Contact(photographer);
+    contactButton.addEventListener('click', () => {
+      contactModal.style.display = 'flex';
+      contactModal.querySelector('input').focus();
     });
 
     return banner;

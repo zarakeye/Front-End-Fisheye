@@ -1,6 +1,6 @@
 import { mediaFactory } from "../factories/media.factory.js";
 
-export function Sort(medias) {
+export function Sort(gallery) {
   const sort = document.createElement("section");
   sort.id = "sort";
 
@@ -10,54 +10,60 @@ export function Sort(medias) {
     <div
       role="tablist"
       aria-label="Options de tri"
-      id="sortList"
+      id="sorts_wrapper"
       aria-activedescendant="popularity"
     >
-      <i id="arrow" class="fa fa-chevron-down" data-collapsed="true" aria-label="dérouler ou réduire les options de tri"></i>
-      <div
+      <button id='expandCollapse'>
+        <i id="arrow" class="fa fa-chevron-down" data-collapsed="true" aria-label="dérouler ou réduire les options de tri"></i>
+      </button>
+      <button
         role='tab'
         id='popularity'
-        class='active'
+        class='sortType active'
         aria-selected='true'
         tabindex='0'>
         Popularité
-      </div>
+      </button>
       <hr>
-      <div
+      <button
         role='tab'
+        class='sortType'
         id='date'
         aria-selected='false'
         tabindex='-1'>
         Date
-      </div>
+      </button>
       <hr>
-      <div
+      <button
         role='tab'
+        class='sortType'
         id='title'
         aria-selected='false'
         tabindex='-1'>
         Titre
-        </div>
+      </button>
     </div>
   `;
 
-  document.body.appendChild(sort);
+  // const gallery = document.createElement('section');
+  // gallery.id = 'gallery';
+  // document.body.appendChild(gallery);
 
-  const gallery = document.createElement('section');
-  gallery.id = 'gallery';
-  document.body.appendChild(gallery);
+  // const cards = medias.map((media) => mediaFactory.createCard(media));
 
-  const cards = medias.map((media) => mediaFactory.createCard(media));
 
-  let sortedCards = mediaFactory.sortCardsBy(cards, 'popularity');
 
-  gallery.append(...sortedCards);
+  // let sortedCards = mediaFactory.sortCardsBy(cards, 'popularity');
 
-  const sortList = document.querySelector('#sortList');
-  const options = sortList.querySelectorAll('#sortList div[role="tab"]');
-  const hrList = sortList.querySelectorAll('hr');
+  // gallery.append(...sortedCards);
 
-  let activeOption = sortList.querySelector('.active');
+  const cards = Array.from(gallery.querySelectorAll('.media_card'));
+
+  const sortsWrapper = sort.querySelector('#sorts_wrapper');
+  const options = sortsWrapper.querySelectorAll('.sortType');
+  const hrList = sortsWrapper.querySelectorAll('hr');
+
+  let activeOption = sortsWrapper.querySelector('.active');
   let activeIndex = Array.from(options).indexOf(activeOption);
   
   options.forEach((option) => {
@@ -68,7 +74,7 @@ export function Sort(medias) {
     hr.style.display = 'none';
   });
 
-  const arrow = sortList.querySelector('#arrow');
+  const arrow = sortsWrapper.querySelector('#arrow');
 
   function collapseSortMenu() {
     arrow.style.transform = 'rotate(0deg)';
@@ -107,7 +113,7 @@ export function Sort(medias) {
 
   document.addEventListener('click', (e) => {
     // Closes the sort menu if the user clicks outside of it
-    if (!sortList.contains(e.target)) {
+    if (!sortsWrapper.contains(e.target)) {
       if (arrow.dataset.collapsed === 'false') {
         collapseSortMenu();
       }
@@ -185,7 +191,7 @@ export function Sort(medias) {
     }
   });
 
-  sortList.addEventListener('keydown', async (e) => {
+  sortsWrapper.addEventListener('keydown', async (e) => {
     switch (e.key) {
       case 'Tab':
         if (arrow.dataset.collapsed === 'false') {

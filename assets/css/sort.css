@@ -15,21 +15,13 @@
   z-index: 2;
   top: 0;
   left: 80px;
-  display: flex;
-  flex-direction: column;
+  display: block;
   overflow: hidden;
   cursor: pointer;
   background-color: #901C1C;
   border-radius: 5px;
 }
-#sort #sortList #arrow {
-  cursor: pointer;
-  position: absolute;
-  top: 23px;
-  right: 15px;
-  color: #FFFFFF;
-}
-#sort #sortList div[role=tab] {
+#sort #sortList .sortType {
   display: none;
   flex-direction: column;
   justify-content: flex-start;
@@ -39,26 +31,26 @@
   font-weight: 700;
   width: 170px;
   list-style-type: none;
-  padding-left: 20px;
+  padding-left: 14px;
   padding-top: 14px;
   padding-bottom: 14px;
   overflow: hidden;
 }
-#sort #sortList div[role=tab].active {
+#sort #sortList .sortType.active {
   display: block;
 }
-#sort #sortList div[role=tab]:first-of-type {
+#sort #sortList .sortType:first-of-type {
   padding-top: 23px;
 }
-#sort #sortList div[role=tab]:first-of-type:hover {
+#sort #sortList .sortType:first-of-type:hover {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-#sort #sortList div[role=tab]:last-of-type:hover {
+#sort #sortList .sortType:last-of-type:hover {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-#sort #sortList div[role=tab]:hover, #sort #sortList div[role=tab]:focus {
+#sort #sortList .sortType:hover, #sort #sortList .sortType:focus {
   background-color: #DB8876;
 }
 #sort #sortList hr {
@@ -66,5 +58,12 @@
   width: 150px;
   margin: 0;
   margin-left: 10px;
+  color: #FFFFFF;
+}
+#sort #expandCollapse #arrow {
+  cursor: pointer;
+  position: absolute;
+  top: 23px;
+  right: 15px;
   color: #FFFFFF;
 }/*# sourceMappingURL=sort.css.map */
