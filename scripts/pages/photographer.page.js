@@ -17,12 +17,8 @@ export async function PhotographerPage(id) {
   const header = Header();
   document.body.appendChild(header);
 
-  // Contact
-  const contact = Contact(photographer);
-  document.body.appendChild(contact);
-
   // Banner
-  const banner = PhotographerBanner(photographer, contact);
+  const banner = PhotographerBanner(photographer);
   document.body.appendChild(banner);
 
   // Contact

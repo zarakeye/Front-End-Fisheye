@@ -1,6 +1,6 @@
 import { Contact } from "./Contact.js";
 
-export function PhotographerBanner(photographer, contactModal) {
+export function PhotographerBanner(photographer) {
     const banner = document.createElement('section');
     banner.className = 'photographer_banner';
     banner.innerHTML = `
