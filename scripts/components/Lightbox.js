@@ -6,7 +6,6 @@ export async function Lightbox(currentMedia) {
   const lightbox = document.createElement('aside');
   lightbox.id = 'lightbox';
   lightbox.setAttribute('aria-label', 'lightbox');
-  document.body.appendChild(lightbox);
 
   // Creattion of a modal appended to the lightbox and filling it with the code of the lightbox
   const modal = Modal();
@@ -16,7 +15,7 @@ export async function Lightbox(currentMedia) {
   // Retrieve the list of medias from the same photographer than the current one
   // const sortOptions = document.querySelectorAll('#sort .option');
   // console.log('sortOptions', sortOptions);
-  const selectedSort = document.querySelector('#sort div.active').id;
+  const selectedSort = lightbox.querySelector('#sort div.active').id;
 
   const medias = await mediaFactory.photographerMedias(currentMedia.photographerId);
   const sortedMedias = mediaFactory.sortBy(medias, selectedSort);

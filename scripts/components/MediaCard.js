@@ -11,7 +11,7 @@ export function MediaCard (media) {
   const likeButton = LikeButton(media);
 
   card.innerHTML = `
-      <figure class='media_portrait_wrapper'>
+      <figure class='media_wrapper'>
         ${ mediaFactory.thumbnail(media) }
       </figure>
       <figcaption class='media_description'>
@@ -26,17 +26,23 @@ export function MediaCard (media) {
   const pMediaLikes = card.querySelector(`.media_likes`);
   pMediaLikes.appendChild(likeButton);
 
+  const mediaDescription = card.querySelector(`.media_description`);
   card.addEventListener('click', (e) => {
-    if (card.contains(e.target) && !likeButton.contains(e.target)) {
+    if (card.contains(e.target) && !mediaDescription.contains(e.target)) {
       Lightbox(media);
     }
   });
+  // card.addEventListener('click', (e) => {
+  //   if (card.contains(e.target) && !likeButton.contains(e.target)) {
+  //     Lightbox(media);
+  //   }
+  // });
 
-  card.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !likeButton.contains(e.target)) {
-      Lightbox(media);
-    }
-  });
+  // card.addEventListener('keydown', (e) => {
+  //   if (e.key === 'Enter' && !likeButton.contains(e.target)) {
+  //     Lightbox(media);
+  //   }
+  // });
 
   // const nbLikes = card.querySelector(`#nbLikes_${media.id}`);
   // card.addEventListener('change', (e) => {

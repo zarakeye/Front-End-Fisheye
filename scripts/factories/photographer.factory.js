@@ -3,6 +3,7 @@ import { Photographer } from "../models/photographer.model.js";
 import { PhotographerCard } from "../components/PhotographerCard.js";
 import { Header } from "../components/Header.js";
 import { mediaFactory } from "./media.factory.js";
+import { Contact } from "../components/Contact.js";
 
 
 export const photographerFactory = {
@@ -40,5 +41,10 @@ export const photographerFactory = {
       photographer.likes += media.likes;
     });
     return photographer.likes;
+  },
+
+  contactMe: (photographer) => {
+    const contactModal = Contact(photographer);
+    document.body.appendChild(contactModal);
   }
 }

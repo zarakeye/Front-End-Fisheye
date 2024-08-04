@@ -26,9 +26,13 @@ export function PhotographerBanner(photographer, contactModal) {
 
     const contactButton = banner.querySelector('#contact_me');
 
+    let contactMeEvent = new Event('contact', {
+      bubbles: true
+    });
     contactButton.addEventListener('click', () => {
-      contactModal.style.display = 'flex';
-      contactModal.querySelector('input').focus();
+      // contactModal.style.display = 'flex';
+      // contactModal.querySelector('input').focus();
+      contactButton.dispatchEvent(contactMeEvent);
     });
 
     return banner;

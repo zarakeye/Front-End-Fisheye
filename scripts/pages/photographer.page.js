@@ -25,6 +25,9 @@ export async function PhotographerPage(id) {
   const banner = PhotographerBanner(photographer, contact);
   document.body.appendChild(banner);
 
+  // Contact
+  document.body.addEventListener('contact', () => photographerFactory.contactMe(photographer));
+
   // Cards
   let cards = medias.map((media) => mediaFactory.createCard(media));
   cards = mediaFactory.sortCardsBy(cards, 'popularity');
