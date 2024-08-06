@@ -10,11 +10,11 @@
     font-weight: 700;
   }
 
-  & #sortList {
+  & #sorts_wrapper {
     position: absolute;
     z-index: 2;
     top: 0;
-    left: 80px;
+    left: 100px;
     // display: flex;
     // flex-direction: column;
     display: block;
@@ -24,10 +24,13 @@
     border-radius: 5px;
 
     & .sortType {
+      cursor: pointer;
       display: none;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
+      text-align: left;
+      background-color: $primary-color;
       color: $quaternary-color-light;
       font-size: 18px;
       font-weight: 700;
@@ -37,6 +40,7 @@
       padding-top: 14px;
       padding-bottom: 14px;
       overflow: hidden;
+      border: none;
       &.active {
         display: block;
       }
@@ -60,7 +64,8 @@
     }
 
     & hr {
-      display: inline-block;
+      // display: inline-block;
+      display: none;
       width: 150px;
       margin: 0;
       margin-left: 10px;
@@ -69,12 +74,14 @@
 
   }
   #expandCollapse {
-    #arrow {
-      cursor: pointer;
-      position: absolute;
-      top: 23px;
-      right: 15px;
-      color: $quaternary-color-light;
-    }
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+    color: $quaternary-color-light;
+    padding: 10px;
+    border-radius: 50%;
   }
 }      

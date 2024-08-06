@@ -27,9 +27,14 @@ export function MediaCard (media) {
   pMediaLikes.appendChild(likeButton);
 
   const mediaDescription = card.querySelector(`.media_description`);
+
+  let mediaClickedEvent = new Event('mediaClicked', {
+    bubbles: true,
+  });
   card.addEventListener('click', (e) => {
-    if (card.contains(e.target) && !mediaDescription.contains(e.target)) {
-      Lightbox(media);
+    if (!mediaDescription.contains(e.target)) {
+      // Lightbox(media);
+      e.target.dispatchEvent(mediaClickedEvent);
     }
   });
   // card.addEventListener('click', (e) => {

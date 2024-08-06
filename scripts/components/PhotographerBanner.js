@@ -30,8 +30,6 @@ export function PhotographerBanner(photographer) {
       bubbles: true
     });
     contactButton.addEventListener('click', () => {
-      // contactModal.style.display = 'flex';
-      // contactModal.querySelector('input').focus();
       contactButton.dispatchEvent(contactMeEvent);
     });
 

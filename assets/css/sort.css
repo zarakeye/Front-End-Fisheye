@@ -10,22 +10,25 @@
   font-size: 18px;
   font-weight: 700;
 }
-#sort #sortList {
+#sort #sorts_wrapper {
   position: absolute;
   z-index: 2;
   top: 0;
-  left: 80px;
+  left: 100px;
   display: block;
   overflow: hidden;
   cursor: pointer;
   background-color: #901C1C;
   border-radius: 5px;
 }
-#sort #sortList .sortType {
+#sort #sorts_wrapper .sortType {
+  cursor: pointer;
   display: none;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  text-align: left;
+  background-color: #901C1C;
   color: #FFFFFF;
   font-size: 18px;
   font-weight: 700;
@@ -35,35 +38,40 @@
   padding-top: 14px;
   padding-bottom: 14px;
   overflow: hidden;
+  border: none;
 }
-#sort #sortList .sortType.active {
+#sort #sorts_wrapper .sortType.active {
   display: block;
 }
-#sort #sortList .sortType:first-of-type {
+#sort #sorts_wrapper .sortType:first-of-type {
   padding-top: 23px;
 }
-#sort #sortList .sortType:first-of-type:hover {
+#sort #sorts_wrapper .sortType:first-of-type:hover {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-#sort #sortList .sortType:last-of-type:hover {
+#sort #sorts_wrapper .sortType:last-of-type:hover {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-#sort #sortList .sortType:hover, #sort #sortList .sortType:focus {
+#sort #sorts_wrapper .sortType:hover, #sort #sorts_wrapper .sortType:focus {
   background-color: #DB8876;
 }
-#sort #sortList hr {
-  display: inline-block;
+#sort #sorts_wrapper hr {
+  display: none;
   width: 150px;
   margin: 0;
   margin-left: 10px;
   color: #FFFFFF;
 }
-#sort #expandCollapse #arrow {
-  cursor: pointer;
+#sort #expandCollapse {
   position: absolute;
-  top: 23px;
-  right: 15px;
+  cursor: pointer;
+  top: 5px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
   color: #FFFFFF;
+  padding: 10px;
+  border-radius: 50%;
 }/*# sourceMappingURL=sort.css.map */

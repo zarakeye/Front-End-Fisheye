@@ -13,21 +13,10 @@ export async function Lightbox(currentMedia) {
   const modalSelector = lightbox.querySelector('.modal');
 
   // Retrieve the list of medias from the same photographer than the current one
-  // const sortOptions = document.querySelectorAll('#sort .option');
-  // console.log('sortOptions', sortOptions);
-  const selectedSort = lightbox.querySelector('#sort div.active').id;
+  const selectedSort = document.querySelector('#sort .active').id;
+  const medias = mediaFactory.sortMediasBy(await mediaFactory.photographerMedias(currentMedia.photographerId), selectedSort);
 
-  const medias = await mediaFactory.photographerMedias(currentMedia.photographerId);
-  const sortedMedias = mediaFactory.sortBy(medias, selectedSort);
-  console.log('sortedMedias', sortedMedias);
-
-  let thumbnails = '';
-  sortedMedias.forEach((media) => {
-    thumbnails += `${mediaFactory.thumbnail(media)}`;
-  });
-  console.log('thumbnails', thumbnails);
-
-  const thumbnail = mediaFactory.thumbnail(currentMedia);
+  const thumbnails = medias.map((media) => mediaFactory.thumbnail(media)).join('');
 
   modalSelector.innerHTML = `
     <div id='go_to_previous_media' class='nav-lightbox'>
@@ -78,13 +67,11 @@ export async function Lightbox(currentMedia) {
     document.querySelector('#lightbox').remove();
   });
 
-  const figureSelector = lightbox.querySelector('figure');
   const previousMediaBtn = lightbox.querySelector('#previous_media');
 
-  
-  let currentMediaIndex = sortedMedias.findIndex((media) => media.id === currentMedia.id);
+  let currentMediaIndex = medias.findIndex((media) => media.id === currentMedia.id);
 
-  const mediasLength = sortedMedias.length;
+  const mediasLength = medias.length;
 
   function displayPreviousMedia() {
     // Compute the index of the previous media (which becomes the new displayed media)
@@ -94,7 +81,7 @@ export async function Lightbox(currentMedia) {
     }
 
     thumbnailsList.forEach((item) => {
-      if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(sortedMedias[currentMediaIndex].id, 10)) {
+      if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(medias[currentMediaIndex].id, 10)) {
         item.style.display = 'none';
       } else {
         item.style.display = 'block';
@@ -110,7 +97,7 @@ export async function Lightbox(currentMedia) {
     }
 
     thumbnailsList.forEach((item) => {
-      if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(sortedMedias[currentMediaIndex].id, 10)) {
+      if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(medias[currentMediaIndex].id, 10)) {
         item.style.display = 'none';
       } else {
         item.style.display = 'block';

@@ -61,7 +61,7 @@ export const mediaFactory =  {
     }
   },
 
-  sortBy: (medias, sorType) => {
+  sortMediasBy: (medias, sorType) => {
     let sortedMedias = [];
     
     switch (sorType) {
@@ -96,8 +96,6 @@ export const mediaFactory =  {
         sortedCards.push(...cards.sort((a, b) => a.querySelector('.media_title').textContent.localeCompare(b.querySelector('.media_title').textContent)));
         break;
     }
-
-    console.log('sortedCards', sortedCards);
 
     return sortedCards;
   }
