@@ -13,13 +13,18 @@
   align-items: center;
 
   & .modal {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: fl;
     background-color: $quaternary-color-light;
     border-radius: 5px;
     padding-top: 10px;
+    width: 90vw;
     
+    
+
+
     & figure {
       display: flex;
       flex-direction: column;
@@ -35,11 +40,16 @@
         height: 80vh;
       }
 
+      & .media {
+        cursor:default;
+      }
+
       & figcaption {
         display: flex;
         justify-content: flex-start;
         align-items: center;
         color: $primary-color;
+        height: 10%;
         font-size: 24px;
       }
     }
@@ -50,30 +60,63 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 24px;
+  width: 15%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-color;
+    & i{
+      color: $quaternary-color-light;
+    }
+  }
   
   &[id="go_to_next_media"] {
     position: relative;
 
-    & .fa.fa-times {
-      display: inline-block;
-      position: absolute;
-      width: 42px;
-      height: 42px;
+  //   & .fa.fa-times {
+  //     display: inline-block;
+  //     position: absolute;
+  //     width: 42px;
+  //     height: 42px;
+  //     color: $primary-color;
+  //     top: 45px;
+  //     left: 45px;
+  //     transform: translate(-50%, -50%);
+  //   }
+
+  & .close-modal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 72px;
+    height: 72px;
+    font-size: 42px;
+    background-color: $quaternary-color-light;
+    color: $primary-color;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    top: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 2;
+
+    & .fa-times {
       color: $primary-color;
-      top: 45px;
-      left: 45px;
-      transform: translate(-50%, -50%);
     }
   }
 
-  & i {
+  }
+
+  & .nav-lightbox-btn {
     display: inline-block;
     cursor: pointer;
     color: $primary-color;
     font-size: 24px;
     &:hover {
-      color: $secondary-color;
+      color: $quaternary-color-light;
     }
   }
 }

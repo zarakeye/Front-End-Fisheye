@@ -6,10 +6,9 @@ export function MediaCard (media) {
   const card = document.createElement('article');
   card.className = 'media_card';
   card.id = `media_${media.id}`
-  card.setAttribute('tabindex', '0');
 
   const likeButton = LikeButton(media);
-
+  
   card.innerHTML = `
       <figure class='media_wrapper'>
         ${ mediaFactory.thumbnail(media) }
@@ -31,87 +30,31 @@ export function MediaCard (media) {
   let mediaClickedEvent = new Event('mediaClicked', {
     bubbles: true,
   });
+
   card.addEventListener('click', (e) => {
     if (!mediaDescription.contains(e.target)) {
       // Lightbox(media);
       e.target.dispatchEvent(mediaClickedEvent);
     }
   });
-  // card.addEventListener('click', (e) => {
-  //   if (card.contains(e.target) && !likeButton.contains(e.target)) {
-  //     Lightbox(media);
-  //   }
-  // });
 
-  // card.addEventListener('keydown', (e) => {
-  //   if (e.key === 'Enter' && !likeButton.contains(e.target)) {
-  //     Lightbox(media);
-  //   }
-  // });
+  card.addEventListener('keydown', (e) => {
+    switch (e.key) {
+      case 'tab':
+        break;
 
-  // const nbLikes = card.querySelector(`#nbLikes_${media.id}`);
-  // card.addEventListener('change', (e) => {
-  //   nbLikes.textContent = media.likes;
-  // });
-
-  // likeButton = card.querySelector(`#like_mediaId_${media.id}`);
-  // likeButton.addEventListener('mouseenter', (e) => {
-  //   e.preventDefault();
-
-  //   if (!media.alreadyLiked) {
-  //     likeButton.classList.remove('fa-heart-o');
-  //     likeButton.classList.add('fa-heart');
-  //   } else {
-  //     likeButton.classList.remove('fa-heart');
-  //     likeButton.classList.add('fa-heart-o');
-  //   }
-  // });
-
-  // likeButton.addEventListener('mouseleave', (e) => {
-  //   e.preventDefault();
-  //   if (!media.alreadyLiked) {
-  //     likeButton.classList.remove('fa-heart');
-  //     likeButton.classList.add('fa-heart-o');
-  //   } else {
-  //     likeButton.classList.remove('fa-heart-o');
-  //     likeButton.classList.add('fa-heart');
-  //   }
-  // });
-
-  // likeButton.addEventListener('click', async (e) => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   if (!media.alreadyLiked) {
-  //     media.like();
-  //     document.querySelector(`#nbLikes_${media.id}`).textContent = media.likes;
-  //     // likeButton.classList.remove('fa-regular');
-  //     // likeButton.classList.add('fa-solid');
-  //     const photographerLikesDisplay = document.querySelector('#nbLikes_footNote');
-  //     photographerLikesDisplay.textContent = `${parseInt(photographerLikesDisplay.textContent, 10) + 1}`;
-  //     likeButton.focus();
-  //   } else {
-  //     media.unlike();
-  //     document.querySelector(`#nbLikes_${media.id}`).textContent = media.likes;
-  //     // likeButton.classList.remove('fa-heart');
-  //     // likeButton.classList.add('fa-heart-o');
-  //     const photographerLikesDisplay = document.querySelector('#nbLikes_footNote');
-  //     photographerLikesDisplay.textContent = `${parseInt(photographerLikesDisplay.textContent, 10) - 1}`;
-  //     likeButton.focus();
-  //   }
-  // });
-
-  // likeButton.addEventListener('keydown', (e) => {
-  //   if (e.key === 'Enter') {
-  //     likeButton.click();
-  //     // if (media.alreadyLiked) {
-  //     //   likeButton.classList.remove('fa-heart-o');
-  //     //   likeButton.classList.add('fa-heart');
-  //     // } else {
-  //     //   likeButton.classList.remove('fa-heart');
-  //     //   likeButton.classList.add('fa-heart-o');
-  //     // }
-  //   }
-  // });
+      case 'Enter':
+        if (!likeButton.contains(e.target)) {
+          e.preventDefault();
+          e.target.dispatchEvent(mediaClickedEvent);
+        } else {
+          e.preventDefault();
+          likeButton.click();
+          likeButton.focus();
+        }
+        break;
+    }
+  });
 
   return card;
 }

@@ -17,13 +17,19 @@ export async function PhotographerPage(id) {
   // Header
   const header = Header();
   document.body.appendChild(header);
+  header.querySelector('a').focus();
 
   // Banner
   const banner = PhotographerBanner(photographer);
   document.body.appendChild(banner);
 
   // Contact
-  document.body.addEventListener('contact', () => photographerFactory.contactMe(photographer));
+  document.body.addEventListener('contact', (e) => {
+    e.preventDefault();
+    const contactModal = photographerFactory.contactMe(photographer);
+    
+
+  });
 
   // Cards
   let cards = medias.map((media) => mediaFactory.createCard(media));
@@ -43,23 +49,22 @@ export async function PhotographerPage(id) {
   document.body.appendChild(gallery);
 
   document.body.addEventListener('sortEvent', (e) => {
+    e.preventDefault();
     const sortBy = e.target.id;
-    console.log('sortBy : ', sortBy);
     medias = mediaFactory.sortMediasBy(medias, sortBy);
-    console.log('medias : ', medias);
     cards = mediaFactory.sortCardsBy(cards, sortBy);
-    console.log('cards : ', cards);
-    // gallery.replaceChildren(...cards);
-    gallery.innerHTML = '';
-    gallery.append(...cards);
+    gallery.replaceChildren(...cards);
   });
 
   // Lightbox
   document.body.addEventListener('mediaClicked', async (e) => {
+    e.preventDefault();
     const mediaId = parseInt(e.target.id.split('_')[1], 10);
     const media = medias.find((media) => media.id === mediaId);
     const lightbox = await Lightbox(media);
     document.body.appendChild(lightbox);
+
+    document.getElementById('go_to_next_media').focus();
   });
 
   // FootNote

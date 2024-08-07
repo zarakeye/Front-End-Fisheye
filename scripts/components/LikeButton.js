@@ -9,7 +9,6 @@ export function LikeButton (media) {
   likeButton.classList.add('likeButton');
   likeButton.setAttribute('aria-label', 'Like');
   likeButton.setAttribute('aria-pressed', media.alreadyLiked);
-  // likeButton.setAttribute('tabindex', '0');
   likeButton.innerHTML = media.alreadyLiked ? '<i class="fa fa-heart"></i>' : '<i class="fa fa-heart-o"></i>';
 
   likeButton.addEventListener('click', async (e) => {

@@ -18,9 +18,11 @@ export async function Lightbox(currentMedia) {
 
   const thumbnails = medias.map((media) => mediaFactory.thumbnail(media)).join('');
 
-  modalSelector.innerHTML = `
+  modalSelector.innerHTML += `
     <div id='go_to_previous_media' class='nav-lightbox'>
-      <i id='previous_media' class="fa fa-chevron-left nav-lightbox-btn" aria-label="Bouton Precedent"></i>
+      <button class="previous_media" aria-label="Media Precedent">
+        <i id='previous_media' class="fa fa-chevron-left nav-lightbox-btn" aria-label="Bouton Precedent"></i>
+      </button>
     </div>
     <figure>
       <div class='media_wrapper'>
@@ -31,8 +33,9 @@ export async function Lightbox(currentMedia) {
       </figcaption>
     </figure>
     <div id='go_to_next_media' class='nav-lightbox'>
-      <i id='close-lightbox_btn' class='fa fa-times'></i>
-      <i id='next_media' class="fa fa-chevron-right nav-lightbox-btn" aria-label="Bouton Suivant"></i>
+      <button class="next_media" aria-label="Media Suivant">
+        <i id='next_media' class="fa fa-chevron-right nav-lightbox-btn" aria-label="Bouton Suivant"></i>
+      </button>
     </div>
   `;
 
@@ -62,10 +65,31 @@ export async function Lightbox(currentMedia) {
     }
   }
 
-  const closeBtn = modalSelector.querySelector('#close-lightbox_btn');
+  const closeBtn = modalSelector.querySelector('.close-modal');
+  modalSelector.removeChild(closeBtn);
+
+  // const nextMediaBtn = lightbox.querySelector('#next_media');
+  const goToNextMedia = lightbox.querySelector('#go_to_next_media');
+  const goToPreviousMedia = lightbox.querySelector('#go_to_previous_media');
+
+
+  
+  lightbox.addEventListener('keydown', (e) => {
+    
+  })
+
+  goToNextMedia.appendChild(closeBtn);
+
   closeBtn.addEventListener('click', () => {
     document.querySelector('#lightbox').remove();
   });
+
+  
+  const focusableElements = lightbox.querySelectorAll('button');
+  console.log('focusableElements', focusableElements);
+  const firstFocusableElement = focusableElements[0];
+
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
   const previousMediaBtn = lightbox.querySelector('#previous_media');
 
@@ -109,12 +133,40 @@ export async function Lightbox(currentMedia) {
     displayPreviousMedia();    
   });
 
-  const nextMediaBtn = lightbox.querySelector('#next_media');
-  nextMediaBtn.addEventListener('click', async () => {
-    displayNextMedia();
+  
+  lightbox.addEventListener('click', async (e) => {
+    if (goToNextMedia.contains(e.target)) {
+      displayNextMedia();
+      // closeBtn.style.backgroundColor = '$quaternary-color-light';
+
+    }
+    if (goToPreviousMedia.contains(e.target)) {
+      displayPreviousMedia();
+    }
   });
 
   document.addEventListener('keydown', (e) => {
+    switch (e.key) {
+      case 'ArrowLeft':
+        displayPreviousMedia();
+        break;
+
+      case 'ArrowRight':
+        displayNextMedia();
+        break;
+
+      case 'tab':
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusableElement) {
+            lastFocusableElement.focus();
+            e.preventDefault();
+          }
+        } else if (document.activeElement === lastFocusableElement) {
+          firstFocusableElement.focus();
+          e.preventDefault();
+        }
+        break;
+    }
     if (e.key === 'ArrowLeft') {
       displayPreviousMedia();
     } else if (e.key === 'ArrowRight') {

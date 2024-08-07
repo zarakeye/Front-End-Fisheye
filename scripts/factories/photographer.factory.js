@@ -46,5 +46,8 @@ export const photographerFactory = {
   contactMe: (photographer) => {
     const contactModal = Contact(photographer);
     document.body.appendChild(contactModal);
+    const firstFocusableElement = document.querySelector('input');
+    console.log('document.activeElement', document.activeElement);
+    firstFocusableElement.focus();
   }
 }

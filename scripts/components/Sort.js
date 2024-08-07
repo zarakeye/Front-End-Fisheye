@@ -11,15 +11,14 @@ export function Sort() {
       id="sorts_wrapper"
       aria-activedescendant="popularity"
       aria-expanded="false">
-      <button id='expandCollapse' tabindex="-1" aria-disabled="true">
+      <button id='expandCollapse' aria-disabled="true">
         <i id="arrow" class="fa fa-chevron-down" aria-label="dérouler ou réduire les options de tri"></i>
       </button>
       <button
         role='tab'
         id='popularity'
         class='sortType active'
-        aria-selected='true'
-        tabindex='0'>
+        aria-selected='true'>
         Popularité
       </button>
       <hr>
@@ -27,8 +26,7 @@ export function Sort() {
         role='tab'
         class='sortType'
         id='date'
-        aria-selected='false'
-        tabindex='0'>
+        aria-selected='false'>
         Date
       </button>
       <hr>
@@ -36,8 +34,7 @@ export function Sort() {
         role='tab'
         class='sortType'
         id='title'
-        aria-selected='false'
-        tabindex='0'>
+        aria-selected='false'>
         Titre
       </button>
     </div>
@@ -53,9 +50,6 @@ export function Sort() {
     bubbles: true,
   });
 
-  // options.forEach((option) => option.setAttribute('tabindex', '0'));
-  
-
   const arrow = sortsWrapper.querySelector('#arrow');
 
   function collapseSortMenu() {
@@ -64,10 +58,8 @@ export function Sort() {
     options.forEach((option) => {
       if (!option.classList.contains('active')) {
         option.style.display = 'none';
-        // option.setAttribute('tabindex', '-1');
       } else {
         option.style.backgroundColor = 'transparent';
-        // option.setAttribute('tabindex', '0');
       }
     });
 
@@ -83,7 +75,6 @@ export function Sort() {
     sortsWrapper.ariaExpanded = 'true';
     options.forEach((option) => {
       option.style.display = 'block';
-      // option.setAttribute('tabindex', '0');
     });
     hrList.forEach((hr) => {
       hr.style.display = 'block';
@@ -179,25 +170,6 @@ export function Sort() {
         // Expand/collapse the sort menu when the user clicks on an option other than the already selected one
         else {
           updateActiveOption(e);
-          // // The old active option is set to inactive and the new active option is set to active
-          // activeOption.classList.remove('active');
-          // activeOption.setAttribute('aria-selected', 'false');
-          // activeOption.style.backgroundColor = 'transparent';
-          // activeOption.style.display = 'none';
-
-          // // The clicked option is set to active
-          // activeOption = e.target;
-          // e.target.classList.add('active');
-          // e.target.setAttribute('aria-selected', 'true');
-          // e.target.style.display = 'block';
-          // sortsWrapper.setAttribute('aria-activedescendant', e.target.id);
-          // collapseSortMenu();
-          // e.target.dispatchEvent(sortEvent);
-
-
-          options.forEach((item) => {
-            item.setAttribute('tabindex', '-1 ');
-          });
         }
       }
     }
