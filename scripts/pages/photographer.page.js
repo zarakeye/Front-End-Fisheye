@@ -17,7 +17,7 @@ export async function PhotographerPage(id) {
   // Header
   const header = Header();
   document.body.appendChild(header);
-  header.querySelector('a').focus();
+  // header.querySelector('a').focus();
 
   // Banner
   const banner = PhotographerBanner(photographer);

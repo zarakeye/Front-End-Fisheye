@@ -20,7 +20,7 @@ export function Contact(photographer) {
     <form class="form_contact" action="#" aria-label="Formulaire de contact">
       <div>
         <label for="firstname">Prénom</label>
-        <input type="text" id="firstName" aria-label="champ Prénom">
+        <input type="text" id="firstName" aria-label="champ Prénom" tabindex="0">
       </div>
       <div>
         <label for="firstname">Nom</label>

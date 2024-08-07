@@ -11,7 +11,7 @@ export function Sort() {
       id="sorts_wrapper"
       aria-activedescendant="popularity"
       aria-expanded="false">
-      <button id='expandCollapse' aria-disabled="true">
+      <button id='expandCollapse' aria-disabled="true" tabindex="-1">
         <i id="arrow" class="fa fa-chevron-down" aria-label="dérouler ou réduire les options de tri"></i>
       </button>
       <button
@@ -152,7 +152,9 @@ export function Sort() {
 
   document.addEventListener('click', (e) => {
     // Closes the sort menu if the user clicks outside of it
-    if (!sortsWrapper.contains(e.target)) {
+    e.preventDefault();
+    if (!sortsWrapper.contains(e.target)
+      && document.querySelectorAll('.modal').forEach((modal) => !modal.contains(e.target))) {
       collapseSortMenu();
     } else {
     

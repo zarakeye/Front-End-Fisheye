@@ -34,7 +34,6 @@ export const mediaFactory =  {
           class='media'
           src="assets/medias/photographers/${media.photographerId}/media/${media.media}"
           alt="${media.title}"
-          tabindex="0"
         >
       `;
     } else if (media.media.endsWith('.mp4')) {
@@ -45,7 +44,6 @@ export const mediaFactory =  {
           class='media'
           src="assets/medias/photographers/${media.photographerId}/media/${media.media}"
           alt="${media.title}"
-          tabindex="0"
         >
         </video>
       `;

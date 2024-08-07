@@ -17,6 +17,7 @@ export async function Lightbox(currentMedia) {
   const medias = mediaFactory.sortMediasBy(await mediaFactory.photographerMedias(currentMedia.photographerId), selectedSort);
 
   const thumbnails = medias.map((media) => mediaFactory.thumbnail(media)).join('');
+  Array.from(thumbnails).forEach((thumbnail) => thumbnail.removeAttribute('tabindex'));
 
   modalSelector.innerHTML += `
     <div id='go_to_previous_media' class='nav-lightbox'>
@@ -40,10 +41,10 @@ export async function Lightbox(currentMedia) {
   `;
 
 
-  const thumbnailsList = lightbox.querySelectorAll('.media');
+  // const thumbnailsList = lightbox.querySelectorAll('.media');
 
   let thumbnailSelector;
-  for (const item of thumbnailsList) {
+  for (const item of thumbnails/*List*/) {
     if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(currentMedia.id, 10)) {
       item.style.display = 'none';
     } else {

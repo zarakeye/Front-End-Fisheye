@@ -8,10 +8,11 @@ export function MediaCard (media) {
   card.id = `media_${media.id}`
 
   const likeButton = LikeButton(media);
-  
+  const thumbnail = mediaFactory.thumbnail(media);
+  thumbnail.setAttribute('tabindex', '0');
   card.innerHTML = `
       <figure class='media_wrapper'>
-        ${ mediaFactory.thumbnail(media) }
+        ${ thumbnail }
       </figure>
       <figcaption class='media_description'>
         <p class='media_title'>${media.title}</p>
