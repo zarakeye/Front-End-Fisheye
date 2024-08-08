@@ -1,4 +1,3 @@
-import { Lightbox } from "../components/Lightbox.js";
 import { mediaFactory } from "../factories/media.factory.js";
 import { LikeButton } from "../components/LikeButton.js";
 
@@ -8,11 +7,10 @@ export function MediaCard (media) {
   card.id = `media_${media.id}`
 
   const likeButton = LikeButton(media);
-  const thumbnail = mediaFactory.thumbnail(media);
-  thumbnail.setAttribute('tabindex', '0');
+  const thumbnailString = mediaFactory.thumbnail(media);
   card.innerHTML = `
       <figure class='media_wrapper'>
-        ${ thumbnail }
+        ${ thumbnailString }
       </figure>
       <figcaption class='media_description'>
         <p class='media_title'>${media.title}</p>
@@ -22,6 +20,8 @@ export function MediaCard (media) {
         </p>
       </figcaption>
   `;
+
+  card.querySelector('.media').setAttribute('tabindex', 0);
 
   const pMediaLikes = card.querySelector(`.media_likes`);
   pMediaLikes.appendChild(likeButton);

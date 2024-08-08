@@ -11,8 +11,8 @@ export function Sort() {
       id="sorts_wrapper"
       aria-activedescendant="popularity"
       aria-expanded="false">
-      <button id='expandCollapse' aria-disabled="true" tabindex="-1">
-        <i id="arrow" class="fa fa-chevron-down" aria-label="dérouler ou réduire les options de tri"></i>
+      <button id='expandCollapse' aria-disabled="true" aria-hidden="true" tabindex="-1">
+        <i id="arrow" class="fa fa-chevron-down"></i>
       </button>
       <button
         role='tab'
@@ -152,15 +152,20 @@ export function Sort() {
 
   document.addEventListener('click', (e) => {
     // Closes the sort menu if the user clicks outside of it
-    e.preventDefault();
-    if (!sortsWrapper.contains(e.target)
-      && document.querySelectorAll('.modal').forEach((modal) => !modal.contains(e.target))) {
-      collapseSortMenu();
-    } else {
+    
+    // if (!sortsWrapper.contains(e.target)
+    //   && document.querySelectorAll('.modal').forEach((modal) => !modal.contains(e.target))) {
+    if (!sortsWrapper.contains(e.target)) {
+      if (sortsWrapper.ariaExpanded === 'true') {
+        collapseSortMenu();
+      } else {
+        return;
+      }
+    }
     
   // sortsWrapper.addEventListener('click', (e) => { // Cases when the user clicks on an element of the sort menu
     
-    if (sortsWrapper.ariaExpanded === 'false') {
+    if (sortsWrapper.contains(e.target) && sortsWrapper.ariaExpanded === 'false') {
       expandSortMenu();
     } else {
     // Cases when the user clicks on an option
@@ -175,7 +180,7 @@ export function Sort() {
         }
       }
     }
-  }});
+  });
 
   sortsWrapper.addEventListener('keydown', (e) => {
     switch (e.key) {

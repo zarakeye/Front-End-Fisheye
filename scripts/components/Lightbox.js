@@ -16,8 +16,8 @@ export async function Lightbox(currentMedia) {
   const selectedSort = document.querySelector('#sort .active').id;
   const medias = mediaFactory.sortMediasBy(await mediaFactory.photographerMedias(currentMedia.photographerId), selectedSort);
 
-  const thumbnails = medias.map((media) => mediaFactory.thumbnail(media)).join('');
-  Array.from(thumbnails).forEach((thumbnail) => thumbnail.removeAttribute('tabindex'));
+  const thumbnailsStrings = medias.map((media) => mediaFactory.thumbnail(media)).join('');
+  
 
   modalSelector.innerHTML += `
     <div id='go_to_previous_media' class='nav-lightbox'>
@@ -27,24 +27,27 @@ export async function Lightbox(currentMedia) {
     </div>
     <figure>
       <div class='media_wrapper'>
-        ${thumbnails}
+        ${thumbnailsStrings}
       </div>
       <figcaption>
         <p class='media_title'>${ currentMedia.title }</p>
       </figcaption>
     </figure>
     <div id='go_to_next_media' class='nav-lightbox'>
-      <button class="next_media" aria-label="Media Suivant">
+      <button class="next_media" aria-label="Media Suivant" tabindex="0">
         <i id='next_media' class="fa fa-chevron-right nav-lightbox-btn" aria-label="Bouton Suivant"></i>
       </button>
     </div>
   `;
 
 
-  // const thumbnailsList = lightbox.querySelectorAll('.media');
+  const thumbnails = lightbox.querySelectorAll('.media');
+  Array.from(thumbnails).forEach((thumbnail) => thumbnail.removeAttribute('tabindex'));
+  console.log('thumbnails', thumbnails);
+
 
   let thumbnailSelector;
-  for (const item of thumbnails/*List*/) {
+  for (const item of thumbnails) {
     if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(currentMedia.id, 10)) {
       item.style.display = 'none';
     } else {

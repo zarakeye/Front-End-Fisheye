@@ -46,8 +46,21 @@ export const photographerFactory = {
   contactMe: (photographer) => {
     const contactModal = Contact(photographer);
     document.body.appendChild(contactModal);
-    const firstFocusableElement = document.querySelector('input');
-    console.log('document.activeElement', document.activeElement);
-    firstFocusableElement.focus();
+    const firstFocusableElement = contactModal.querySelector('input');
+    // firstFocusableElement.focus();
+
+    const form = document.querySelector('.form_contact');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const contact = {
+        firstName: formData.get('firstName'),
+        lastName: formData.get('lastName'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+      };
+      // Api.contact.postContact(newContact);
+      console.log('contact', contact);
+    })
   }
 }
