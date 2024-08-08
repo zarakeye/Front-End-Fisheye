@@ -21,7 +21,7 @@ export async function Lightbox(currentMedia) {
   modalSelector.innerHTML += `
     <div id='go_to_previous_media' class='nav-lightbox'>
       <button class="previous_media" aria-label="Media Precedent">
-        <i id='previous_media' class="fa fa-chevron-left nav-lightbox-btn" aria-label="Bouton Precedent"></i>
+        <i id='previous_media' class="fa fa-chevron-left nav-lightbox-btn"></i>
       </button>
     </div>
     <figure>
@@ -33,8 +33,8 @@ export async function Lightbox(currentMedia) {
       </figcaption>
     </figure>
     <div id='go_to_next_media' class='nav-lightbox'>
-      <button class="next_media" aria-label="Media Suivant" tabindex="0" selected>
-        <i id='next_media' class="fa fa-chevron-right nav-lightbox-btn" aria-label="Bouton Suivant"></i>
+      <button class="next_media" aria-label="Media Suivant" tabindex="0" role="button">
+        <i id='next_media' class="fa fa-chevron-right nav-lightbox-btn"></i>
       </button>
     </div>
   `;

@@ -16,12 +16,17 @@ export async function PhotographerPage(id) {
   const header = Header();
   document.body.appendChild(header);
 
+  // Main
+  const main = document.createElement('main');
+  main.id = 'main';
+  document.body.appendChild(main);
+
   // Banner
   const banner = PhotographerBanner(photographer);
-  document.body.appendChild(banner);
+  main.appendChild(banner);
 
   // Contact
-  document.body.addEventListener('contact', (e) => {
+  main.addEventListener('contact', (e) => {
     e.preventDefault();
     photographerFactory.contactMe(photographer);
   });
@@ -38,12 +43,12 @@ export async function PhotographerPage(id) {
 
   // Sort
   const sortSection = Sort(gallery);
-  document.body.appendChild(sortSection);
+  main.appendChild(sortSection);
 
   // Bind Gallery to DOM
-  document.body.appendChild(gallery);
+  main.appendChild(gallery);
 
-  document.body.addEventListener('sortEvent', (e) => {
+  main.addEventListener('sortEvent', (e) => {
     e.preventDefault();
     const sortBy = e.target.id;
     medias = mediaFactory.sortMediasBy(medias, sortBy);
@@ -52,7 +57,7 @@ export async function PhotographerPage(id) {
   });
 
   // Lightbox
-  document.body.addEventListener('mediaClicked', async (e) => {
+  main.addEventListener('mediaClicked', async (e) => {
     e.preventDefault();
     const mediaId = parseInt(e.target.id.split('_')[1], 10);
     const media = medias.find((media) => media.id === mediaId);
@@ -65,7 +70,7 @@ export async function PhotographerPage(id) {
   // FootNote
   const footNote = await FootNote(photographer);
 
-  document.body.appendChild(footNote);
+  main.appendChild(footNote);
 
   const focusableElements = document.body.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
   const firstFocusableElement = focusableElements[0];

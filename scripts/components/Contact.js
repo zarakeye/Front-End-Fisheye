@@ -48,41 +48,6 @@ export function Contact(photographer) {
   const closeModal = modalSelector.querySelector('.close-modal');
   closeModal.setAttribute('aria-label', 'Fermer la fenêtre de contact');
 
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.body.contains(modalSelector)) {
-      
-    }
-  });
-
-  // const focusableElements = document.querySelectorAll('input, textarea, button');
-  // let firstFocusableElement = focusableElements[0];
-  // let lastFocusableElement = focusableElements[focusableElements.length - 1];
-
-
-  // modalSelector.addEventListener('keydown', (e) => {
-  //   // e.preventDefault();
-  //   if (modalSelector.contains(e.target)){
-  //     if (e.key === 'Tab') {
-  //       if (e.shiftKey) {
-  //         if (e.target === firstFocusableElement) {
-  //           e.preventDefault();
-  //           lastFocusableElement.focus();
-  //           alert(`${lastFocusableElement} `);
-  //         }
-  //       } else {
-  //         if (e.target === lastFocusableElement) {
-  //           e.preventDefault();
-  //           firstFocusableElement.focus();
-  //           console.log('firstFocusableElement', firstFocusableElement);
-  //           alert(`${firstFocusableElement} `);
-  //         }
-  //       }
-  //     }
-  //   }
-  // });
-
-
-  
   const focusableElements = modalSelector.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
   const firstFocusableElement = focusableElements[0];
   const lastFocusableElement = focusableElements[focusableElements.length - 1];
