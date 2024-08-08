@@ -59,7 +59,7 @@ export async function PhotographerPage(id) {
     const lightbox = await Lightbox(media);
     document.body.appendChild(lightbox);
 
-    document.getElementById('go_to_next_media').focus();
+    // document.getElementById('next_media').focus();
   });
 
   // FootNote

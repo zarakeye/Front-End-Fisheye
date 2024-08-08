@@ -18,7 +18,6 @@ export async function Lightbox(currentMedia) {
 
   const thumbnailsStrings = medias.map((media) => mediaFactory.thumbnail(media)).join('');
   
-
   modalSelector.innerHTML += `
     <div id='go_to_previous_media' class='nav-lightbox'>
       <button class="previous_media" aria-label="Media Precedent">
@@ -34,17 +33,16 @@ export async function Lightbox(currentMedia) {
       </figcaption>
     </figure>
     <div id='go_to_next_media' class='nav-lightbox'>
-      <button class="next_media" aria-label="Media Suivant" tabindex="0">
+      <button class="next_media" aria-label="Media Suivant" tabindex="0" selected>
         <i id='next_media' class="fa fa-chevron-right nav-lightbox-btn" aria-label="Bouton Suivant"></i>
       </button>
     </div>
   `;
 
-
+  const nextBtn = lightbox.querySelector('.next_media');
+  nextBtn.focus();
   const thumbnails = lightbox.querySelectorAll('.media');
   Array.from(thumbnails).forEach((thumbnail) => thumbnail.removeAttribute('tabindex'));
-  console.log('thumbnails', thumbnails);
-
 
   let thumbnailSelector;
   for (const item of thumbnails) {
@@ -89,11 +87,11 @@ export async function Lightbox(currentMedia) {
   });
 
   
-  const focusableElements = lightbox.querySelectorAll('button');
-  console.log('focusableElements', focusableElements);
-  const firstFocusableElement = focusableElements[0];
+  // const focusableElements = lightbox.querySelectorAll('button');
+  // console.log('focusableElements', focusableElements);
+  // const firstFocusableElement = focusableElements[0];
 
-  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+  // const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
   const previousMediaBtn = lightbox.querySelector('#previous_media');
 
@@ -108,7 +106,7 @@ export async function Lightbox(currentMedia) {
       currentMediaIndex = mediasLength - 1;
     }
 
-    thumbnailsList.forEach((item) => {
+    thumbnails.forEach((item) => {
       if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(medias[currentMediaIndex].id, 10)) {
         item.style.display = 'none';
       } else {
@@ -124,7 +122,7 @@ export async function Lightbox(currentMedia) {
       currentMediaIndex = 0;
     }
 
-    thumbnailsList.forEach((item) => {
+    thumbnails.forEach((item) => {
       if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(medias[currentMediaIndex].id, 10)) {
         item.style.display = 'none';
       } else {
@@ -134,7 +132,8 @@ export async function Lightbox(currentMedia) {
   }
 
   previousMediaBtn.addEventListener('click', () => {
-    displayPreviousMedia();    
+    console.log('blablabla');    
+    displayPreviousMedia();
   });
 
   
@@ -149,7 +148,11 @@ export async function Lightbox(currentMedia) {
     }
   });
 
-  document.addEventListener('keydown', (e) => {
+  const focusableElements = modalSelector.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+  modalSelector.addEventListener('keydown', (e) => {
     switch (e.key) {
       case 'ArrowLeft':
         displayPreviousMedia();
@@ -159,24 +162,21 @@ export async function Lightbox(currentMedia) {
         displayNextMedia();
         break;
 
-      case 'tab':
+      case 'Tab':
         if (e.shiftKey) {
           if (document.activeElement === firstFocusableElement) {
-            lastFocusableElement.focus();
             e.preventDefault();
+            lastFocusableElement.focus();
           }
         } else if (document.activeElement === lastFocusableElement) {
-          firstFocusableElement.focus();
           e.preventDefault();
+          firstFocusableElement.focus();
         }
         break;
     }
-    if (e.key === 'ArrowLeft') {
-      displayPreviousMedia();
-    } else if (e.key === 'ArrowRight') {
-      displayNextMedia();
-    }
   });
+
+
 
   return lightbox;
 }
