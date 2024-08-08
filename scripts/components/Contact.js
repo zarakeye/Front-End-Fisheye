@@ -42,7 +42,6 @@ export function Contact(photographer) {
   `;
 
   modalSelector.setAttribute('aria-modal', 'true');
-  const modalTitle = modalSelector.querySelector('.modal_title');
   modalSelector.setAttribute('aria-label', 'Formulaire de contact');
 
   const closeModal = modalSelector.querySelector('.close-modal');
@@ -75,38 +74,25 @@ export function Contact(photographer) {
   });
 
   closeModal.addEventListener('click', () => {
-    contact.style.display = 'none';
+    // contact.style.display = 'none';
+    document.body.removeChild(contact);
+    contact.remove();
   });
 
-  // const form = contact.querySelector('form');
-  // form.addEventListener('submit', (e) => {
-  //   e.preventDefault();
+  const form = contact.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  //   const formData = new FormData(form);
-  //   // const data = {};
-  //   // formData.forEach((value, key) => {
-  //   //   data[key] = value;
-  //   // });
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
 
-  //   const firstName = formData.get('firstName').trim();
-  //   const lastName = formData.get('lastName').trim();
-  //   const email = formData.get('email').trim();
-  //   const message = formData.get('message').trim();
-  //   // const data = {
-  //   //   firstName,
-  //   //   lastName,
-  //   //   email,
-  //   //   message
-  //   // };
+    console.log('data', data);
 
-  //   console.log('formData', formData.entries());
-  //   console.log('data', data);
-  //   // contact.style.display = 'none';
-  //   let submitEvent = new Event('formSubmitted', {bubbles: true});
-  //   form.dispatchEvent(submitEvent);
-
-  //   // alert(data);
-  // });
+    document.body.removeChild(contact);
+    contact.remove();  });
 
   return contact;
 }

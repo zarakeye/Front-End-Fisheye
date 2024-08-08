@@ -1,6 +1,4 @@
-import { mediaFactory } from "../factories/media.factory.js";
 import { photographerFactory } from "../factories/photographer.factory.js";
-import { Photographer } from "../models/photographer.model.js";
 
 export function LikeButton (media) {
   const likeButton = document.createElement('button');

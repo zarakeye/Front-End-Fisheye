@@ -39,6 +39,9 @@ export async function Lightbox(currentMedia) {
     </div>
   `;
 
+  modalSelector.setAttribute('aria-modal', 'true');
+  modalSelector.setAttribute('role', 'dialog');
+
   const nextBtn = lightbox.querySelector('.next_media');
   nextBtn.focus();
   const thumbnails = lightbox.querySelectorAll('.media');
@@ -85,13 +88,6 @@ export async function Lightbox(currentMedia) {
   closeBtn.addEventListener('click', () => {
     document.querySelector('#lightbox').remove();
   });
-
-  
-  // const focusableElements = lightbox.querySelectorAll('button');
-  // console.log('focusableElements', focusableElements);
-  // const firstFocusableElement = focusableElements[0];
-
-  // const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
   const previousMediaBtn = lightbox.querySelector('#previous_media');
 
