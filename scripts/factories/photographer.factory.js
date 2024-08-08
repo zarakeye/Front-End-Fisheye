@@ -47,7 +47,7 @@ export const photographerFactory = {
     const contactModal = Contact(photographer);
     document.body.appendChild(contactModal);
     const firstFocusableElement = contactModal.querySelector('input');
-    // firstFocusableElement.focus();
+    firstFocusableElement.focus();
 
     const form = document.querySelector('.form_contact');
     form.addEventListener('submit', (e) => {
