@@ -50,7 +50,6 @@ export function Contact(photographer) {
   const focusableElements = modalSelector.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
   const firstFocusableElement = focusableElements[0];
   const lastFocusableElement = focusableElements[focusableElements.length - 1];
-  console.log('focusableElements', focusableElements);
 
   modalSelector.addEventListener('keydown', function (e) {
     // if (isInTopFocusTrap()) {

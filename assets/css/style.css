@@ -278,11 +278,10 @@ h1 {
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: fl;
+  justify-content: center;
   background-color: #FFFFFF;
   border-radius: 5px;
   padding-top: 10px;
-  width: 90vw;
 }
 #lightbox .modal figure {
   display: flex;
@@ -301,6 +300,10 @@ h1 {
 #lightbox .modal figure .media {
   cursor: default;
 }
+#lightbox .modal figure .media_title {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 #lightbox .modal figure figcaption {
   display: flex;
   justify-content: flex-start;
@@ -311,22 +314,14 @@ h1 {
 }
 
 .nav-lightbox {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 15%;
   cursor: pointer;
 }
-.nav-lightbox:hover {
-  background-color: #901C1C;
-}
-.nav-lightbox:hover i {
-  color: #FFFFFF;
-}
-.nav-lightbox[id=go_to_next_media] {
-  position: relative;
-}
-.nav-lightbox[id=go_to_next_media] .close-modal {
+.nav-lightbox .close-modal {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -338,23 +333,26 @@ h1 {
   color: #901C1C;
   border: none;
   border-radius: 5px;
-  padding: 15px;
   cursor: pointer;
   top: 10px;
   right: 50%;
   transform: translateX(50%);
   z-index: 2;
 }
-.nav-lightbox[id=go_to_next_media] .close-modal .fa-times {
-  color: #901C1C;
+.nav-lightbox .close-modal:hover {
+  background-color: #901C1C;
+  color: #FFFFFF;
 }
-.nav-lightbox .nav-lightbox-btn {
-  display: inline-block;
-  cursor: pointer;
+.nav-lightbox .navBtn {
+  width: 80%;
+  background-color: #FFFFFF;
   color: #901C1C;
-  font-size: 24px;
+  border: none;
+  font-size: 42px;
+  border-radius: 5px;
 }
-.nav-lightbox .nav-lightbox-btn:hover {
+.nav-lightbox .navBtn:hover {
+  background-color: #901C1C;
   color: #FFFFFF;
 }
 

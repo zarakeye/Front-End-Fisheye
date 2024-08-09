@@ -39,7 +39,6 @@ export async function PhotographerPage(id) {
     if (activeElementBeforeContactModal === null) {
       activeElementBeforeContactModal = e.target;
     }
-    console.log('activeElementBeforeContactModal at contact', activeElementBeforeContactModal);
 
     photographerFactory.contactMe(photographer);
   });
@@ -75,7 +74,6 @@ export async function PhotographerPage(id) {
     if (activeElementBeforeLightbox === null) {
       activeElementBeforeLightbox = e.target;
     }
-    console.log('activeElementBeforeLightbox at openLightbox', activeElementBeforeLightbox);
     const mediaId = parseInt(e.target.id.split('_')[1], 10);
     const clickedMedia = medias.find((media) => media.id === mediaId);
     const lightbox = await Lightbox(clickedMedia, medias);
@@ -114,13 +112,10 @@ export async function PhotographerPage(id) {
   });
 
   document.addEventListener('closeModal', () => {
-    console.log('close modal');
     if (activeElementBeforeLightbox) {
-      console.log('activeElementBeforeLightbox at closeModal', activeElementBeforeLightbox);
       activeElementBeforeLightbox.focus();
       activeElementBeforeLightbox = null;
     } else if (activeElementBeforeContactModal) {
-      console.log('activeElementBeforeContactModal at closeModal', activeElementBeforeContactModal);
       activeElementBeforeContactModal.focus();
       activeElementBeforeContactModal = null;
     }
