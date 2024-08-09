@@ -29,7 +29,8 @@ export function PhotographerBanner(photographer) {
     let contactMeEvent = new Event('contact', {
       bubbles: true
     });
-    contactButton.addEventListener('click', () => {
+
+    contactButton.addEventListener('click', (e) => {
       contactButton.dispatchEvent(contactMeEvent);
     });
 

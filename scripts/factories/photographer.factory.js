@@ -7,11 +7,11 @@ import { Contact } from "../components/Contact.js";
 
 
 export const photographerFactory = {
-  photographer: async (id) => {
-    const photographersDatas = await Api.photographers.getPhotographers();
-    const photographerDatas = photographersDatas.find((photographer) => photographer.id === id);
-    return new Photographer(photographerDatas);
-  },
+  // photographer: async (id) => {
+  //   const photographersDatas = await Api.photographers.getPhotographers();
+  //   const photographerDatas = photographersDatas.find((photographer) => photographer.id === id);
+  //   return new Photographer(photographerDatas);
+  // },
   
   homepageHeader: () => {
     const header = Header();
@@ -34,13 +34,12 @@ export const photographerFactory = {
     return photographersGrid;
   },
 
-  totalLikes: async (photographer) => {
-    const medias = await mediaFactory.photographerMedias(photographer.id);
-
-    medias.forEach((media) => {
-      photographer.likes += media.likes;
+  totalLikes: (photographerMedias) => {
+    let totalLikes = 0;
+    photographerMedias.forEach((media) => {
+      totalLikes += media.likes;
     });
-    return photographer.likes;
+    return totalLikes;
   },
 
   contactMe: (photographer) => {

@@ -53,7 +53,6 @@ export function Contact(photographer) {
   console.log('focusableElements', focusableElements);
 
   modalSelector.addEventListener('keydown', function (e) {
-    
     // if (isInTopFocusTrap()) {
     if (modalSelector.contains(e.target)){
       console.log('isInTopFocusTrap', isInTopFocusTrap());
@@ -73,8 +72,12 @@ export function Contact(photographer) {
     }
   });
 
+  const closeModalEvent = new Event('closeModal', {
+    bubbles: true
+  });
+
   closeModal.addEventListener('click', () => {
-    // contact.style.display = 'none';
+    closeModal.dispatchEvent(closeModalEvent);
     document.body.removeChild(contact);
     contact.remove();
   });
@@ -89,10 +92,14 @@ export function Contact(photographer) {
       data[key] = value;
     });
 
+    // TODO: Validation
+
+    // TODO: Send data
     console.log('data', data);
 
     document.body.removeChild(contact);
-    contact.remove();  });
+    contact.remove();
+  });
 
   return contact;
 }

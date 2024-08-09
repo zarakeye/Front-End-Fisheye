@@ -1,4 +1,7 @@
+import { Api } from "../api/index.js";
 import { Header } from "../components/Header.js";
+import { Photographer } from "../models/photographer.model.js";
+import { Media } from "../models/media.model.js";
 import { PhotographerBanner } from "../components/PhotographerBanner.js";
 import { photographerFactory } from "../factories/photographer.factory.js";
 import { mediaFactory } from "../factories/media.factory.js";
@@ -9,9 +12,14 @@ import { isInTopFocusTrap } from "../helpers/isInTopFocusTrap.js";
 
 export async function PhotographerPage(id) {
   // Extraction of datas of photographers and his medias, then creation of new Photographer and Media objects
-  let photographer = await photographerFactory.photographer(id);
-  let medias = await mediaFactory.photographerMedias(id);
-  
+  // let photographer = await photographerFactory.photographer(id);
+  const photographerDatas = await Api.photographers.getPhotographerById(id);
+  const photographer = new Photographer(photographerDatas);
+
+  // let medias = await mediaFactory.photographerMedias(id);
+  const mediasDatas = await Api.medias.getMediasByPhotographerId(id);
+  let medias = mediasDatas.map((media) => new Media(media));
+
   // Header
   const header = Header();
   document.body.appendChild(header);
@@ -26,13 +34,18 @@ export async function PhotographerPage(id) {
   main.appendChild(banner);
 
   // Contact
+  let activeElementBeforeContactModal = null;
   main.addEventListener('contact', (e) => {
-    e.preventDefault();
+    if (activeElementBeforeContactModal === null) {
+      activeElementBeforeContactModal = e.target;
+    }
+    console.log('activeElementBeforeContactModal at contact', activeElementBeforeContactModal);
+
     photographerFactory.contactMe(photographer);
   });
  
   // Cards
-  let cards = medias.map((media) => mediaFactory.createCard(media));
+  let cards = medias.map((media) => mediaFactory.createCard(photographer, media));
   medias = mediaFactory.sortMediasBy(medias, 'popularity');
   cards = mediaFactory.sortCardsBy(cards, 'popularity');
 
@@ -57,18 +70,22 @@ export async function PhotographerPage(id) {
   });
 
   // Lightbox
+  let activeElementBeforeLightbox = null;
   main.addEventListener('mediaClicked', async (e) => {
-    e.preventDefault();
+    if (activeElementBeforeLightbox === null) {
+      activeElementBeforeLightbox = e.target;
+    }
+    console.log('activeElementBeforeLightbox at openLightbox', activeElementBeforeLightbox);
     const mediaId = parseInt(e.target.id.split('_')[1], 10);
-    const media = medias.find((media) => media.id === mediaId);
-    const lightbox = await Lightbox(media);
+    const clickedMedia = medias.find((media) => media.id === mediaId);
+    const lightbox = await Lightbox(clickedMedia, medias);
     document.body.appendChild(lightbox);
 
     document.querySelector('.next_media').focus();
   });
 
   // FootNote
-  const footNote = await FootNote(photographer);
+  const footNote = FootNote(photographer, medias);
 
   main.appendChild(footNote);
 
@@ -93,6 +110,19 @@ export async function PhotographerPage(id) {
           }
         }
       }
+    }
+  });
+
+  document.addEventListener('closeModal', () => {
+    console.log('close modal');
+    if (activeElementBeforeLightbox) {
+      console.log('activeElementBeforeLightbox at closeModal', activeElementBeforeLightbox);
+      activeElementBeforeLightbox.focus();
+      activeElementBeforeLightbox = null;
+    } else if (activeElementBeforeContactModal) {
+      console.log('activeElementBeforeContactModal at closeModal', activeElementBeforeContactModal);
+      activeElementBeforeContactModal.focus();
+      activeElementBeforeContactModal = null;
     }
   });
 }

@@ -1,27 +1,13 @@
-import { Api } from "../api/index.js";
 import { MediaCard } from "../components/MediaCard.js";
-import { Media } from "../models/media.model.js";
 
 export const mediaFactory =  {
-  photographerMedias: async (photographerId) => {
-    const allMediasDatas = await Api.medias.getMedias()
-    const photographerMediasDatas = allMediasDatas.filter((media) => media.photographerId === photographerId);
-    const mediasObjects = [];
-    photographerMediasDatas.map((media) => {
-      media.isAlreadyLiked = false;
-      mediasObjects.push(new Media(media));
-    });
-    
-    return mediasObjects;
-  },
-
-  createCard: (media) => {
+  createCard: (photographer, media) => {
     const mediasGrid = document.createElement("main");
     mediasGrid.className = "mediasGrid";
     if (! mediaFactory.isMediaExist(media)) {
       console.log(`Le fichier medias/photographers/${media.photographerId}/media/${media.media} n\'existe pas`);
     } else {
-      return MediaCard(media);
+      return MediaCard(photographer, media);
     }
   },
 

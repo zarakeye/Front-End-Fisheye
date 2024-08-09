@@ -10,8 +10,20 @@ export function Modal() {
     </div>
   `;
 
+  const closeModalBtn = modal.querySelector('.close-modal');
+
+  const closeModalEvent = new Event('closeModal', {
+    bubbles: true
+  });
+
+  closeModalBtn.addEventListener('click', () => {
+    modal.dispatchEvent(closeModalEvent);
+    modal.parentElement.remove();
+  });
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      modal.dispatchEvent(closeModalEvent);
       modal.parentElement.remove();
     }
   });

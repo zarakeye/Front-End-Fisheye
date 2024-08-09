@@ -1,7 +1,7 @@
 import { Modal } from './Modal.js';
 import { mediaFactory } from '../factories/media.factory.js';
 
-export async function Lightbox(currentMedia) {
+export async function Lightbox(currentMedia, medias) {
   // Creation of the DOM element which contains the lightbox
   const lightbox = document.createElement('aside');
   lightbox.id = 'lightbox';
@@ -14,7 +14,7 @@ export async function Lightbox(currentMedia) {
 
   // Retrieve the list of medias from the same photographer than the current one
   const selectedSort = document.querySelector('#sort .active').id;
-  const medias = mediaFactory.sortMediasBy(await mediaFactory.photographerMedias(currentMedia.photographerId), selectedSort);
+  medias = mediaFactory.sortMediasBy(medias, selectedSort);
 
   const thumbnailsStrings = medias.map((media) => mediaFactory.thumbnail(media)).join('');
   
@@ -57,7 +57,6 @@ export async function Lightbox(currentMedia) {
   }
   const wrapper = modalSelector.querySelector('.media_wrapper');
   
-
   const thumbnailObject = new Image();
   thumbnailObject.src = thumbnailSelector.getAttribute('src');
   thumbnailObject.onload = () => {
@@ -73,19 +72,17 @@ export async function Lightbox(currentMedia) {
   const closeBtn = modalSelector.querySelector('.close-modal');
   modalSelector.removeChild(closeBtn);
 
-  // const nextMediaBtn = lightbox.querySelector('#next_media');
   const goToNextMedia = lightbox.querySelector('#go_to_next_media');
   const goToPreviousMedia = lightbox.querySelector('#go_to_previous_media');
 
-
-  
-  lightbox.addEventListener('keydown', (e) => {
-    
-  })
-
   goToNextMedia.appendChild(closeBtn);
 
+  const closeModalEvent = new Event('closeModal', {
+    bubbles: true
+  });
+
   closeBtn.addEventListener('click', () => {
+    lightbox.dispatchEvent(closeModalEvent);
     document.querySelector('#lightbox').remove();
   });
 
@@ -131,13 +128,10 @@ export async function Lightbox(currentMedia) {
     console.log('blablabla');    
     displayPreviousMedia();
   });
-
-  
+ 
   lightbox.addEventListener('click', async (e) => {
     if (goToNextMedia.contains(e.target)) {
       displayNextMedia();
-      // closeBtn.style.backgroundColor = '$quaternary-color-light';
-
     }
     if (goToPreviousMedia.contains(e.target)) {
       displayPreviousMedia();
@@ -171,8 +165,6 @@ export async function Lightbox(currentMedia) {
         break;
     }
   });
-
-
 
   return lightbox;
 }

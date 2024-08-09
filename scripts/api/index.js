@@ -1,13 +1,29 @@
 export const Api = {
-  photographers: {
-    getPhotographers : async function() {
+  datas: {
+    getDatas: async function () {
       try {
         const response = await fetch('../../data/photographers.json');
         const datas = await response.json();
-
-        return datas.photographers;
+        return datas;
       } catch (error) {
-        console.log('an error occured when fetching photographers datas : ', error);
+        console.error('an error occured when fetching datas : ', error);
+      }
+    }
+  },
+
+  photographers: {
+    getPhotographers : async function() {
+      try {
+        return await Api.datas.getDatas().then((datas) => datas.photographers);
+      } catch (error) {
+        console.error('an error occured when fetching photographers datas : ', error);
+      }
+    },
+    getPhotographerById : async function(photographerId) {
+      try {
+        return await Api.photographers.getPhotographers().then((photographers) => photographers.find((photographer) => photographer.id === photographerId));
+      } catch (error) {
+        console.error('an error occured when fetching photographer datas : ', error);
       }
     }
   },
@@ -15,13 +31,17 @@ export const Api = {
   medias: {
     getMedias : async function () {
         try {
-            const response = await fetch('../../data/photographers.json');
-            const datas = await response.json();
-            
-            return datas.media;
+          return await Api.datas.getDatas().then((datas) => datas.media);
         } catch (error) {
-            console.log('an error occured when fetching medias datas : ', error);
+            console.error('an error occured when fetching medias datas : ', error);
         }
+    },
+    getMediasByPhotographerId : async function(photographerId) {
+      try {
+        return await Api.medias.getMedias().then((medias) => medias.filter((media) => media.photographerId === photographerId));
+      } catch (error) {
+        console.error('an error occured when fetching medias datas : ', error);
+      }
     }
   }
 }

@@ -1,24 +1,24 @@
 import { mediaFactory } from "../factories/media.factory.js";
 import { LikeButton } from "../components/LikeButton.js";
 
-export function MediaCard (media) {
+export function MediaCard (photographer, media) {
   const card = document.createElement('article');
   card.className = 'media_card';
   card.id = `media_${media.id}`
 
-  const likeButton = LikeButton(media);
+  const likeButton = LikeButton(photographer,media);
   const thumbnailString = mediaFactory.thumbnail(media);
   card.innerHTML = `
-      <figure class='media_wrapper'>
-        ${ thumbnailString }
-      </figure>
-      <figcaption class='media_description'>
-        <p class='media_title'>${media.title}</p>
-        <p class='media_date sr-only'>${media.date}</p>
-        <p class='media_likes'>
-          <span id='nbLikes_${media.id}'> ${media.likes}</span>
-        </p>
-      </figcaption>
+    <figure class='media_wrapper'>
+      ${ thumbnailString }
+    </figure>
+    <figcaption class='media_description'>
+      <p class='media_title'>${media.title}</p>
+      <p class='media_date sr-only'>${media.date}</p>
+      <p class='media_likes'>
+        <span id='nbLikes_${media.id}'>${media.likes}</span>
+      </p>
+    </figcaption>
   `;
 
   card.querySelector('.media').setAttribute('tabindex', 0);
@@ -34,7 +34,6 @@ export function MediaCard (media) {
 
   card.addEventListener('click', (e) => {
     if (!mediaDescription.contains(e.target)) {
-      // Lightbox(media);
       e.target.dispatchEvent(mediaClickedEvent);
     }
   });
@@ -48,10 +47,6 @@ export function MediaCard (media) {
         if (!likeButton.contains(e.target)) {
           e.preventDefault();
           e.target.dispatchEvent(mediaClickedEvent);
-        } else {
-          e.preventDefault();
-          likeButton.click();
-          likeButton.focus();
         }
         break;
     }
