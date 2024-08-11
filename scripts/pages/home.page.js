@@ -1,7 +1,7 @@
 import { Api } from "../api/index.js";
 import { Photographer } from "../models/photographer.model.js";
 import { photographerFactory } from "../factories/photographer.factory.js";
-import { Header } from "../components/Header.js";
+import { PhotographerCard } from "../components/PhotographerCard.js";
 import { isInTopFocusTrap } from "../helpers/isInTopFocusTrap.js";
 
 export async function HomePage() {
@@ -15,8 +15,19 @@ export async function HomePage() {
   const header = photographerFactory.homepageHeader();
   document.body.appendChild(header);
 
+  // Main
+  const main = document.createElement('main');
+  document.body.appendChild(main);
+
   // Photographers grid
-  photographerFactory.photographersGrid(photographers, root);
+  const grid = document.createElement('section');
+  grid.className = 'photographersGrid';
+  main.appendChild(grid);
+
+  // Card of each photographer
+  const cards = photographers.map((photographer) => PhotographerCard(photographer));
+
+  grid.append(...cards);
 
   const focusableElements = document.body.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
   const firstFocusableElement = focusableElements[0];

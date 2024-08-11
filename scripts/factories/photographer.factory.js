@@ -22,17 +22,6 @@ export const photographerFactory = {
 
     return header;
   },
-  photographersGrid: (photographers, parentDOMElement) => {
-    const photographersGrid = document.createElement("main");
-    photographersGrid.className = "photographersGrid";
-    parentDOMElement.appendChild(photographersGrid);
-
-    photographers.map((photographer) => {
-      PhotographerCard(photographer, photographersGrid);
-    })
-
-    return photographersGrid;
-  },
 
   totalLikes: (photographerMedias) => {
     let totalLikes = 0;
