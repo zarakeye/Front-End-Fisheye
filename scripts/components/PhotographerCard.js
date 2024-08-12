@@ -4,15 +4,16 @@ export function PhotographerCard(photographer) {
     card.className = 'photographer_link';
     card.innerHTML = `
       <figure class='photographer_portrait_wrapper'>
-        <div class='photographer_portrait_background' style='background-image: url(assets/medias/photographers/${photographer.id}/${photographer.portrait});'></div>
-        <div class='photographer_portrait_blurFilter_card'></div>
-        <div class='photographer_portrait_overlay'>
-          <img
-            class='photographer_portrait'
-            src='assets/medias/photographers/${photographer.id}/${photographer.portrait}'
-            alt='portrait of ${photographer.name}'
-          >
+        <div class="photographer_portrait_background_wrapper">
+          <img class="photographer_portrait_background" src="assets/medias/photographers/${photographer.id}/${photographer.portrait}">
+          <div class="photographer_portrait_blurFilter">
+          <div class="mask">
+            <img class="photographer_portrait" src="assets/medias/photographers/${photographer.id}/${photographer.portrait}">
+          </div>
+          </div>
+          
         </div>
+
       </figure>
       <figcaption class='photographer_description'>
         <h2 class='photographer_name' aria-label='nom de l'artiste'>${photographer.name}</h2>
