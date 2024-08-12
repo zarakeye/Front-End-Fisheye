@@ -43,9 +43,6 @@
 #sort #sorts_wrapper .sortType.active {
   display: block;
 }
-#sort #sorts_wrapper .sortType:first-of-type {
-  padding-top: 23px;
-}
 #sort #sorts_wrapper .sortType:first-of-type:hover {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -67,7 +64,8 @@
 #sort #expandCollapse {
   position: absolute;
   cursor: pointer;
-  top: 5px;
+  top: 16px;
+  font-size: 16px;
   right: 10px;
   border: none;
   background-color: transparent;

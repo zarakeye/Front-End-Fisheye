@@ -42,9 +42,15 @@ export function Sort() {
 
   const sortsWrapper = sort.querySelector('#sorts_wrapper');
   const options = sortsWrapper.querySelectorAll('.sortType');
+
   const hrList = sortsWrapper.querySelectorAll('hr');
+  
 
   let activeOption = sortsWrapper.querySelector('.active');
+
+  if (sortsWrapper.ariaExpanded === 'false') {
+    activeOption.style.paddingTop = '23px';
+  }
 
   let sortEvent= new Event('sortEvent', {
     bubbles: true,
@@ -58,6 +64,7 @@ export function Sort() {
     options.forEach((option) => {
       if (!option.classList.contains('active')) {
         option.style.display = 'none';
+        option.style.paddingTop = '14px';
       } else {
         option.style.backgroundColor = 'transparent';
       }
@@ -68,6 +75,7 @@ export function Sort() {
     });
 
     activeOption.focus();
+    activeOption.style.paddingTop = '23px';
   }
 
   function expandSortMenu() {
@@ -75,7 +83,9 @@ export function Sort() {
     sortsWrapper.ariaExpanded = 'true';
     options.forEach((option) => {
       option.style.display = 'block';
+      option.style.paddingTop = '14px';
     });
+    options[0].style.paddingTop = '23px';
     hrList.forEach((hr) => {
       hr.style.display = 'block';
     });
