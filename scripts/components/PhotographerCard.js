@@ -11,7 +11,6 @@ export function PhotographerCard(photographer) {
             <img class="photographer_portrait" src="assets/medias/photographers/${photographer.id}/${photographer.portrait}">
           </div>
           </div>
-          
         </div>
 
       </figure>
@@ -22,6 +21,6 @@ export function PhotographerCard(photographer) {
         <p class='photographer_price' aria-label='tarif journalier'>${photographer.price}€/jour</p>
       </figcaption>
     `;
-
+    
     return card;
 }

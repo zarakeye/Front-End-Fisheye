@@ -69,47 +69,49 @@ h1 {
 }
 .photographer_portrait {
   position: relative;
-  width: 150em;
+  width: 160em;
   margin: 0;
   padding: 0;
 }
 .photographer_portrait_wrapper {
   position: relative;
   font-size: 2px;
+  margin: 0;
 }
 .photographer_portrait_background {
   position: absolute;
-  top: 50%;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
-  width: 150em;
+  width: 160em;
   margin: 0;
   padding: 0;
+  border-radius: 50%;
 }
 .photographer_portrait_background_wrapper {
   position: relative;
-  width: 100em;
+  width: 100%;
   height: 110em;
-  overflow: hidden;
+  overflow: clip;
   margin: 0;
   padding: 0;
+}
+.photographer_portrait_background.square {
+  width: 100em;
 }
 .photographer_portrait_blurFilter {
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100em;
-  height: 110em;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0) 3%, rgba(250, 250, 250, 0.99) 70%, rgb(255, 255, 255) 100%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle closest-corner, transparent 0.1%, white 74.5%);
   margin: 0;
   padding: 0;
 }
-.photographer_portrait_card {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgb(250, 250, 250) 100%);
+.photographer_portrait.square {
+  width: 100em;
 }
 .photographer_overlay {
   position: absolute;
@@ -163,13 +165,11 @@ h1 {
   margin: 40px 100px 20px 100px;
   padding: 50px 57px;
 }
-.photographer_banner_portrait_blurFilter {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgb(255, 255, 255) 100%);
-}
 
 .mask {
   position: relative;
-  top: 5em;
+  top: 50%;
+  transform: translate(0, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -450,7 +450,7 @@ h1 {
 #sort #expandCollapse {
   position: absolute;
   cursor: pointer;
-  top: 5px;
+  top: 13px;
   font-size: 16px;
   right: 10px;
   border: none;
@@ -478,6 +478,7 @@ h1 {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
+  color: transparent;
   border: none;
 }
 .media_card {

@@ -19,24 +19,26 @@
     &_wrapper {
       position: relative;
       font-size: 2px;
+      margin: 0;
     }
     
     &_background {
       &_wrapper {
         position: relative;
-        width: 100em;
+        width: 100%;
         height: 110em;
-        overflow: hidden;
+        overflow: clip;
         margin: 0;
         padding: 0;
       }
       position: absolute;
-      top: 50%;
       left: 50%;
+      top: 50%;
       transform: translate(-50%, -50%);
-      width: 150em;
+      width: 160em;
       margin: 0;
       padding: 0;
+      border-radius: 50%;
     }
     
     &_blurFilter {
@@ -44,27 +46,16 @@
       top: 50%;
       left: 50%;
       transform:translate(-50%, -50%);
-      width: 100em;
-      height: 110em;
-      background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0) 3% ,
-          rgba(250, 250, 250, .99) 70%,
-          rgba(255, 255, 255, 1) 100%);
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle closest-corner, transparent .1%, white  74.5%);
       margin: 0;
       padding: 0;
     }
-    &_card {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgba(250, 250, 250, 1) 100%);
-    }
     position: relative;
-    width: 150em;
+    width: 160em;
     margin: 0;
     padding: 0;
-    // object-position: 0 5em;
   }
     
   &_overlay {
@@ -124,18 +115,13 @@
     height: 313px;
     margin: 40px 100px 20px 100px;
     padding: 50px 57px;
-
-    &_portrait_blurFilter {
-      background: radial-gradient(circle, rgba(255, 255, 255, 0) 0.1%, rgba(255, 255, 255, 0.97) 65%, rgba(255, 255, 255, 1) 100%);
-    }
   }
-  
-
 }
 
 .mask {
   position: relative;
-  top: 5em;
+  top: 50%;
+  transform: translate(0, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
