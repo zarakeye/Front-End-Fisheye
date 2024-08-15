@@ -32,6 +32,7 @@ export const mediaFactory =  {
           src="assets/medias/photographers/${media.photographerId}/media/${media.media}"
           alt="${media.title}"
           aria-label="${media.title}"
+          controls
         >
         </video>
       `;
