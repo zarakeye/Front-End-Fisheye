@@ -41,6 +41,7 @@ export async function Lightbox(currentMedia, medias) {
 
   modalSelector.setAttribute('aria-modal', 'true');
   modalSelector.setAttribute('role', 'dialog');
+  const mediaTitle = modalSelector.querySelector('.media_title');
 
   const nextBtn = lightbox.querySelector('.next_media');
   nextBtn.focus();
@@ -99,6 +100,8 @@ export async function Lightbox(currentMedia, medias) {
       currentMediaIndex = mediasLength - 1;
     }
 
+    mediaTitle.textContent = medias[currentMediaIndex].title;
+
     thumbnails.forEach((item) => {
       if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(medias[currentMediaIndex].id, 10)) {
         item.style.display = 'none';
@@ -114,6 +117,8 @@ export async function Lightbox(currentMedia, medias) {
     if (currentMediaIndex >= medias.length) {
       currentMediaIndex = 0;
     }
+
+    mediaTitle.textContent = medias[currentMediaIndex].title;
 
     thumbnails.forEach((item) => {
       if (parseInt(item.getAttribute('data-id'), 10) !== parseInt(medias[currentMediaIndex].id, 10)) {
