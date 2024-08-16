@@ -12,7 +12,7 @@ export function MediaCard (photographer, media) {
     <figure class='media_wrapper'>
       ${ thumbnailString }
     </figure>
-    <figcaption class='media_description'>
+    <figcaption class='media_description' tabindex='0' aria-label='nombre de likes ${media.likes} sur ${media.title}'>
       <p class='media_title'>${media.title}</p>
       <p class='media_date sr-only'>${media.date}</p>
       <p class='media_likes'>
