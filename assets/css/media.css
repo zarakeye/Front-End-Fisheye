@@ -6,7 +6,7 @@
   row-gap: 20px;
   -moz-column-gap: 95px;
        column-gap: 95px;
-  margin: 50px 100px;
+  margin: 50px 0;
 }
 
 .media {
@@ -43,4 +43,4 @@
   margin: 0;
   font-size: 18px;
   line-height: 31.25px;
-}/*# sourceMappingURL=media.css.map */
+}

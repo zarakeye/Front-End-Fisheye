@@ -91,11 +91,6 @@ export function Contact(photographer) {
       data[key] = value;
     });
 
-    // TODO: Validation
-
-    // TODO: Send data
-    console.log('data', data);
-
     document.body.removeChild(contact);
     contact.remove();
   });

@@ -2,7 +2,6 @@
 /* Unicode */
 #sort {
   position: relative;
-  margin-left: 100px;
 }
 #sort p {
   padding-right: 20px;
@@ -72,4 +71,4 @@
   color: #FFFFFF;
   padding: 10px;
   border-radius: 50%;
-}/*# sourceMappingURL=sort.css.map */
+}

@@ -2,13 +2,16 @@
 
 .photographer {
   &sGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15%;
     margin-top: 100px;
     margin-bottom: 120px;
   }
+
   &_link {
+    flex: 1 1 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +30,7 @@
         position: relative;
         width: 100%;
         height: 110em;
-        overflow: clip;
+        overflow: hidden;
         margin: 0;
         padding: 0;
       }
@@ -78,29 +81,39 @@
   &_name {
     color: $secondary-color;
     font-size: 36px;
-    line-height: 83.33px;
+    line-height: 47px;
     margin: 0;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   
   &_location {
     color: $primary-color;
-    font-size: 24px;
-    line-height: 31.25px;
+    font-size: 13px;
+    line-height: 17px;
     margin-top: 0;
-    margin-bottom: 19px;
+    margin-bottom: 3px;
   }
 
   &_tagline {
+    color: $sixth-color;
+    font-size: 10px;
+    line-height: 13px;
+    margin-bottom: 3px;
+  }
+
+  &_price {
     color: $quinary-color;
-    font-size: 18px;
-    line-height: 23.44px;
-    margin: 0;
+    font-size: 9px;
+    line-height: 12px;
+    margin-bottom: 80px;
   }
 
   &_card {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     text-align: left;
     height: 300px;
     padding-top: 71px;
@@ -113,8 +126,46 @@
     justify-content: space-between;
     align-items: center;
     height: 313px;
-    margin: 40px 100px 20px 100px;
+    margin: 40px 0 20px 0;
     padding: 50px 57px;
+
+    .photographer_name {
+      color: $secondary-color;
+      font-size: 64px;
+      line-height: 83px;
+      font-weight: 400;
+      margin: 0;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    .photographer_location {
+      color: $primary-color;
+      font-size: 24px;
+      line-height: 31px;
+      margin-top: 0;
+      margin-bottom: 19px;
+    }
+  
+    .photographer_tagline {
+      color: $quinary-color;
+      font-size: 18px;
+      line-height: 23px;
+      margin: 0;
+    }
+
+    .photographer_portrait_blurFilter {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform:translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle closest-corner, transparent .1%, $quaternary-color  74.5%);
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 
@@ -129,7 +180,7 @@
   max-height: 100em;
   z-index: 3;
   border-radius: 50%;
-  overflow: clip;
+  overflow: hidden;
   margin: 0;
   padding: 0;
 }

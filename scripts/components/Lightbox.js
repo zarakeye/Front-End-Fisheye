@@ -130,7 +130,6 @@ export async function Lightbox(currentMedia, medias) {
   }
 
   previousMediaBtn.addEventListener('click', () => {
-    console.log('blablabla');    
     displayPreviousMedia();
   });
  
