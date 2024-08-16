@@ -5,7 +5,7 @@ export const mediaFactory =  {
     const mediasGrid = document.createElement("main");
     mediasGrid.className = "mediasGrid";
     if (! mediaFactory.isMediaExist(media)) {
-      console.log(`Le fichier medias/photographers/${media.photographerId}/media/${media.media} n\'existe pas`);
+      console.log(`Le fichier medias/photographers/${media.photographerId}/media/${media.media} n'existe pas`);
     } else {
       return MediaCard(photographer, media);
     }

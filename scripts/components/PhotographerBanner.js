@@ -1,5 +1,3 @@
-import { Contact } from "./Contact.js";
-
 export function PhotographerBanner(photographer) {
     const banner = document.createElement('section');
     banner.className = 'photographer_banner';
@@ -29,7 +27,7 @@ export function PhotographerBanner(photographer) {
       bubbles: true
     });
 
-    contactButton.addEventListener('click', (e) => {
+    contactButton.addEventListener('click', () => {
       contactButton.dispatchEvent(contactMeEvent);
     });
 

@@ -11,7 +11,7 @@ export function FootNote(photographer, photographerMedias) {
 
   const nbLikesFootNote = footNote.querySelector('#nbLikes_footNote');
 
-  document.addEventListener('likeBtnActionned', (e) => {
+  document.addEventListener('likeBtnActionned', () => {
     nbLikesFootNote.textContent = photographerFactory.totalLikes(photographerMedias);
   });
 

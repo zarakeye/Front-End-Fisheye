@@ -1,18 +1,8 @@
-import { Api } from "../api/index.js";
-import { Photographer } from "../models/photographer.model.js";
-import { PhotographerCard } from "../components/PhotographerCard.js";
 import { Header } from "../components/Header.js";
-import { mediaFactory } from "./media.factory.js";
 import { Contact } from "../components/Contact.js";
 
 
 export const photographerFactory = {
-  // photographer: async (id) => {
-  //   const photographersDatas = await Api.photographers.getPhotographers();
-  //   const photographerDatas = photographersDatas.find((photographer) => photographer.id === id);
-  //   return new Photographer(photographerDatas);
-  // },
-  
   homepageHeader: () => {
     const header = Header();
     const h1 = document.createElement("h1");

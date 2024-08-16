@@ -45,9 +45,6 @@ export function Sort() {
 
   const hrList = sortsWrapper.querySelectorAll('hr');
 
-  const expandCollapseButton = sort.querySelector('#expandCollapse');
-  
-
   let activeOption = sortsWrapper.querySelector('.active');
 
   if (sortsWrapper.ariaExpanded === 'false') {
@@ -200,6 +197,7 @@ export function Sort() {
       case 'Tab':
         if (sortsWrapper.contains(e.target)) {
           if (sortsWrapper.ariaExpanded === 'false') {
+            return;
           } else {
             if (e.shiftKey) {
               arrowUpHandler(e);
