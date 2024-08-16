@@ -11,15 +11,15 @@ export function Sort() {
       id="sorts_wrapper"
       aria-activedescendant="popularity"
       aria-expanded="false">
-      <button id='expandCollapse' aria-disabled="true" aria-hidden="true" tabindex="-1">
-        <i id="arrow" class="fa fa-chevron-down"></i>
+      <!-- <button id='expandCollapse' aria-disabled="true" tabindex="-1">
+        <i id="arrow" class="fa fa-chevron-down"></i> -->
       </button>
       <button
         role='tab'
         id='popularity'
         class='sortType active'
         aria-selected='true'>
-        Popularité
+        Popularité <span><i id ="arrow" class="fa fa-chevron-up"></i></span>
       </button>
       <hr>
       <button
@@ -44,6 +44,8 @@ export function Sort() {
   const options = sortsWrapper.querySelectorAll('.sortType');
 
   const hrList = sortsWrapper.querySelectorAll('hr');
+
+  const expandCollapseButton = sort.querySelector('#expandCollapse');
   
 
   let activeOption = sortsWrapper.querySelector('.active');
@@ -173,12 +175,13 @@ export function Sort() {
       }
     }
     
-  // sortsWrapper.addEventListener('click', (e) => { // Cases when the user clicks on an element of the sort menu
-    
     if (sortsWrapper.contains(e.target) && sortsWrapper.ariaExpanded === 'false') {
       expandSortMenu();
     } else {
-    // Cases when the user clicks on an option
+      if(e.target.id === 'arrow' && sortsWrapper.ariaExpanded === 'true') {
+        collapseSortMenu();
+      }
+    // Cases when the user clicks on an sort option
       if (e.target.classList.contains('sortType')) {
         // Expand/collapse the sort menu when the user clicks on the already selected option
         if (e.target.classList.contains('active')) {

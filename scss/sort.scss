@@ -43,6 +43,11 @@
       }
 
       &:first-of-type {
+
+        span {
+          display: inline-block;
+          padding-left: 20px;
+        }
         &:hover {
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;

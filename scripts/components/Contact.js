@@ -1,5 +1,4 @@
 import { Modal } from "../components/Modal.js";
-import { isInTopFocusTrap } from "../helpers/isInTopFocusTrap.js";
 
 export function Contact(photographer) {
   // Creation of the DOM element which contains the contact form
@@ -52,9 +51,7 @@ export function Contact(photographer) {
   const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
   modalSelector.addEventListener('keydown', function (e) {
-    // if (isInTopFocusTrap()) {
     if (modalSelector.contains(e.target)){
-      console.log('isInTopFocusTrap', isInTopFocusTrap());
       if (e.key === 'Tab') {
         if (e.shiftKey) {
           if (e.target === firstFocusableElement) {

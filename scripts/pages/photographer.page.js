@@ -8,32 +8,25 @@ import { mediaFactory } from "../factories/media.factory.js";
 import { Sort } from "../components/Sort.js";
 import { FootNote } from "../components/FootNote.js";
 import { Lightbox } from "../components/Lightbox.js";
-import { isInTopFocusTrap } from "../helpers/isInTopFocusTrap.js";
+import { isInHighFocusTrap } from "../helpers.js";
 
 export async function PhotographerPage(id) {
-  // Extraction of datas of photographers and his medias, then creation of new Photographer and Media objects
-  // let photographer = await photographerFactory.photographer(id);
   const photographerDatas = await Api.photographers.getPhotographerById(id);
   const photographer = new Photographer(photographerDatas);
 
-  // let medias = await mediaFactory.photographerMedias(id);
   const mediasDatas = await Api.medias.getMediasByPhotographerId(id);
   let medias = mediasDatas.map((media) => new Media(media));
 
-  // Header
   const header = Header();
   document.body.appendChild(header);
 
-  // Main
   const main = document.createElement('main');
   main.id = 'main';
   document.body.appendChild(main);
 
-  // Banner
   const banner = PhotographerBanner(photographer);
   main.appendChild(banner);
 
-  // Contact
   let activeElementBeforeContactModal = null;
   main.addEventListener('contact', (e) => {
     if (activeElementBeforeContactModal === null) {
@@ -43,21 +36,18 @@ export async function PhotographerPage(id) {
     photographerFactory.contactMe(photographer);
   });
  
-  // Cards
+  // Gallery
   let cards = medias.map((media) => mediaFactory.createCard(photographer, media));
   medias = mediaFactory.sortMediasBy(medias, 'popularity');
   cards = mediaFactory.sortCardsBy(cards, 'popularity');
 
-  // Gallery
   const gallery = document.createElement('section');
   gallery.id = 'gallery';
   gallery.append(...cards);
 
-  // Sort
   const sortSection = Sort(gallery);
   main.appendChild(sortSection);
 
-  // Bind Gallery to DOM
   main.appendChild(gallery);
 
   main.addEventListener('sortEvent', (e) => {
@@ -82,7 +72,6 @@ export async function PhotographerPage(id) {
     document.querySelector('.next_media').focus();
   });
 
-  // FootNote
   const footNote = FootNote(photographer, medias);
 
   main.appendChild(footNote);
@@ -93,15 +82,18 @@ export async function PhotographerPage(id) {
 
   // Focus Trap
   document.body.addEventListener('keydown', (e) => {
-
-    if (!isInTopFocusTrap()) {
+    // if the acive element is on the ground (z-index = 0), hold the focus there
+    if (!isInHighFocusTrap()) {
       if (e.key === 'Tab') {
+        // Manage shift + tab to go back
         if (e.shiftKey) {
+          // if the active element is the first focusable element, go to the last focusable element
           if (e.target === firstFocusableElement) {
             lastFocusableElement.focus();
             e.preventDefault();
           }
-        } else {
+        } else { // Manage normal tab
+          // if the active element is the last focusable element, go to the first focusable element
           if (e.target === lastFocusableElement) {
             firstFocusableElement.focus();
             e.preventDefault();

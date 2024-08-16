@@ -1,9 +1,9 @@
-export function isInTopFocusTrap() {
-  // Check if the focus is in the modal
+export function isInHighFocusTrap() {
   if (!document.activeElement) {
     return false;
   }
 
+  // Check if the focus is in the modal
   const topFocusTraps = document.querySelectorAll('.modal, .sortType');
   if (!topFocusTraps) {
     return false;
@@ -14,6 +14,4 @@ export function isInTopFocusTrap() {
       return true;
     }
   })
-
-  return false;
 }
