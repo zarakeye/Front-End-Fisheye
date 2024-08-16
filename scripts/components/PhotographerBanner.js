@@ -10,10 +10,17 @@ export function PhotographerBanner(photographer) {
       <button id="contact_me" class="cta">Contactez-moi</button>
       <figure class='photographer_portrait_wrapper'>
           <div class="photographer_portrait_background_wrapper">
-          <img class="photographer_portrait_background" src="assets/medias/photographers/${photographer.id}/${photographer.portrait}">
+          <img
+            class="photographer_portrait_background"
+            src="assets/medias/photographers/${photographer.id}/${photographer.portrait}"
+            alt="Portrait de ${photographer.name}"
+            aria-hidden="true">
           <div class="photographer_portrait_blurFilter">
           <div class="mask">
-            <img class="photographer_portrait" src="assets/medias/photographers/${photographer.id}/${photographer.portrait}" alt="Portrait de ${photographer.name}">
+            <img
+              class="photographer_portrait"
+              src="assets/medias/photographers/${photographer.id}/${photographer.portrait}"
+              alt="Portrait de ${photographer.name}">
           </div>
           </div>
         </div>
