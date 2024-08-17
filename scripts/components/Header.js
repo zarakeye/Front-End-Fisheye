@@ -1,3 +1,8 @@
+/**
+ * Creates and returns a header element with a link to the homepage.
+ *
+ * @return {HTMLElement} The created header element.
+ */
 export function Header() {
   const header = document.createElement('header');
   header.className = 'header';

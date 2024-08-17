@@ -1,3 +1,9 @@
+/**
+ * Creates a photographer banner section element.
+ *
+ * @param {Object} photographer - An object containing photographer information (name, city, country, tagline, id, portrait).
+ * @return {HTMLElement} A section element representing the photographer banner.
+ */
 export function PhotographerBanner(photographer) {
     const banner = document.createElement('section');
     banner.className = 'photographer_banner';

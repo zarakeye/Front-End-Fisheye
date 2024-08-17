@@ -1,3 +1,10 @@
+/**
+ * Creates a new media object with properties id, photographerId, title, media, likes, alreadyLiked, and date.
+ * Also includes methods to like and unlike the media.
+ *
+ * @param {object} mediaDatas - An object containing media data.
+ * @return {object} The newly created media object.
+ */
 export function Media(mediaDatas) {
   this.id = mediaDatas.id;
   this.photographerId = mediaDatas.photographerId;

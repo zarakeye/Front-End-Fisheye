@@ -1,3 +1,8 @@
+/**
+ * Creates a modal element with a close button and adds event listeners for closing the modal.
+ * 
+ * @return {HTMLElement} The created modal element
+ */
 export function Modal() {
   const modal = document.createElement('div');
   modal.className = 'overlay';

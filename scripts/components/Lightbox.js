@@ -1,6 +1,15 @@
 import { Modal } from './Modal.js';
 import { mediaFactory } from '../factories/media.factory.js';
 
+/**
+ * Creates a lightbox DOM element and appends it to the document body.
+ * The lightbox contains a modal with navigation buttons to display previous and next media.
+ * It also handles keyboard navigation and focus management.
+ *
+ * @param {object} currentMedia - the currently displayed media object
+ * @param {array} medias - an array of media objects
+ * @return {HTMLElement} the lightbox DOM element
+ */
 export async function Lightbox(currentMedia, medias) {
   // Creation of the DOM element which contains the lightbox
   const lightbox = document.createElement('aside');
@@ -11,6 +20,7 @@ export async function Lightbox(currentMedia, medias) {
   const modal = Modal();
   lightbox.appendChild(modal);
   const modalSelector = lightbox.querySelector('.modal');
+  modalSelector.setAttribute('aria-label', 'lightbox');
 
   // Retrieve the list of medias from the same photographer than the current one
   const selectedSort = document.querySelector('#sort .active').id;
@@ -95,6 +105,14 @@ export async function Lightbox(currentMedia, medias) {
 
   const mediasLength = medias.length;
 
+  /**
+   *  Displays the previous media in the lightbox.
+   *  
+   *  This function updates the current media index, updates the aria-label and text content of the media title,
+   *  and toggles the display of thumbnails based on the new current media index.
+   *  
+   *  @return {void}
+   */
   function displayPreviousMedia() {
     // Compute the index of the previous media (which becomes the new displayed media)
     --currentMediaIndex;
@@ -114,6 +132,14 @@ export async function Lightbox(currentMedia, medias) {
     });  
   }
 
+  /**
+   *  Displays the next media in the lightbox.
+   *  
+   *  This function updates the current media index, updates the aria-label and text content of the media title,
+   *  and toggles the display of thumbnails based on the new current media index.
+   *  
+   *  @return {void}
+   */
   function displayNextMedia() {
     // Compute the index of the next media (which becomes the new displayed media)
     ++currentMediaIndex;

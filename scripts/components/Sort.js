@@ -1,3 +1,8 @@
+/**
+ * Creates a sort component with a dropdown menu for sorting options.
+ *
+ * @return {HTMLElement} The created sort component.
+ */
 export function Sort() {
   const sort = document.createElement("section");
   sort.id = "sort";
@@ -11,8 +16,8 @@ export function Sort() {
       id="sorts_wrapper"
       aria-activedescendant="popularity"
       aria-expanded="false">
-      <button id='expandCollapse' aria-disabled="true" tabindex="-1">
-        <i id="arrow" class="fa fa-chevron-down"></i>
+      <button role='tab' id='expandCollapse' aria-disabled="true" tabindex="-1">
+        <span class="sr-only">Dérouler/enrouler </span><i id="arrow" class="fa fa-chevron-down"></i>
       </button>
       <button
         role='tab'
@@ -59,6 +64,12 @@ export function Sort() {
     bubbles: true,
   });
 
+  /**
+   * Collapses the sort menu by rotating the arrow, hiding inactive options, 
+   * and adjusting the active option's padding.
+   *
+   * @return {void}
+   */
   function collapseSortMenu() {
     arrow.style.transform = 'rotate(0deg)';
 
@@ -80,6 +91,14 @@ export function Sort() {
     activeOption.style.paddingTop = '23px';
   }
 
+/**
+ * Expands the sort menu by rotating the arrow, setting the ariaExpanded attribute to true,
+ * displaying the options and setting their padding, displaying the first option with a larger padding,
+ * displaying the hr elements, setting the active option's background color, focusing on the active option,
+ * and setting the aria-selected attribute to true.
+ *
+ * @return {void} This function does not return a value.
+ */
   function expandSortMenu() {
     arrow.style.transform = 'rotate(180deg)';
     sortsWrapper.ariaExpanded = 'true';
@@ -97,6 +116,14 @@ export function Sort() {
     activeOption.setAttribute('aria-selected', 'true');
   }
 
+  /**
+   * Handles the down arrow key press event to navigate through the sort options.
+   * If the sort menu is collapsed, it expands the menu. If the menu is already expanded,
+   * it moves the selection to the next option, updates the aria-selected attribute, and focuses on the new option.
+   *
+   * @param {Event} e - The key press event.
+   * @return {void} This function does not return a value.
+   */
   function arrowDownHandler(e) {
     e.preventDefault();
     if (sortsWrapper.ariaExpanded === 'false') {
@@ -122,6 +149,14 @@ export function Sort() {
     }
   }
 
+  /**
+   * Handles the up arrow key press event to navigate through the sort options.
+   * If the sort menu is expanded, it moves the selection to the previous option, 
+   * updates the aria-selected attribute, and focuses on the new option.
+   *
+   * @param {Event} e - The key press event.
+   * @return {void} This function does not return a value.
+   */
   function arrowUpHandler(e) {
     e.preventDefault();
     if (sortsWrapper.ariaExpanded === 'true') {
@@ -145,6 +180,12 @@ export function Sort() {
     }
   }
 
+  /**
+   * Updates the active option in the sort menu.
+   *
+   * @param {Event} e - The event that triggered the update.
+   * @return {void} This function does not return a value.
+   */
   function updateActiveOption(e) {
     // The old active option is set to inactive and the new active option is set to active
     activeOption.classList.remove('active');

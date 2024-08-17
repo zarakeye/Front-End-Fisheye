@@ -1,12 +1,16 @@
 import { Modal } from "../components/Modal.js";
 
+/**
+ * Creates a contact form modal element and appends it to the DOM.
+ *
+ * @param {object} photographer - An object containing the photographer's name.
+ * @return {HTMLElement} The contact form modal element.
+ */
 export function Contact(photographer) {
   // Creation of the DOM element which contains the contact form
   const contact = document.createElement('aside');
   contact.id = 'contact';
   contact.setAttribute('aria-label', 'contact');
-  contact.setAttribute('role', 'dialog');
-  contact.setAttribute('aria-modal', 'true');
   
   // Creation of a modal appended to the contact and filling it with the code of the contact form
   const modal = Modal();
@@ -40,7 +44,6 @@ export function Contact(photographer) {
     </form>
   `;
 
-  modalSelector.setAttribute('aria-modal', 'true');
   modalSelector.setAttribute('aria-label', 'Formulaire de contact');
 
   const closeModal = modalSelector.querySelector('.close-modal');
@@ -87,6 +90,8 @@ export function Contact(photographer) {
     formData.forEach((value, key) => {
       data[key] = value;
     });
+
+    console.log('data', data);
 
     document.body.removeChild(contact);
     contact.remove();

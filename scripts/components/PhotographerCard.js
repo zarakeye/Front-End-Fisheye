@@ -1,3 +1,16 @@
+/**
+ * Creates a photographer card element with a link to the photographer's page.
+ *
+ * @param {Object} photographer - An object containing the photographer's details.
+ * @param {number} photographer.id - The photographer's ID.
+ * @param {string} photographer.portrait - The photographer's portrait image file name.
+ * @param {string} photographer.name - The photographer's name.
+ * @param {string} photographer.country - The photographer's country.
+ * @param {string} photographer.city - The photographer's city.
+ * @param {string} photographer.tagline - The photographer's tagline.
+ * @param {number} photographer.price - The photographer's daily price.
+ * @return {HTMLElement} The created photographer card element.
+ */
 export function PhotographerCard(photographer) {
     const card = document.createElement('a');
     card.href = `photographer.html?id=${photographer.id}`;

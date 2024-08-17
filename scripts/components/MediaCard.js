@@ -1,6 +1,14 @@
 import { mediaFactory } from "../factories/media.factory.js";
 import { LikeButton } from "../components/LikeButton.js";
 
+/**
+ * Creates a media card element with a thumbnail, title, date, and likes.
+ * The card is interactive, allowing users to click or press Enter to trigger a 'mediaClicked' event.
+ *
+ * @param {object} photographer - The photographer object associated with the media.
+ * @param {object} media - The media object containing title, date, likes, and other properties.
+ * @return {HTMLElement} The created media card element.
+ */
 export function MediaCard (photographer, media) {
   const card = document.createElement('article');
   card.className = 'media_card';

@@ -3,6 +3,13 @@ import { Photographer } from "../models/photographer.model.js";
 import { photographerFactory } from "../factories/photographer.factory.js";
 import { PhotographerCard } from "../components/PhotographerCard.js";
 
+/**
+ * Asynchronously generates the home page by fetching a list of photographers,
+ * creating a header, and appending a grid of photographer cards to the main element.
+ * Also sets up a focus trap to keep focus within the page.
+ *
+ * @return {Promise<void>} A promise that resolves when the home page is generated.
+ */
 export async function HomePage() {
   const photographersDatas = await Api.photographers.getPhotographers();
   const photographers = photographersDatas.map((photographer) => new Photographer(photographer));

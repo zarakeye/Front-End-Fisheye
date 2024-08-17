@@ -1,5 +1,12 @@
 import { photographerFactory } from "../factories/photographer.factory.js";
 
+/**
+ * Creates a FootNote element with the given photographer and their medias.
+ *
+ * @param {Object} photographer - The photographer object.
+ * @param {Array} photographerMedias - The array of medias for the photographer.
+ * @return {HTMLElement} The created FootNote element.
+ */
 export function FootNote(photographer, photographerMedias) {
   const footNote = document.createElement('aside');
   footNote.id = 'footNote';

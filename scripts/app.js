@@ -1,6 +1,11 @@
 import { HomePage } from "./pages/home.page.js";
 import { PhotographerPage } from "./pages/photographer.page.js";
 
+/**
+ * Handles the application routing based on the current URL.
+ *
+ * @return {Promise<void>} Resolves when the corresponding page has been loaded.
+ */
 async function App() {
   const url = new URL(window.location.href);
 

@@ -1,6 +1,13 @@
 import { MediaCard } from "../components/MediaCard.js";
 
 export const mediaFactory =  {
+  /**
+   * Creates a media card for a given photographer and media.
+   *
+   * @param {object} photographer - The photographer object.
+   * @param {object} media - The media object.
+   * @return {object} The created MediaCard object or null if media does not exist.
+   */
   createCard: (photographer, media) => {
     const mediasGrid = document.createElement("main");
     mediasGrid.className = "mediasGrid";
@@ -11,6 +18,12 @@ export const mediaFactory =  {
     }
   },
 
+  /**
+   * Returns an HTML string representing a media thumbnail.
+   *
+   * @param {object} media - The media object containing information about the media.
+   * @return {string} An HTML string representing the media thumbnail.
+   */
   thumbnail: (media) => {
     if (media.media.endsWith('.jpg')) {
       return `
@@ -39,6 +52,14 @@ export const mediaFactory =  {
     }
   },
 
+/**
+ * Checks if a media file exists.
+ *
+ * @param {Object} media - The media object containing information about the media.
+ * @param {string} media.photographerId - The ID of the photographer.
+ * @param {string} media.media - The name of the media file.
+ * @return {Promise<boolean>} A Promise that resolves to true if the media file exists, false otherwise.
+ */
   isMediaExist: async (media) => {
     const filePath = `assets/medias/photographers/${media.photographerId}/media/${ media.media}`;
 
@@ -50,6 +71,13 @@ export const mediaFactory =  {
     }
   },
 
+  /**
+   * Sorts an array of media objects based on the specified sort type.
+   *
+   * @param {Object[]} medias - The array of media objects to be sorted.
+   * @param {string} sorType - The type of sorting to be applied. Can be 'popularity', 'date', or 'title'.
+   * @return {Object[]} The sorted array of media objects.
+   */
   sortMediasBy: (medias, sorType) => {
     let sortedMedias = [];
     
@@ -70,6 +98,13 @@ export const mediaFactory =  {
     return sortedMedias;
   },
 
+  /**
+   * Sorts an array of media cards based on the specified sort type.
+   *
+   * @param {Array} cards - The array of media cards to be sorted.
+   * @param {string} sorType - The type of sorting to be applied. Can be 'popularity', 'date', or 'title'.
+   * @return {Array} The sorted array of media cards.
+   */
   sortCardsBy: (cards, sorType) => {
     let sortedCards = [];
     switch (sorType) {

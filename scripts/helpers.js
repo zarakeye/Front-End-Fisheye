@@ -1,3 +1,8 @@
+/**
+ * Checks if the current focus is within a high focus trap element.
+ *
+ * @return {boolean} True if the focus is within a high focus trap, false otherwise
+ */
 export function isInHighFocusTrap() {
   if (!document.activeElement) {
     return false;

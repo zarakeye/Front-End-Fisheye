@@ -10,6 +10,12 @@ import { FootNote } from "../components/FootNote.js";
 import { Lightbox } from "../components/Lightbox.js";
 import { isInHighFocusTrap } from "../helpers.js";
 
+/**
+ * Creates a photographer page with a banner, gallery, and lightbox.
+ *
+ * @param {number} id - The ID of the photographer.
+ * @return {Promise<void>} A promise that resolves when the page is created.
+ */
 export async function PhotographerPage(id) {
   const photographerDatas = await Api.photographers.getPhotographerById(id);
   const photographer = new Photographer(photographerDatas);
