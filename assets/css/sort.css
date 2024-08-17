@@ -42,9 +42,14 @@
 #sort #sorts_wrapper .sortType.active {
   display: block;
 }
-#sort #sorts_wrapper .sortType:first-of-type span {
+#sort #sorts_wrapper .sortType .option_name {
+  padding-right: 20px;
+}
+#sort #sorts_wrapper .sortType .fa.fa-chevron-up {
+  display: none;
+}
+#sort #sorts_wrapper .sortType:first-of-type .fa.fa-chevron-up {
   display: inline-block;
-  padding-left: 20px;
 }
 #sort #sorts_wrapper .sortType:first-of-type:hover {
   border-top-left-radius: 5px;

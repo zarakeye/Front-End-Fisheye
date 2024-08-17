@@ -11,15 +11,15 @@ export function Sort() {
       id="sorts_wrapper"
       aria-activedescendant="popularity"
       aria-expanded="false">
-      <!-- <button id='expandCollapse' aria-disabled="true" tabindex="-1">
-        <i id="arrow" class="fa fa-chevron-down"></i> -->
+      <button id='expandCollapse' aria-disabled="true" tabindex="-1">
+        <i id="arrow" class="fa fa-chevron-down"></i>
       </button>
       <button
         role='tab'
         id='popularity'
         class='sortType active'
         aria-selected='true'>
-        Popularité <span><i id ="arrow" class="fa fa-chevron-up"></i></span>
+        Popularité
       </button>
       <hr>
       <button
@@ -45,6 +45,10 @@ export function Sort() {
 
   const hrList = sortsWrapper.querySelectorAll('hr');
 
+  const expandCollapseBtn = sort.querySelector('#expandCollapse');
+
+  const arrow = sort.querySelector('#arrow');
+
   let activeOption = sortsWrapper.querySelector('.active');
 
   if (sortsWrapper.ariaExpanded === 'false') {
@@ -55,10 +59,9 @@ export function Sort() {
     bubbles: true,
   });
 
-  const arrow = sortsWrapper.querySelector('#arrow');
-
   function collapseSortMenu() {
     arrow.style.transform = 'rotate(0deg)';
+
     sortsWrapper.ariaExpanded = 'false';
     options.forEach((option) => {
       if (!option.classList.contains('active')) {
@@ -175,9 +178,9 @@ export function Sort() {
     if (sortsWrapper.contains(e.target) && sortsWrapper.ariaExpanded === 'false') {
       expandSortMenu();
     } else {
-      if(e.target.id === 'arrow' && sortsWrapper.ariaExpanded === 'true') {
-        collapseSortMenu();
-      }
+      // if(e.target.id === 'arrow' && sortsWrapper.ariaExpanded === 'true') {
+      //   collapseSortMenu();
+      // }
     // Cases when the user clicks on an sort option
       if (e.target.classList.contains('sortType')) {
         // Expand/collapse the sort menu when the user clicks on the already selected option
@@ -189,6 +192,25 @@ export function Sort() {
           updateActiveOption(e);
         }
       }
+    }
+  });
+
+  expandCollapseBtn.addEventListener('click', () => {
+    if (sortsWrapper.getAttribute('aria-expanded') === 'false') {
+      expandSortMenu();
+    }
+    if (sortsWrapper.getAttribute('aria-expanded') === 'true') {
+      // collapseSortMenu();
+      sortsWrapper.setAttribute('aria-expanded', 'false');
+      options.forEach((option) => {
+        if (!option.classList.contains('active')) {
+          option.style.display = 'none';
+        }
+      });
+      
+      hrList.forEach((hr) => {
+        hr.style.display = 'none';
+      });
     }
   });
 
