@@ -28,7 +28,7 @@ export async function Lightbox(currentMedia, medias) {
       <div class='media_wrapper'>
         ${thumbnailsStrings}
       </div>
-      <figcaption>
+      <figcaption aria-label="Titre: ${currentMedia.title}" tabindex="0">
         <p class='media_title'>${ currentMedia.title }</p>
       </figcaption>
     </figure>
@@ -42,6 +42,8 @@ export async function Lightbox(currentMedia, medias) {
   modalSelector.setAttribute('aria-modal', 'true');
   modalSelector.setAttribute('role', 'dialog');
   const mediaTitle = modalSelector.querySelector('.media_title');
+
+  const figCaption = modalSelector.querySelector('figcaption');
 
   const nextBtn = lightbox.querySelector('.next_media');
   nextBtn.focus();
@@ -100,6 +102,7 @@ export async function Lightbox(currentMedia, medias) {
       currentMediaIndex = mediasLength - 1;
     }
 
+    figCaption.setAttribute('aria-label', `Titre: ${medias[currentMediaIndex].title}`);
     mediaTitle.textContent = medias[currentMediaIndex].title;
 
     thumbnails.forEach((item) => {
@@ -118,6 +121,7 @@ export async function Lightbox(currentMedia, medias) {
       currentMediaIndex = 0;
     }
 
+    figCaption.setAttribute('aria-label', `Titre: ${medias[currentMediaIndex].title}`);
     mediaTitle.textContent = medias[currentMediaIndex].title;
 
     thumbnails.forEach((item) => {
